@@ -40,7 +40,7 @@
     .app-header h1 { font-size: 1.2rem; font-weight: 700; }
     .app-header p { font-size: 0.75rem; opacity: 0.9; margin-top: 2px; }
 
-    /* DATE SELECTOR BAR (FIXED SCROLLING) */
+    /* DATE SELECTOR BAR */
     .date-bar-wrapper {
       background: #EBE3DB;
       border-bottom: 1px solid var(--beige-border);
@@ -193,7 +193,7 @@
     .weather-max { font-size: 1.05rem; font-weight: 700; color: var(--terracotta-primary); }
     .weather-min { font-size: 0.75rem; color: var(--warm-muted); }
 
-    /* CHECKLISTS & FORMS */
+    /* CHECKLISTS & CARDS */
     .guide-section {
       background: var(--white);
       border-radius: var(--radius);
@@ -247,14 +247,53 @@
       font-weight: 500;
     }
 
-    .hotel-card {
+    .item-card {
       background: var(--beige-bg);
       border-radius: 8px;
-      padding: 10px;
+      padding: 10px 12px;
       margin-bottom: 10px;
       border: 1px solid var(--beige-border);
     }
-    .hotel-name { font-weight: 700; color: var(--terracotta-primary); margin-bottom: 4px; font-size: 0.88rem; }
+    .item-card-header {
+      font-weight: 700;
+      color: var(--terracotta-primary);
+      font-size: 0.88rem;
+      margin-bottom: 4px;
+    }
+    .flight-option {
+      font-size: 0.81rem;
+      color: var(--warm-dark);
+      padding: 3px 0;
+      border-bottom: 1px dashed rgba(230, 220, 211, 0.7);
+    }
+    .flight-option:last-child { border-bottom: none; }
+    .pref-tag {
+      background: var(--terracotta-primary);
+      color: var(--white);
+      font-size: 0.65rem;
+      padding: 1px 5px;
+      border-radius: 4px;
+      font-weight: bold;
+      margin-left: 4px;
+    }
+
+    .tip-category {
+      font-weight: 700;
+      color: var(--terracotta-primary);
+      margin-top: 12px;
+      margin-bottom: 4px;
+      font-size: 0.88rem;
+      border-bottom: 1px solid var(--beige-border);
+      padding-bottom: 2px;
+    }
+    .tip-category:first-child { margin-top: 0; }
+    .tip-item {
+      font-size: 0.8rem;
+      line-height: 1.45;
+      color: var(--warm-dark);
+      margin-bottom: 6px;
+    }
+    .tip-item b { color: var(--warm-dark); }
   </style>
 </head>
 <body>
@@ -265,17 +304,17 @@
   </header>
 
   <nav class="tab-nav">
-    <button class="tab-btn active" onclick="switchTab('itinerary')">
-      <span>📅</span>
-      <span>Itinerary</span>
+    <button class="tab-btn active" onclick="switchTab('todo')">
+      <span>☑️</span>
+      <span>To-Do List</span>
     </button>
     <button class="tab-btn" onclick="switchTab('weather')">
       <span>🌤️</span>
       <span>Weather</span>
     </button>
-    <button class="tab-btn" onclick="switchTab('todo')">
-      <span>☑️</span>
-      <span>To-Do List</span>
+    <button class="tab-btn" onclick="switchTab('itinerary')">
+      <span>📅</span>
+      <span>Itinerary</span>
     </button>
     <button class="tab-btn" onclick="switchTab('flights')">
       <span>✈️</span>
@@ -287,25 +326,310 @@
     </button>
   </nav>
 
-  <main id="itinerary" class="tab-content active">
+  <main id="todo" class="tab-content active">
+    <div class="guide-section">
+      <div class="guide-title">🎟️ Advance Tour Bookings Checklist</div>
+      <ul class="checklist" id="tours-list"></ul>
+      <div class="add-form">
+        <input type="text" id="tours-input" class="add-input" placeholder="Add tour to book...">
+        <button class="btn-action" onclick="addItem('tours')">Add</button>
+      </div>
+    </div>
 
+    <div class="guide-section">
+      <div class="guide-title">🎒 Carry-On Packing List</div>
+      <ul class="checklist" id="carryon-list"></ul>
+      <div class="add-form">
+        <input type="text" id="carryon-input" class="add-input" placeholder="Add carry-on item...">
+        <button class="btn-action" onclick="addItem('carryon')">Add</button>
+      </div>
+    </div>
+
+    <div class="guide-section">
+      <div class="guide-title">🧳 Checked Bag Packing List</div>
+      <ul class="checklist" id="checkin-list"></ul>
+      <div class="add-form">
+        <input type="text" id="checkin-input" class="add-input" placeholder="Add checked item...">
+        <button class="btn-action" onclick="addItem('checkin')">Add</button>
+      </div>
+    </div>
+  </main>
+
+  <main id="weather" class="tab-content">
+    <a href="https://www.meteoblue.com/en/weather/forecast/week/santiago-de-chile_chile_3871336" target="_blank" class="weather-card-link">
+      <div class="weather-card">
+        <div class="weather-left">
+          <span class="weather-icon">☀️</span>
+          <div>
+            <div class="weather-date">Oct 2</div>
+            <div class="weather-city">Santiago, Chile ↗</div>
+            <div class="weather-desc">Clear & Sunny</div>
+          </div>
+        </div>
+        <div class="weather-temp-box">
+          <div class="weather-max">20°C</div>
+          <div class="weather-min">7°C</div>
+        </div>
+      </div>
+    </a>
+
+    <a href="https://www.meteoblue.com/en/weather/forecast/week/santiago-de-chile_chile_3871336" target="_blank" class="weather-card-link">
+      <div class="weather-card">
+        <div class="weather-left">
+          <span class="weather-icon">☀️</span>
+          <div>
+            <div class="weather-date">Oct 3</div>
+            <div class="weather-city">Santiago, Chile ↗</div>
+            <div class="weather-desc">Warm & Pleasant</div>
+          </div>
+        </div>
+        <div class="weather-temp-box">
+          <div class="weather-max">22°C</div>
+          <div class="weather-min">8°C</div>
+        </div>
+      </div>
+    </a>
+
+    <a href="https://www.accuweather.com/en/cl/san-pedro-de-atacama/106346/weather-forecast/106346" target="_blank" class="weather-card-link">
+      <div class="weather-card">
+        <div class="weather-left">
+          <span class="weather-icon">🌤️</span>
+          <div>
+            <div class="weather-date">Oct 4</div>
+            <div class="weather-city">San Pedro de Atacama ↗</div>
+            <div class="weather-desc">Dry & Intense Sun</div>
+          </div>
+        </div>
+        <div class="weather-temp-box">
+          <div class="weather-max">20°C</div>
+          <div class="weather-min">3°C</div>
+        </div>
+      </div>
+    </a>
+
+    <a href="https://www.accuweather.com/en/cl/san-pedro-de-atacama/106346/weather-forecast/106346" target="_blank" class="weather-card-link">
+      <div class="weather-card">
+        <div class="weather-left">
+          <span class="weather-icon">☀️</span>
+          <div>
+            <div class="weather-date">Oct 5</div>
+            <div class="weather-city">Atacama Salt Flats ↗</div>
+            <div class="weather-desc">Sunny / Clear Skies</div>
+          </div>
+        </div>
+        <div class="weather-temp-box">
+          <div class="weather-max">21°C</div>
+          <div class="weather-min">4°C</div>
+        </div>
+      </div>
+    </a>
+
+    <a href="https://www.accuweather.com/en/cl/san-pedro-de-atacama/106346/weather-forecast/106346" target="_blank" class="weather-card-link">
+      <div class="weather-card">
+        <div class="weather-left">
+          <span class="weather-icon">💨</span>
+          <div>
+            <div class="weather-date">Oct 6</div>
+            <div class="weather-city">Altiplanic Lagoons ↗</div>
+            <div class="weather-desc">High Altitude Winds</div>
+          </div>
+        </div>
+        <div class="weather-temp-box">
+          <div class="weather-max">14°C</div>
+          <div class="weather-min">-2°C</div>
+        </div>
+      </div>
+    </a>
+
+    <a href="https://www.accuweather.com/en/cl/san-pedro-de-atacama/106346/weather-forecast/106346" target="_blank" class="weather-card-link">
+      <div class="weather-card">
+        <div class="weather-left">
+          <span class="weather-icon">❄️</span>
+          <div>
+            <div class="weather-date">Oct 7</div>
+            <div class="weather-city">El Tatio Geysers → Santiago ↗</div>
+            <div class="weather-desc">Freezing Sunrise / Mild PM</div>
+          </div>
+        </div>
+        <div class="weather-temp-box">
+          <div class="weather-max">18°C</div>
+          <div class="weather-min">-4°C</div>
+        </div>
+      </div>
+    </a>
+
+    <a href="https://www.accuweather.com/en/ar/buenos-aires/7894/weather-forecast/7894" target="_blank" class="weather-card-link">
+      <div class="weather-card">
+        <div class="weather-left">
+          <span class="weather-icon">⛅</span>
+          <div>
+            <div class="weather-date">Oct 8</div>
+            <div class="weather-city">Buenos Aires, Argentina ↗</div>
+            <div class="weather-desc">Partly Cloudy</div>
+          </div>
+        </div>
+        <div class="weather-temp-box">
+          <div class="weather-max">19°C</div>
+          <div class="weather-min">11°C</div>
+        </div>
+      </div>
+    </a>
+
+    <a href="https://www.accuweather.com/en/ar/ushuaia/7180/weather-forecast/7180" target="_blank" class="weather-card-link">
+      <div class="weather-card">
+        <div class="weather-left">
+          <span class="weather-icon">🌧️</span>
+          <div>
+            <div class="weather-date">Oct 9</div>
+            <div class="weather-city">Ushuaia, Argentina ↗</div>
+            <div class="weather-desc">Chilly / Windy</div>
+          </div>
+        </div>
+        <div class="weather-temp-box">
+          <div class="weather-max">7°C</div>
+          <div class="weather-min">1°C</div>
+        </div>
+      </div>
+    </a>
+
+    <a href="https://www.accuweather.com/en/ar/ushuaia/7180/weather-forecast/7180" target="_blank" class="weather-card-link">
+      <div class="weather-card">
+        <div class="weather-left">
+          <span class="weather-icon">⛅</span>
+          <div>
+            <div class="weather-date">Oct 10</div>
+            <div class="weather-city">Ushuaia (Beagle Channel) ↗</div>
+            <div class="weather-desc">Cool / Coastal Breeze</div>
+          </div>
+        </div>
+        <div class="weather-temp-box">
+          <div class="weather-max">8°C</div>
+          <div class="weather-min">2°C</div>
+        </div>
+      </div>
+    </a>
+
+    <a href="https://www.accuweather.com/en/ar/el-calafate/7123/weather-forecast/7123" target="_blank" class="weather-card-link">
+      <div class="weather-card">
+        <div class="weather-left">
+          <span class="weather-icon">💨</span>
+          <div>
+            <div class="weather-date">Oct 11</div>
+            <div class="weather-city">El Calafate, Argentina ↗</div>
+            <div class="weather-desc">Breezy & Cool</div>
+          </div>
+        </div>
+        <div class="weather-temp-box">
+          <div class="weather-max">11°C</div>
+          <div class="weather-min">2°C</div>
+        </div>
+      </div>
+    </a>
+
+    <a href="https://www.accuweather.com/en/ar/el-calafate/7123/weather-forecast/7123" target="_blank" class="weather-card-link">
+      <div class="weather-card">
+        <div class="weather-left">
+          <span class="weather-icon">❄️</span>
+          <div>
+            <div class="weather-date">Oct 12</div>
+            <div class="weather-city">Perito Moreno Glacier ↗</div>
+            <div class="weather-desc">Cold Glacier Winds</div>
+          </div>
+        </div>
+        <div class="weather-temp-box">
+          <div class="weather-max">9°C</div>
+          <div class="weather-min">1°C</div>
+        </div>
+      </div>
+    </a>
+
+    <a href="https://www.accuweather.com/en/ar/buenos-aires/7894/weather-forecast/7894" target="_blank" class="weather-card-link">
+      <div class="weather-card">
+        <div class="weather-left">
+          <span class="weather-icon">☀️</span>
+          <div>
+            <div class="weather-date">Oct 13</div>
+            <div class="weather-city">Buenos Aires, Argentina ↗</div>
+            <div class="weather-desc">Warm & Sunny</div>
+          </div>
+        </div>
+        <div class="weather-temp-box">
+          <div class="weather-max">21°C</div>
+          <div class="weather-min">12°C</div>
+        </div>
+      </div>
+    </a>
+
+    <a href="https://www.accuweather.com/en/uy/colonia-del-sacramento/352467/weather-forecast/352467" target="_blank" class="weather-card-link">
+      <div class="weather-card">
+        <div class="weather-left">
+          <span class="weather-icon">🌤️</span>
+          <div>
+            <div class="weather-date">Oct 14</div>
+            <div class="weather-city">Colonia, Uruguay ↗</div>
+            <div class="weather-desc">Pleasant Coastal Weather</div>
+          </div>
+        </div>
+        <div class="weather-temp-box">
+          <div class="weather-max">20°C</div>
+          <div class="weather-min">13°C</div>
+        </div>
+      </div>
+    </a>
+
+    <a href="https://www.accuweather.com/en/ar/buenos-aires/7894/weather-forecast/7894" target="_blank" class="weather-card-link">
+      <div class="weather-card">
+        <div class="weather-left">
+          <span class="weather-icon">☀️</span>
+          <div>
+            <div class="weather-date">Oct 15</div>
+            <div class="weather-city">Buenos Aires, Argentina ↗</div>
+            <div class="weather-desc">Mostly Clear</div>
+          </div>
+        </div>
+        <div class="weather-temp-box">
+          <div class="weather-max">22°C</div>
+          <div class="weather-min">13°C</div>
+        </div>
+      </div>
+    </a>
+
+    <a href="https://www.accuweather.com/en/ar/buenos-aires/7894/weather-forecast/7894" target="_blank" class="weather-card-link">
+      <div class="weather-card">
+        <div class="weather-left">
+          <span class="weather-icon">⛅</span>
+          <div>
+            <div class="weather-date">Oct 16</div>
+            <div class="weather-city">Buenos Aires Departure ↗</div>
+            <div class="weather-desc">Mild</div>
+          </div>
+        </div>
+        <div class="weather-temp-box">
+          <div class="weather-max">20°C</div>
+          <div class="weather-min">12°C</div>
+        </div>
+      </div>
+    </a>
+  </main>
+
+  <main id="itinerary" class="tab-content">
     <div class="date-bar-wrapper">
       <div class="date-bar" id="date-bar">
-        <button class="date-chip active" onclick="showDay('day-oct2')">Oct 2 (Fri)</button>
-        <button class="date-chip" onclick="showDay('day-oct3')">Oct 3 (Sat)</button>
-        <button class="date-chip" onclick="showDay('day-oct4')">Oct 4 (Sun)</button>
-        <button class="date-chip" onclick="showDay('day-oct5')">Oct 5 (Mon)</button>
-        <button class="date-chip" onclick="showDay('day-oct6')">Oct 6 (Tue)</button>
-        <button class="date-chip" onclick="showDay('day-oct7')">Oct 7 (Wed)</button>
-        <button class="date-chip" onclick="showDay('day-oct8')">Oct 8 (Thu)</button>
-        <button class="date-chip" onclick="showDay('day-oct9')">Oct 9 (Fri)</button>
-        <button class="date-chip" onclick="showDay('day-oct10')">Oct 10 (Sat)</button>
-        <button class="date-chip" onclick="showDay('day-oct11')">Oct 11 (Sun)</button>
-        <button class="date-chip" onclick="showDay('day-oct12')">Oct 12 (Mon)</button>
-        <button class="date-chip" onclick="showDay('day-oct13')">Oct 13 (Tue)</button>
-        <button class="date-chip" onclick="showDay('day-oct14')">Oct 14 (Wed)</button>
-        <button class="date-chip" onclick="showDay('day-oct15')">Oct 15 (Thu)</button>
-        <button class="date-chip" onclick="showDay('day-oct16')">Oct 16 (Fri)</button>
+        <button class="date-chip active" onclick="showDay('day-oct2')">Oct 2</button>
+        <button class="date-chip" onclick="showDay('day-oct3')">Oct 3</button>
+        <button class="date-chip" onclick="showDay('day-oct4')">Oct 4</button>
+        <button class="date-chip" onclick="showDay('day-oct5')">Oct 5</button>
+        <button class="date-chip" onclick="showDay('day-oct6')">Oct 6</button>
+        <button class="date-chip" onclick="showDay('day-oct7')">Oct 7</button>
+        <button class="date-chip" onclick="showDay('day-oct8')">Oct 8</button>
+        <button class="date-chip" onclick="showDay('day-oct9')">Oct 9</button>
+        <button class="date-chip" onclick="showDay('day-oct10')">Oct 10</button>
+        <button class="date-chip" onclick="showDay('day-oct11')">Oct 11</button>
+        <button class="date-chip" onclick="showDay('day-oct12')">Oct 12</button>
+        <button class="date-chip" onclick="showDay('day-oct13')">Oct 13</button>
+        <button class="date-chip" onclick="showDay('day-oct14')">Oct 14</button>
+        <button class="date-chip" onclick="showDay('day-oct15')">Oct 15</button>
+        <button class="date-chip" onclick="showDay('day-oct16')">Oct 16</button>
       </div>
     </div>
 
@@ -313,7 +637,7 @@
 
     <div id="day-oct2" class="day-card active">
       <div class="day-header">
-        <span class="day-date">Oct 2 (Fri)</span>
+        <span class="day-date">Oct 2</span>
         <span class="day-dest">Santiago, Chile</span>
       </div>
       <div class="time-block">
@@ -328,7 +652,7 @@
 
     <div id="day-oct3" class="day-card">
       <div class="day-header">
-        <span class="day-date">Oct 3 (Sat)</span>
+        <span class="day-date">Oct 3</span>
         <span class="day-dest">Santiago, Chile</span>
       </div>
       <div class="time-block">
@@ -357,7 +681,7 @@
 
     <div id="day-oct4" class="day-card">
       <div class="day-header">
-        <span class="day-date">Oct 4 (Sun)</span>
+        <span class="day-date">Oct 4</span>
         <span class="day-dest">San Pedro de Atacama</span>
       </div>
       <div class="time-block">
@@ -386,7 +710,7 @@
 
     <div id="day-oct5" class="day-card">
       <div class="day-header">
-        <span class="day-date">Oct 5 (Mon)</span>
+        <span class="day-date">Oct 5</span>
         <span class="day-dest">San Pedro de Atacama</span>
       </div>
       <div class="time-block">
@@ -412,7 +736,7 @@
 
     <div id="day-oct6" class="day-card">
       <div class="day-header">
-        <span class="day-date">Oct 6 (Tue)</span>
+        <span class="day-date">Oct 6</span>
         <span class="day-dest">San Pedro de Atacama</span>
       </div>
       <div class="time-block">
@@ -438,7 +762,7 @@
 
     <div id="day-oct7" class="day-card">
       <div class="day-header">
-        <span class="day-date">Oct 7 (Wed)</span>
+        <span class="day-date">Oct 7</span>
         <span class="day-dest">Transit / Santiago</span>
       </div>
       <div class="time-block">
@@ -464,7 +788,7 @@
 
     <div id="day-oct8" class="day-card">
       <div class="day-header">
-        <span class="day-date">Oct 8 (Thu)</span>
+        <span class="day-date">Oct 8</span>
         <span class="day-dest">Buenos Aires, Argentina</span>
       </div>
       <div class="time-block">
@@ -487,7 +811,7 @@
 
     <div id="day-oct9" class="day-card">
       <div class="day-header">
-        <span class="day-date">Oct 9 (Fri)</span>
+        <span class="day-date">Oct 9</span>
         <span class="day-dest">Ushuaia, Argentina</span>
       </div>
       <div class="time-block">
@@ -510,7 +834,7 @@
 
     <div id="day-oct10" class="day-card">
       <div class="day-header">
-        <span class="day-date">Oct 10 (Sat)</span>
+        <span class="day-date">Oct 10</span>
         <span class="day-dest">Ushuaia, Argentina</span>
       </div>
       <div class="time-block">
@@ -536,7 +860,7 @@
 
     <div id="day-oct11" class="day-card">
       <div class="day-header">
-        <span class="day-date">Oct 11 (Sun)</span>
+        <span class="day-date">Oct 11</span>
         <span class="day-dest">El Calafate, Argentina</span>
       </div>
       <div class="time-block">
@@ -559,7 +883,7 @@
 
     <div id="day-oct12" class="day-card">
       <div class="day-header">
-        <span class="day-date">Oct 12 (Mon)</span>
+        <span class="day-date">Oct 12</span>
         <span class="day-dest">El Calafate, Argentina</span>
       </div>
       <div class="time-block">
@@ -578,7 +902,7 @@
 
     <div id="day-oct13" class="day-card">
       <div class="day-header">
-        <span class="day-date">Oct 13 (Tue)</span>
+        <span class="day-date">Oct 13</span>
         <span class="day-dest">Buenos Aires, Argentina</span>
       </div>
       <div class="time-block">
@@ -608,7 +932,7 @@
 
     <div id="day-oct14" class="day-card">
       <div class="day-header">
-        <span class="day-date">Oct 14 (Wed)</span>
+        <span class="day-date">Oct 14</span>
         <span class="day-dest">Buenos Aires / Uruguay</span>
       </div>
       <div class="time-block">
@@ -634,7 +958,7 @@
 
     <div id="day-oct15" class="day-card">
       <div class="day-header">
-        <span class="day-date">Oct 15 (Thu)</span>
+        <span class="day-date">Oct 15</span>
         <span class="day-dest">Buenos Aires, Argentina</span>
       </div>
       <div class="time-block">
@@ -660,7 +984,7 @@
 
     <div id="day-oct16" class="day-card">
       <div class="day-header">
-        <span class="day-date">Oct 16 (Fri)</span>
+        <span class="day-date">Oct 16</span>
         <span class="day-dest">Departure</span>
       </div>
       <div class="time-block">
@@ -673,307 +997,83 @@
       </div>
       <iframe class="day-map-iframe" src="https://maps.google.com/maps?q=EZE+Airport+Buenos+Aires&output=embed"></iframe>
     </div>
-
-  </main>
-
-  <main id="weather" class="tab-content">
-    <a href="https://www.meteoblue.com/en/weather/forecast/week/santiago-de-chile_chile_3871336" target="_blank" class="weather-card-link">
-      <div class="weather-card">
-        <div class="weather-left">
-          <span class="weather-icon">☀️</span>
-          <div>
-            <div class="weather-date">Oct 2 (Fri)</div>
-            <div class="weather-city">Santiago, Chile ↗</div>
-            <div class="weather-desc">Clear & Sunny</div>
-          </div>
-        </div>
-        <div class="weather-temp-box">
-          <div class="weather-max">20°C</div>
-          <div class="weather-min">7°C</div>
-        </div>
-      </div>
-    </a>
-
-    <a href="https://www.meteoblue.com/en/weather/forecast/week/santiago-de-chile_chile_3871336" target="_blank" class="weather-card-link">
-      <div class="weather-card">
-        <div class="weather-left">
-          <span class="weather-icon">☀️</span>
-          <div>
-            <div class="weather-date">Oct 3 (Sat)</div>
-            <div class="weather-city">Santiago, Chile ↗</div>
-            <div class="weather-desc">Warm & Pleasant</div>
-          </div>
-        </div>
-        <div class="weather-temp-box">
-          <div class="weather-max">22°C</div>
-          <div class="weather-min">8°C</div>
-        </div>
-      </div>
-    </a>
-
-    <a href="https://www.accuweather.com/en/cl/san-pedro-de-atacama/106346/weather-forecast/106346" target="_blank" class="weather-card-link">
-      <div class="weather-card">
-        <div class="weather-left">
-          <span class="weather-icon">🌤️</span>
-          <div>
-            <div class="weather-date">Oct 4 (Sun)</div>
-            <div class="weather-city">San Pedro de Atacama ↗</div>
-            <div class="weather-desc">Dry & Intense Sun</div>
-          </div>
-        </div>
-        <div class="weather-temp-box">
-          <div class="weather-max">20°C</div>
-          <div class="weather-min">3°C</div>
-        </div>
-      </div>
-    </a>
-
-    <a href="https://www.accuweather.com/en/cl/san-pedro-de-atacama/106346/weather-forecast/106346" target="_blank" class="weather-card-link">
-      <div class="weather-card">
-        <div class="weather-left">
-          <span class="weather-icon">☀️</span>
-          <div>
-            <div class="weather-date">Oct 5 (Mon)</div>
-            <div class="weather-city">Atacama Salt Flats ↗</div>
-            <div class="weather-desc">Sunny / Clear Skies</div>
-          </div>
-        </div>
-        <div class="weather-temp-box">
-          <div class="weather-max">21°C</div>
-          <div class="weather-min">4°C</div>
-        </div>
-      </div>
-    </a>
-
-    <a href="https://www.accuweather.com/en/cl/san-pedro-de-atacama/106346/weather-forecast/106346" target="_blank" class="weather-card-link">
-      <div class="weather-card">
-        <div class="weather-left">
-          <span class="weather-icon">💨</span>
-          <div>
-            <div class="weather-date">Oct 6 (Tue)</div>
-            <div class="weather-city">Altiplanic Lagoons ↗</div>
-            <div class="weather-desc">High Altitude Winds</div>
-          </div>
-        </div>
-        <div class="weather-temp-box">
-          <div class="weather-max">14°C</div>
-          <div class="weather-min">-2°C</div>
-        </div>
-      </div>
-    </a>
-
-    <a href="https://www.accuweather.com/en/cl/san-pedro-de-atacama/106346/weather-forecast/106346" target="_blank" class="weather-card-link">
-      <div class="weather-card">
-        <div class="weather-left">
-          <span class="weather-icon">❄️</span>
-          <div>
-            <div class="weather-date">Oct 7 (Wed)</div>
-            <div class="weather-city">El Tatio Geysers → Santiago ↗</div>
-            <div class="weather-desc">Freezing Sunrise / Mild PM</div>
-          </div>
-        </div>
-        <div class="weather-temp-box">
-          <div class="weather-max">18°C</div>
-          <div class="weather-min">-4°C</div>
-        </div>
-      </div>
-    </a>
-
-    <a href="https://www.accuweather.com/en/ar/buenos-aires/7894/weather-forecast/7894" target="_blank" class="weather-card-link">
-      <div class="weather-card">
-        <div class="weather-left">
-          <span class="weather-icon">⛅</span>
-          <div>
-            <div class="weather-date">Oct 8 (Thu)</div>
-            <div class="weather-city">Buenos Aires, Argentina ↗</div>
-            <div class="weather-desc">Partly Cloudy</div>
-          </div>
-        </div>
-        <div class="weather-temp-box">
-          <div class="weather-max">19°C</div>
-          <div class="weather-min">11°C</div>
-        </div>
-      </div>
-    </a>
-
-    <a href="https://www.accuweather.com/en/ar/ushuaia/7180/weather-forecast/7180" target="_blank" class="weather-card-link">
-      <div class="weather-card">
-        <div class="weather-left">
-          <span class="weather-icon">🌧️</span>
-          <div>
-            <div class="weather-date">Oct 9 (Fri)</div>
-            <div class="weather-city">Ushuaia, Argentina ↗</div>
-            <div class="weather-desc">Chilly / Windy</div>
-          </div>
-        </div>
-        <div class="weather-temp-box">
-          <div class="weather-max">7°C</div>
-          <div class="weather-min">1°C</div>
-        </div>
-      </div>
-    </a>
-
-    <a href="https://www.accuweather.com/en/ar/ushuaia/7180/weather-forecast/7180" target="_blank" class="weather-card-link">
-      <div class="weather-card">
-        <div class="weather-left">
-          <span class="weather-icon">⛅</span>
-          <div>
-            <div class="weather-date">Oct 10 (Sat)</div>
-            <div class="weather-city">Ushuaia (Beagle Channel) ↗</div>
-            <div class="weather-desc">Cool / Coastal Breeze</div>
-          </div>
-        </div>
-        <div class="weather-temp-box">
-          <div class="weather-max">8°C</div>
-          <div class="weather-min">2°C</div>
-        </div>
-      </div>
-    </a>
-
-    <a href="https://www.accuweather.com/en/ar/el-calafate/7123/weather-forecast/7123" target="_blank" class="weather-card-link">
-      <div class="weather-card">
-        <div class="weather-left">
-          <span class="weather-icon">💨</span>
-          <div>
-            <div class="weather-date">Oct 11 (Sun)</div>
-            <div class="weather-city">El Calafate, Argentina ↗</div>
-            <div class="weather-desc">Breezy & Cool</div>
-          </div>
-        </div>
-        <div class="weather-temp-box">
-          <div class="weather-max">11°C</div>
-          <div class="weather-min">2°C</div>
-        </div>
-      </div>
-    </a>
-
-    <a href="https://www.accuweather.com/en/ar/el-calafate/7123/weather-forecast/7123" target="_blank" class="weather-card-link">
-      <div class="weather-card">
-        <div class="weather-left">
-          <span class="weather-icon">❄️</span>
-          <div>
-            <div class="weather-date">Oct 12 (Mon)</div>
-            <div class="weather-city">Perito Moreno Glacier ↗</div>
-            <div class="weather-desc">Cold Glacier Winds</div>
-          </div>
-        </div>
-        <div class="weather-temp-box">
-          <div class="weather-max">9°C</div>
-          <div class="weather-min">1°C</div>
-        </div>
-      </div>
-    </a>
-
-    <a href="https://www.accuweather.com/en/ar/buenos-aires/7894/weather-forecast/7894" target="_blank" class="weather-card-link">
-      <div class="weather-card">
-        <div class="weather-left">
-          <span class="weather-icon">☀️</span>
-          <div>
-            <div class="weather-date">Oct 13 (Tue)</div>
-            <div class="weather-city">Buenos Aires, Argentina ↗</div>
-            <div class="weather-desc">Warm & Sunny</div>
-          </div>
-        </div>
-        <div class="weather-temp-box">
-          <div class="weather-max">21°C</div>
-          <div class="weather-min">12°C</div>
-        </div>
-      </div>
-    </a>
-
-    <a href="https://www.accuweather.com/en/uy/colonia-del-sacramento/352467/weather-forecast/352467" target="_blank" class="weather-card-link">
-      <div class="weather-card">
-        <div class="weather-left">
-          <span class="weather-icon">🌤️</span>
-          <div>
-            <div class="weather-date">Oct 14 (Wed)</div>
-            <div class="weather-city">Colonia, Uruguay ↗</div>
-            <div class="weather-desc">Pleasant Coastal Weather</div>
-          </div>
-        </div>
-        <div class="weather-temp-box">
-          <div class="weather-max">20°C</div>
-          <div class="weather-min">13°C</div>
-        </div>
-      </div>
-    </a>
-
-    <a href="https://www.accuweather.com/en/ar/buenos-aires/7894/weather-forecast/7894" target="_blank" class="weather-card-link">
-      <div class="weather-card">
-        <div class="weather-left">
-          <span class="weather-icon">☀️</span>
-          <div>
-            <div class="weather-date">Oct 15 (Thu)</div>
-            <div class="weather-city">Buenos Aires, Argentina ↗</div>
-            <div class="weather-desc">Mostly Clear</div>
-          </div>
-        </div>
-        <div class="weather-temp-box">
-          <div class="weather-max">22°C</div>
-          <div class="weather-min">13°C</div>
-        </div>
-      </div>
-    </a>
-
-    <a href="https://www.accuweather.com/en/ar/buenos-aires/7894/weather-forecast/7894" target="_blank" class="weather-card-link">
-      <div class="weather-card">
-        <div class="weather-left">
-          <span class="weather-icon">⛅</span>
-          <div>
-            <div class="weather-date">Oct 16 (Fri)</div>
-            <div class="weather-city">Buenos Aires Departure ↗</div>
-            <div class="weather-desc">Mild</div>
-          </div>
-        </div>
-        <div class="weather-temp-box">
-          <div class="weather-max">20°C</div>
-          <div class="weather-min">12°C</div>
-        </div>
-      </div>
-    </a>
-  </main>
-
-  <main id="todo" class="tab-content">
-    
-    <div class="guide-section">
-      <div class="guide-title">🎟️ Advance Tour Bookings Checklist</div>
-      <ul class="checklist" id="tours-list"></ul>
-      <div class="add-form">
-        <input type="text" id="tours-input" class="add-input" placeholder="Add tour to book...">
-        <button class="btn-action" onclick="addItem('tours')">Add</button>
-      </div>
-    </div>
-
-    <div class="guide-section">
-      <div class="guide-title">🎒 Carry-On Packing List</div>
-      <ul class="checklist" id="carryon-list"></ul>
-      <div class="add-form">
-        <input type="text" id="carryon-input" class="add-input" placeholder="Add carry-on item...">
-        <button class="btn-action" onclick="addItem('carryon')">Add</button>
-      </div>
-    </div>
-
-    <div class="guide-section">
-      <div class="guide-title">🧳 Checked Bag Packing List</div>
-      <ul class="checklist" id="checkin-list"></ul>
-      <div class="add-form">
-        <input type="text" id="checkin-input" class="add-input" placeholder="Add checked item...">
-        <button class="btn-action" onclick="addItem('checkin')">Add</button>
-      </div>
-    </div>
-
   </main>
 
   <main id="flights" class="tab-content">
     <div class="guide-section">
-      <div class="guide-title">✈️ Flight Options & Schedules</div>
-      <p style="font-size:0.78rem; color:var(--warm-muted); margin-bottom:12px;">Check off flights once booked or selected:</p>
+      <div class="guide-title">✈️ Flight Options & Route Schedule</div>
       
-      <ul class="checklist" id="flights-list"></ul>
+      <div class="item-card">
+        <div class="item-card-header">Oct 2: Long-Haul Arrival to Santiago (HKG → SCL)</div>
+        <div class="flight-option">• Option A: HKG-MAD-SCL (00:45–09:15 on Oct 2, 13:15–21:45)</div>
+        <div class="flight-option">• Option B: HKG-CDG-SCL (00:05–07:55 on Oct 1, 23:20–08:50+1)</div>
+        <div class="flight-option">• Option C: HKG-SYD-SCL (00:45–11:45 on Oct 1, 11:45–11:30 on Oct 2)</div>
+        <div class="flight-option">• Option D: HKG-JFK-SCL (16:30–20:35 on Oct 1, 23:59–06:55+1)</div>
+        <div class="flight-option">• Option E: HKG-LAX-SCL (00:05–22:00-1 on Oct 1, 14:55–05:35+1)</div>
+      </div>
 
-      <div class="add-form">
-        <input type="text" id="flights-input" class="add-input" placeholder="Add custom flight option...">
-        <button class="btn-action" onclick="addItem('flights')">Add</button>
+      <div class="item-card">
+        <div class="item-card-header">Oct 4: Santiago to Calama / Atacama (SCL → CJC)</div>
+        <div class="flight-option">• LA146 (08:23–10:35) <span class="pref-tag">PREFERRED</span></div>
+        <div class="flight-option">• LA148 (14:05–16:17)</div>
+        <div class="flight-option">• LA1860 (14:27–16:39)</div>
+        <div class="flight-option">• LA150 (14:59–17:11)</div>
+      </div>
+
+      <div class="item-card">
+        <div class="item-card-header">Oct 7: Calama to Santiago (CJC → SCL)</div>
+        <div class="flight-option">• LA151 (13:58–16:02)</div>
+        <div class="flight-option">• LA153 (14:35–16:39)</div>
+        <div class="flight-option">• LA387 (14:54–16:58)</div>
+        <div class="flight-option">• LA389 (16:44–18:51)</div>
+        <div class="flight-option">• LA155 (17:26–19:32)</div>
+        <div class="flight-option">• LA157 (19:38–21:44)</div>
+      </div>
+
+      <div class="item-card">
+        <div class="item-card-header">Oct 8: Santiago to Buenos Aires (SCL → EZE / AEP)</div>
+        <div class="flight-option">• SCL → EZE: LA542 (09:30–11:30)</div>
+        <div class="flight-option">• SCL → EZE: KL702 (11:15–13:15)</div>
+        <div class="flight-option">• SCL → EZE: LA477 (16:20–18:21)</div>
+        <div class="flight-option">• SCL → AEP: AR1281 (09:15–12:20)</div>
+        <div class="flight-option">• SCL → AEP: LA455 (12:47–14:50)</div>
+        <div class="flight-option">• SCL → AEP: AR1283 (14:35–17:40)</div>
+        <div class="flight-option">• SCL → AEP: LA425 (17:37–19:40)</div>
+        <div class="flight-option">• SCL → AEP: LA427 (19:27–21:30)</div>
+        <div class="flight-option">• SCL → AEP: AR1287 (20:35–23:40)</div>
+      </div>
+
+      <div class="item-card">
+        <div class="item-card-header">Oct 9: Buenos Aires to Ushuaia (AEP / EZE → USH)</div>
+        <div class="flight-option">• AEP → USH: AR1872 (03:50–07:30)</div>
+        <div class="flight-option">• AEP → USH: AR1874 (06:00–09:40)</div>
+        <div class="flight-option">• AEP → USH: AR1888 (11:15–14:55)</div>
+        <div class="flight-option">• AEP → USH: AR1876 (17:55–21:35)</div>
+        <div class="flight-option">• EZE → USH: AR1878 (05:00–08:40)</div>
+        <div class="flight-option">• EZE → USH: AR1880 (08:30–12:10)</div>
+      </div>
+
+      <div class="item-card">
+        <div class="item-card-header">Oct 11: Ushuaia to El Calafate (USH → FTE)</div>
+        <div class="flight-option">• AR1895 (10:20–11:40)</div>
+        <div class="flight-option">• AR1897 (16:05–17:25)</div>
+      </div>
+
+      <div class="item-card">
+        <div class="item-card-header">Oct 13: El Calafate to Buenos Aires (FTE → AEP)</div>
+        <div class="flight-option">• AR1839 (08:20–11:20)</div>
+        <div class="flight-option">• AR1895 (11:40–14:40)</div>
+        <div class="flight-option">• AR1897 (16:50–19:50)</div>
+      </div>
+
+      <div class="item-card">
+        <div class="item-card-header">Oct 14: Ferry Crossing (Buenos Aires ↔ Uruguay)</div>
+        <div class="flight-option">• Buquebus / Colonia Express (Puerto Madero Terminal)</div>
+      </div>
+
+      <div class="item-card">
+        <div class="item-card-header">Oct 16: Long-Haul Departure Flight</div>
+        <div class="flight-option">• EZE Departure Flights (In-flight to HKG)</div>
       </div>
     </div>
   </main>
@@ -982,43 +1082,43 @@
     <div class="guide-section">
       <div class="guide-title">🏨 Accommodations & Cancellation Rules</div>
       
-      <div class="hotel-card">
-        <div class="hotel-name">DoubleTree by Hilton Santiago Kennedy</div>
+      <div class="item-card">
+        <div class="item-card-header">DoubleTree by Hilton Santiago Kennedy</div>
         <b>Dates:</b> Oct 3 – Oct 4, 2026<br>
         <b>Cost:</b> USD 108.62 (Charge Date: Oct 1)<br>
         <b>Cancellation Policy:</b> <span style="color:#B91C1C; font-weight:700;">Free cancellation until Oct 2, 11:59 PM</span>
       </div>
 
-      <div class="hotel-card">
-        <div class="hotel-name">Nueva Lodge La Estacion (San Pedro de Atacama)</div>
+      <div class="item-card">
+        <div class="item-card-header">Nueva Lodge La Estacion (San Pedro de Atacama)</div>
         <b>Dates:</b> Oct 4 – Oct 7, 2026<br>
         <b>Cost:</b> USD 432.00 (Charge Date: Oct 4)<br>
         <b>Cancellation Policy:</b> <span style="color:#B91C1C; font-weight:700;">Free cancellation until Oct 2, 11:59 PM</span>
       </div>
 
-      <div class="hotel-card">
-        <div class="hotel-name">Up Recoleta Hotel (Buenos Aires)</div>
+      <div class="item-card">
+        <div class="item-card-header">Up Recoleta Hotel (Buenos Aires)</div>
         <b>Dates:</b> Oct 8 – Oct 9, 2026<br>
         <b>Cost:</b> USD 89.80 (Charge Date: Oct 4)<br>
         <b>Cancellation Policy:</b> <span style="color:#B91C1C; font-weight:700;">Free cancellation until Oct 5, 11:59 PM</span>
       </div>
 
-      <div class="hotel-card">
-        <div class="hotel-name">Alto Andino Hotel (Ushuaia)</div>
+      <div class="item-card">
+        <div class="item-card-header">Alto Andino Hotel (Ushuaia)</div>
         <b>Dates:</b> Oct 9 – Oct 11, 2026<br>
         <b>Cost:</b> USD 276.59 (Charge Date: Oct 9)<br>
         <b>Cancellation Policy:</b> <span style="color:#B91C1C; font-weight:700;">Free cancellation until Oct 10, 11:59 PM</span>
       </div>
 
-      <div class="hotel-card">
-        <div class="hotel-name">Destino Calafate (El Calafate)</div>
+      <div class="item-card">
+        <div class="item-card-header">Destino Calafate (El Calafate)</div>
         <b>Dates:</b> Oct 11 – Oct 13, 2026<br>
         <b>Cost:</b> USD 283.77 (Charge Date: Oct 8)<br>
         <b>Cancellation Policy:</b> <span style="color:#B91C1C; font-weight:700;">Free cancellation until Oct 9, 11:59 PM</span>
       </div>
 
-      <div class="hotel-card">
-        <div class="hotel-name">NH Collection Buenos Aires Crillon</div>
+      <div class="item-card">
+        <div class="item-card-header">NH Collection Buenos Aires Crillon</div>
         <b>Dates:</b> Oct 13 – Oct 16, 2026<br>
         <b>Cost:</b> USD 556.03 (Charge Date: Oct 7)<br>
         <b>Cancellation Policy:</b> <span style="color:#B91C1C; font-weight:700;">Free cancellation until Oct 8, 11:59 PM</span>
@@ -1026,13 +1126,29 @@
     </div>
 
     <div class="guide-section">
-      <div class="guide-title">💡 Essential Local Tips</div>
-      <p style="font-size:0.82rem; line-height:1.5; color:var(--warm-dark);">
-        • <b>Chile SAG Customs Declaration:</b> Fill out online before entry at Santiago Airport.<br>
-        • <b>Atacama Cash:</b> Carry 30,000 CLP for park entry fees.<br>
-        • <b>Argentina MEP Exchange Rate:</b> Paying with foreign credit cards applies the favorable MEP rate.<br>
-        • <b>Uruguay Ferry:</b> Arrive at Puerto Madero ferry terminal 90 mins prior with passport for cross-border immigration.
-      </p>
+      <div class="guide-title">💡 Essential Local Travel Notes & Tips</div>
+      
+      <div class="tip-category">🇨🇱 Chile</div>
+      <div class="tip-item">• <b>Cards:</b> Credit cards (Visa/Mastercard) are universally accepted in Santiago and most established businesses in San Pedro de Atacama (restaurants, hotels, petrol stations).</div>
+      <div class="tip-item">• <b>Cash Needs:</b> Keep around 20,000 to 40,000 CLP (~$20–$40 USD) in cash for small purchases, national park entry fees in Atacama (some remote checkpoints only accept cash CLP), and small tips.</div>
+      <div class="tip-item">• <b>Airport Transfers:</b> Use official counter taxis inside the terminal (e.g., <i>TransVIP</i> or <i>Taxi Oficial</i>) rather than accepting rides from unofficial touts in the arrival hall.</div>
+      <div class="tip-item">• <b>Rideshare:</b> Uber operates reliably across Santiago and is the safest, most convenient option for city transit.</div>
+      <div class="tip-item">• <b>Metro:</b> Santiago's Metro is modern, clean, and efficient. You will need a reloadable <b>Bip! card</b> to ride.</div>
+      <div class="tip-item">• <b>Chile Customs (SAG Form):</b> Chile has extremely strict agricultural biosecurity laws. Upon landing at SCL, you must declare <b>all</b> organic matter, fresh food, fruit, wooden items, or snacks via the online SAG (<i>Servicio Agrícola y Ganadero</i>) digital declaration form before reaching customs. Undeclared food leads to steep fines.</div>
+
+      <div class="tip-category">🇦🇷 Argentina</div>
+      <div class="tip-item">• <b>Cards & MEP Rates:</b> International credit cards receive the official <b>MEP exchange rate</b> (<i>Mercado Electrónico de Pagos</i>), which automatically gives you an exchange rate very close to the informal "Blue Dollar" rate without needing to carry stacks of physical currency.</div>
+      <div class="tip-item">• <b>Cash Needs:</b> While you can pay for hotels, restaurants, and tours with cards, cash is still useful for small tips, small café purchases, and street markets.</div>
+      <div class="tip-item">• <b>Getting Cash:</b> Avoid using international ATMs in Argentina, as foreign card withdrawal fees are high. If you need cash, send yourself funds via <b>Western Union</b> to pick up pesos locally at market rates, or bring crisp, unmarked $100 USD bills to exchange at official <i>cambios</i>.</div>
+      <div class="tip-item">• <b>Rideshare:</b> <b>Uber</b> and <b>Cabify</b> are widely used, extremely cheap, and much safer than hailing street taxis at night.</div>
+      <div class="tip-item">• <b>Public Transit:</b> The subway (<i>Subte</i>) and buses require a <b>SUBE card</b>, which can be purchased at subway stations or <i>kioscos</i> (corner shops) and topped up with pesos.</div>
+      <div class="tip-item">• <b>Airport Transfers:</b> From EZE or AEP, use pre-paid taxi booths inside the arrival terminal (e.g., <i>Taxi Ezeiza</i>) or book an Uber/Cabify directly from the designated pickup zone.</div>
+
+      <div class="tip-category">🏜️ Atacama</div>
+      <div class="tip-item">• Make sure your rental car in Atacama is a high-clearance SUV (ideally 4WD / AWD). Dirt tracks to Lagunas Escondidas de Baltinache and Piedras Rojas have loose gravel and sharp rocks.</div>
+      <div class="tip-item">• Always keep a full tank of fuel. Petrol stations are located in Calama and San Pedro de Atacama; there are <b>no gas stations</b> out near the salt flats or geysers.</div>
+      <div class="tip-item">• High-SPF sunscreen (50+) and UV-blocking sunglasses (the UV index in Atacama and on glacier ice is extremely high).</div>
+      <div class="tip-item">• Moisturizer, eye drops, and lip balm (the Atacama Desert is one of the driest places on Earth).</div>
     </div>
   </main>
 
@@ -1072,30 +1188,11 @@
         { name: 'High-SPF Sunscreen (50+)', qty: 1 },
         { name: 'Heavy Thermals, Gloves & Warm Hat', qty: 1 },
         { name: 'UV-blocking Sunglasses', qty: 1 }
-      ],
-      flights: [
-        { name: 'Oct 2: HKG-MAD-SCL (00:45–09:15, 13:15–21:45)', qty: 1 },
-        { name: 'Oct 2: HKG-CDG-SCL (00:05–07:55, 23:20–08:50+1)', qty: 1 },
-        { name: 'Oct 4: SCL → CJC LA146 (08:23–10:35) [Preferred]', qty: 1 },
-        { name: 'Oct 4: SCL → CJC LA148 (14:05–16:17)', qty: 1 },
-        { name: 'Oct 7: CJC → SCL LA151 (13:58–16:02)', qty: 1 },
-        { name: 'Oct 7: CJC → SCL LA153 (14:35–16:39)', qty: 1 },
-        { name: 'Oct 8: SCL → EZE LA542 (09:30–11:30)', qty: 1 },
-        { name: 'Oct 8: SCL → EZE KL702 (11:15–13:15)', qty: 1 },
-        { name: 'Oct 8: SCL → AEP AR1281 (09:15–12:20)', qty: 1 },
-        { name: 'Oct 8: SCL → AEP LA455 (12:47–14:50)', qty: 1 },
-        { name: 'Oct 8: SCL → AEP AR1283 (14:35–17:40)', qty: 1 },
-        { name: 'Oct 9: AEP → USH AR1872 (03:50–07:30)', qty: 1 },
-        { name: 'Oct 9: EZE → USH AR1878 (05:00–08:40)', qty: 1 },
-        { name: 'Oct 11: USH → FTE AR1895 (10:20–11:40)', qty: 1 },
-        { name: 'Oct 11: USH → FTE AR1897 (16:05–17:25)', qty: 1 },
-        { name: 'Oct 13: FTE → AEP AR1839 (08:20–11:20)', qty: 1 },
-        { name: 'Oct 13: FTE → AEP AR1895 (11:40–14:40)', qty: 1 }
       ]
     };
 
     function renderChecklists() {
-      ['tours', 'carryon', 'checkin', 'flights'].forEach(type => {
+      ['tours', 'carryon', 'checkin'].forEach(type => {
         const ul = document.getElementById(type + '-list');
         if (!ul) return;
         ul.innerHTML = '';
@@ -1108,7 +1205,9 @@
               <span>${item.name}</span>
             </div>
             <div class="qty-controls">
-              ${type !== 'flights' ? `<button class="qty-btn" onclick="updateQty('${type}', ${index}, -1)">-</button><span>${item.qty}</span><button class="qty-btn" onclick="updateQty('${type}', ${index}, 1)">+</button>` : ''}
+              <button class="qty-btn" onclick="updateQty('${type}', ${index}, -1)">-</button>
+              <span>${item.qty}</span>
+              <button class="qty-btn" onclick="updateQty('${type}', ${index}, 1)">+</button>
               <button class="qty-btn" onclick="removeItem('${type}', ${index})" style="color:#B91C1C;">×</button>
             </div>
           `;
