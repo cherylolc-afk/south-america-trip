@@ -27,7 +27,6 @@
       padding-bottom: 85px;
     }
 
-    /* Editable styling */
     [contenteditable="true"] {
       outline: none;
       transition: background-color 0.2s ease, box-shadow 0.2s ease;
@@ -142,7 +141,7 @@
       color: var(--terracotta-primary);
     }
 
-    /* MASTER OVERVIEW TABLE */
+    /* OVERVIEW TABLE */
     .overview-table {
       width: 100%;
       border-collapse: collapse;
@@ -206,15 +205,6 @@
       margin-left: 4px;
       font-weight: 500;
       border: 1px solid var(--beige-border);
-    }
-
-    .day-map-iframe {
-      width: 100%;
-      height: 180px;
-      border: none;
-      border-radius: 12px;
-      margin-top: 12px;
-      background: #E5E3DF;
     }
 
     /* WEATHER CARDS */
@@ -304,32 +294,6 @@
       border-bottom: 1px dashed rgba(230, 220, 211, 0.7);
     }
     .flight-option:last-child { border-bottom: none; }
-    .pref-tag {
-      background: var(--terracotta-primary);
-      color: var(--white);
-      font-size: 0.65rem;
-      padding: 1px 5px;
-      border-radius: 4px;
-      font-weight: bold;
-      margin-left: 4px;
-    }
-
-    .tip-category {
-      font-weight: 700;
-      color: var(--terracotta-primary);
-      margin-top: 12px;
-      margin-bottom: 4px;
-      font-size: 0.88rem;
-      border-bottom: 1px solid var(--beige-border);
-      padding-bottom: 2px;
-    }
-    .tip-category:first-child { margin-top: 0; }
-    .tip-item {
-      font-size: 0.8rem;
-      line-height: 1.45;
-      color: var(--warm-dark);
-      margin-bottom: 6px;
-    }
   </style>
 </head>
 <body>
@@ -416,7 +380,7 @@
           <div>
             <div class="weather-date" contenteditable="true" data-save-id="w-date-2">Oct 3</div>
             <div class="weather-city" contenteditable="true" data-save-id="w-city-2">Santiago, Chile ↗</div>
-            <div class="weather-desc" contenteditable="true" data-save-id="w-desc-2">Warm & Pleasant</div>
+            <div class="weather-desc" contenteditable="true" data-save-id="w-desc-2">Warm & Mild</div>
           </div>
         </div>
         <div class="weather-temp-box">
@@ -439,6 +403,210 @@
         <div class="weather-temp-box">
           <div class="weather-max" contenteditable="true" data-save-id="w-max-3">20°C</div>
           <div class="weather-min" contenteditable="true" data-save-id="w-min-3">3°C</div>
+        </div>
+      </div>
+    </a>
+
+    <a href="https://www.accuweather.com/en/cl/san-pedro-de-atacama/106346/weather-forecast/106346" target="_blank" class="weather-card-link">
+      <div class="weather-card">
+        <div class="weather-left">
+          <span class="weather-icon">☀️</span>
+          <div>
+            <div class="weather-date" contenteditable="true" data-save-id="w-date-4">Oct 5</div>
+            <div class="weather-city" contenteditable="true" data-save-id="w-city-4">San Pedro de Atacama ↗</div>
+            <div class="weather-desc" contenteditable="true" data-save-id="w-desc-4">High UV, Clear Skies</div>
+          </div>
+        </div>
+        <div class="weather-temp-box">
+          <div class="weather-max" contenteditable="true" data-save-id="w-max-4">21°C</div>
+          <div class="weather-min" contenteditable="true" data-save-id="w-min-4">2°C</div>
+        </div>
+      </div>
+    </a>
+
+    <a href="https://www.accuweather.com/en/cl/san-pedro-de-atacama/106346/weather-forecast/106346" target="_blank" class="weather-card-link">
+      <div class="weather-card">
+        <div class="weather-left">
+          <span class="weather-icon">🌤️</span>
+          <div>
+            <div class="weather-date" contenteditable="true" data-save-id="w-date-5">Oct 6</div>
+            <div class="weather-city" contenteditable="true" data-save-id="w-city-5">High Altiplano Lagoons ↗</div>
+            <div class="weather-desc" contenteditable="true" data-save-id="w-desc-5">Windy & Cold High Alt</div>
+          </div>
+        </div>
+        <div class="weather-temp-box">
+          <div class="weather-max" contenteditable="true" data-save-id="w-max-5">14°C</div>
+          <div class="weather-min" contenteditable="true" data-save-id="w-min-5">-2°C</div>
+        </div>
+      </div>
+    </a>
+
+    <a href="https://www.meteoblue.com/en/weather/forecast/week/santiago-de-chile_chile_3871336" target="_blank" class="weather-card-link">
+      <div class="weather-card">
+        <div class="weather-left">
+          <span class="weather-icon">🌬️</span>
+          <div>
+            <div class="weather-date" contenteditable="true" data-save-id="w-date-6">Oct 7</div>
+            <div class="weather-city" contenteditable="true" data-save-id="w-city-6">El Tatio / Santiago ↗</div>
+            <div class="weather-desc" contenteditable="true" data-save-id="w-desc-6">Freezing Dawn / Pleasant Afternoon</div>
+          </div>
+        </div>
+        <div class="weather-temp-box">
+          <div class="weather-max" contenteditable="true" data-save-id="w-max-6">19°C</div>
+          <div class="weather-min" contenteditable="true" data-save-id="w-min-6">-5°C</div>
+        </div>
+      </div>
+    </a>
+
+    <a href="https://www.accuweather.com/en/ar/buenos-aires/7894/weather-forecast/7894" target="_blank" class="weather-card-link">
+      <div class="weather-card">
+        <div class="weather-left">
+          <span class="weather-icon">⛅</span>
+          <div>
+            <div class="weather-date" contenteditable="true" data-save-id="w-date-7">Oct 8</div>
+            <div class="weather-city" contenteditable="true" data-save-id="w-city-7">Buenos Aires, Argentina ↗</div>
+            <div class="weather-desc" contenteditable="true" data-save-id="w-desc-7">Partly Cloudy & Springlike</div>
+          </div>
+        </div>
+        <div class="weather-temp-box">
+          <div class="weather-max" contenteditable="true" data-save-id="w-max-7">21°C</div>
+          <div class="weather-min" contenteditable="true" data-save-id="w-min-7">12°C</div>
+        </div>
+      </div>
+    </a>
+
+    <a href="https://www.accuweather.com/en/ar/ushuaia/7180/weather-forecast/7180" target="_blank" class="weather-card-link">
+      <div class="weather-card">
+        <div class="weather-left">
+          <span class="weather-icon">🌧️</span>
+          <div>
+            <div class="weather-date" contenteditable="true" data-save-id="w-date-8">Oct 9</div>
+            <div class="weather-city" contenteditable="true" data-save-id="w-city-8">Ushuaia, Patagonia ↗</div>
+            <div class="weather-desc" contenteditable="true" data-save-id="w-desc-8">Chilly & Light Rain</div>
+          </div>
+        </div>
+        <div class="weather-temp-box">
+          <div class="weather-max" contenteditable="true" data-save-id="w-max-8">8°C</div>
+          <div class="weather-min" contenteditable="true" data-save-id="w-min-8">1°C</div>
+        </div>
+      </div>
+    </a>
+
+    <a href="https://www.accuweather.com/en/ar/ushuaia/7180/weather-forecast/7180" target="_blank" class="weather-card-link">
+      <div class="weather-card">
+        <div class="weather-left">
+          <span class="weather-icon">💨</span>
+          <div>
+            <div class="weather-date" contenteditable="true" data-save-id="w-date-9">Oct 10</div>
+            <div class="weather-city" contenteditable="true" data-save-id="w-city-9">Ushuaia, Patagonia ↗</div>
+            <div class="weather-desc" contenteditable="true" data-save-id="w-desc-9">Windy Coastal Breeze</div>
+          </div>
+        </div>
+        <div class="weather-temp-box">
+          <div class="weather-max" contenteditable="true" data-save-id="w-max-9">9°C</div>
+          <div class="weather-min" contenteditable="true" data-save-id="w-min-9">2°C</div>
+        </div>
+      </div>
+    </a>
+
+    <a href="https://www.accuweather.com/en/ar/el-calafate/7123/weather-forecast/7123" target="_blank" class="weather-card-link">
+      <div class="weather-card">
+        <div class="weather-left">
+          <span class="weather-icon">🌤️</span>
+          <div>
+            <div class="weather-date" contenteditable="true" data-save-id="w-date-10">Oct 11</div>
+            <div class="weather-city" contenteditable="true" data-save-id="w-city-10">El Calafate ↗</div>
+            <div class="weather-desc" contenteditable="true" data-save-id="w-desc-10">Crisp & Gusty</div>
+          </div>
+        </div>
+        <div class="weather-temp-box">
+          <div class="weather-max" contenteditable="true" data-save-id="w-max-10">11°C</div>
+          <div class="weather-min" contenteditable="true" data-save-id="w-min-10">3°C</div>
+        </div>
+      </div>
+    </a>
+
+    <a href="https://www.accuweather.com/en/ar/el-calafate/7123/weather-forecast/7123" target="_blank" class="weather-card-link">
+      <div class="weather-card">
+        <div class="weather-left">
+          <span class="weather-icon">❄️</span>
+          <div>
+            <div class="weather-date" contenteditable="true" data-save-id="w-date-11">Oct 12</div>
+            <div class="weather-city" contenteditable="true" data-save-id="w-city-11">Perito Moreno Glacier ↗</div>
+            <div class="weather-desc" contenteditable="true" data-save-id="w-desc-11">Glacial Cold & Wind</div>
+          </div>
+        </div>
+        <div class="weather-temp-box">
+          <div class="weather-max" contenteditable="true" data-save-id="w-max-11">10°C</div>
+          <div class="weather-min" contenteditable="true" data-save-id="w-min-11">1°C</div>
+        </div>
+      </div>
+    </a>
+
+    <a href="https://www.accuweather.com/en/ar/buenos-aires/7894/weather-forecast/7894" target="_blank" class="weather-card-link">
+      <div class="weather-card">
+        <div class="weather-left">
+          <span class="weather-icon">☀️</span>
+          <div>
+            <div class="weather-date" contenteditable="true" data-save-id="w-date-12">Oct 13</div>
+            <div class="weather-city" contenteditable="true" data-save-id="w-city-12">Buenos Aires, Argentina ↗</div>
+            <div class="weather-desc" contenteditable="true" data-save-id="w-desc-12">Sunny & Mild</div>
+          </div>
+        </div>
+        <div class="weather-temp-box">
+          <div class="weather-max" contenteditable="true" data-save-id="w-max-12">22°C</div>
+          <div class="weather-min" contenteditable="true" data-save-id="w-min-12">13°C</div>
+        </div>
+      </div>
+    </a>
+
+    <a href="https://www.accuweather.com/en/uy/colonia-del-sacramento/352482/weather-forecast/352482" target="_blank" class="weather-card-link">
+      <div class="weather-card">
+        <div class="weather-left">
+          <span class="weather-icon">☀️</span>
+          <div>
+            <div class="weather-date" contenteditable="true" data-save-id="w-date-13">Oct 14</div>
+            <div class="weather-city" contenteditable="true" data-save-id="w-city-13">Colonia, Uruguay ↗</div>
+            <div class="weather-desc" contenteditable="true" data-save-id="w-desc-13">Sunny River Breeze</div>
+          </div>
+        </div>
+        <div class="weather-temp-box">
+          <div class="weather-max" contenteditable="true" data-save-id="w-max-13">21°C</div>
+          <div class="weather-min" contenteditable="true" data-save-id="w-min-13">12°C</div>
+        </div>
+      </div>
+    </a>
+
+    <a href="https://www.accuweather.com/en/ar/buenos-aires/7894/weather-forecast/7894" target="_blank" class="weather-card-link">
+      <div class="weather-card">
+        <div class="weather-left">
+          <span class="weather-icon">🌤️</span>
+          <div>
+            <div class="weather-date" contenteditable="true" data-save-id="w-date-14">Oct 15</div>
+            <div class="weather-city" contenteditable="true" data-save-id="w-city-14">Buenos Aires, Argentina ↗</div>
+            <div class="weather-desc" contenteditable="true" data-save-id="w-desc-14">Pleasant & Clear</div>
+          </div>
+        </div>
+        <div class="weather-temp-box">
+          <div class="weather-max" contenteditable="true" data-save-id="w-max-14">23°C</div>
+          <div class="weather-min" contenteditable="true" data-save-id="w-min-14">14°C</div>
+        </div>
+      </div>
+    </a>
+
+    <a href="https://www.accuweather.com/en/ar/buenos-aires/7894/weather-forecast/7894" target="_blank" class="weather-card-link">
+      <div class="weather-card">
+        <div class="weather-left">
+          <span class="weather-icon">☀️</span>
+          <div>
+            <div class="weather-date" contenteditable="true" data-save-id="w-date-15">Oct 16</div>
+            <div class="weather-city" contenteditable="true" data-save-id="w-city-15">Buenos Aires / Departure ↗</div>
+            <div class="weather-desc" contenteditable="true" data-save-id="w-desc-15">Warm Spring Sun</div>
+          </div>
+        </div>
+        <div class="weather-temp-box">
+          <div class="weather-max" contenteditable="true" data-save-id="w-max-15">24°C</div>
+          <div class="weather-min" contenteditable="true" data-save-id="w-min-15">15°C</div>
         </div>
       </div>
     </a>
@@ -489,7 +657,7 @@
           <tr>
             <td contenteditable="true" data-save-id="tr-7-d"><b>Oct 8</b> (Thu)</td>
             <td contenteditable="true" data-save-id="tr-7-l">Buenos Aires</td>
-            <td contenteditable="true" data-save-id="tr-7-h">Fly to BA, Recoleta neighborhood stroll</td>
+            <td contenteditable="true" data-save-id="tr-7-h">Fly to BA, Palermo neighborhood stroll</td>
           </tr>
           <tr>
             <td contenteditable="true" data-save-id="tr-8-d"><b>Oct 9</b> (Fri)</td>
@@ -563,9 +731,9 @@
         <span class="day-dest" contenteditable="true" data-save-id="d2-header-dest">Santiago, Chile</span>
       </div>
       <div class="time-block">
-        <div class="time-title" contenteditable="true" data-save-id="d2-t1-title">All Day / Flight Options</div>
+        <div class="time-title" contenteditable="true" data-save-id="d2-t1-title">All Day / Arrival</div>
         <div class="time-desc">
-          <span contenteditable="true" data-save-id="d2-t1-desc">Arrival in Santiago (Long-haul transit). Stay in Santiago if early arrival.</span>
+          <span contenteditable="true" data-save-id="d2-t1-desc">Long-haul transit arrival in Santiago. Check in to DoubleTree by Hilton Santiago Kennedy and rest.</span>
           <a class="map-btn" href="https://maps.google.com" target="_blank">📍 Santiago Map</a>
         </div>
       </div>
@@ -579,15 +747,151 @@
       <div class="time-block">
         <div class="time-title" contenteditable="true" data-save-id="d3-t1-title">Morning</div>
         <div class="time-desc">
-          <span contenteditable="true" data-save-id="d3-t1-desc">Arrive in Santiago and check in to DoubleTree by Hilton Santiago Kennedy.</span>
-          <a class="map-btn" href="https://maps.google.com" target="_blank">📍 Hotel Map</a>
+          <span contenteditable="true" data-save-id="d3-t1-desc">Relaxed morning at DoubleTree by Hilton Santiago Kennedy.</span>
         </div>
       </div>
       <div class="time-block">
-        <div class="time-title" contenteditable="true" data-save-id="d3-t2-title">Afternoon</div>
+        <div class="time-title" contenteditable="true" data-save-id="d3-t2-title">Afternoon & Evening</div>
         <div class="time-desc">
-          <span contenteditable="true" data-save-id="d3-t2-desc">Stroll through Barrio Lastarria for lunch, outdoor cafés, and Santa Lucía Hill.</span>
+          <span contenteditable="true" data-save-id="d3-t2-desc">Explore Barrio Lastarria, Santa Lucía Hill, and dinner in Bellavista.</span>
           <a class="map-btn" href="https://maps.google.com" target="_blank">📍 Lastarria Map</a>
+        </div>
+      </div>
+    </div>
+
+    <div id="day-oct4" class="day-card">
+      <div class="day-header">
+        <span class="day-date" contenteditable="true" data-save-id="d4-header-date">Oct 4 (Sunday)</span>
+        <span class="day-dest" contenteditable="true" data-save-id="d4-header-dest">San Pedro de Atacama</span>
+      </div>
+      <div class="time-block">
+        <div class="time-title" contenteditable="true" data-save-id="d4-t1-title">Morning</div>
+        <div class="time-desc">
+          <span contenteditable="true" data-save-id="d4-t1-desc">Fly from Santiago (SCL) to Calama (CJC). Shuttle transfer to San Pedro de Atacama.</span>
+        </div>
+      </div>
+      <div class="time-block">
+        <div class="time-title" contenteditable="true" data-save-id="d4-t2-title">Late Afternoon</div>
+        <div class="time-desc">
+          <span contenteditable="true" data-save-id="d4-t2-desc">Death Valley & Moon Valley (Valle de la Luna) sunset tour.</span>
+          <a class="map-btn" href="https://maps.google.com" target="_blank">📍 Moon Valley Map</a>
+        </div>
+      </div>
+    </div>
+
+    <div id="day-oct5" class="day-card">
+      <div class="day-header">
+        <span class="day-date" contenteditable="true" data-save-id="d5-header-date">Oct 5 (Monday)</span>
+        <span class="day-dest" contenteditable="true" data-save-id="d5-header-dest">San Pedro de Atacama</span>
+      </div>
+      <div class="time-block">
+        <div class="time-title" contenteditable="true" data-save-id="d5-t1-title">Full Day</div>
+        <div class="time-desc">
+          <span contenteditable="true" data-save-id="d5-t1-desc">Baltinache Salt Pools, Laguna Cejar floating experience, and flamingos at Laguna Chaxa.</span>
+          <a class="map-btn" href="https://maps.google.com" target="_blank">📍 Salt Pools Map</a>
+        </div>
+      </div>
+    </div>
+
+    <div id="day-oct6" class="day-card">
+      <div class="day-header">
+        <span class="day-date" contenteditable="true" data-save-id="d6-header-date">Oct 6 (Tuesday)</span>
+        <span class="day-dest" contenteditable="true" data-save-id="d6-header-dest">Atacama Altiplano</span>
+      </div>
+      <div class="time-block">
+        <div class="time-title" contenteditable="true" data-save-id="d6-t1-title">Full Day</div>
+        <div class="time-desc">
+          <span contenteditable="true" data-save-id="d6-t1-desc">High altitude expedition: Miscanti & Miñiques Lagoons, Piedras Rojas, and Socaire village.</span>
+          <a class="map-btn" href="https://maps.google.com" target="_blank">📍 Piedras Rojas Map</a>
+        </div>
+      </div>
+    </div>
+
+    <div id="day-oct7" class="day-card">
+      <div class="day-header">
+        <span class="day-date" contenteditable="true" data-save-id="d7-header-date">Oct 7 (Wednesday)</span>
+        <span class="day-dest" contenteditable="true" data-save-id="d7-header-dest">Atacama → Santiago</span>
+      </div>
+      <div class="time-block">
+        <div class="time-title" contenteditable="true" data-save-id="d7-t1-title">Early Morning</div>
+        <div class="time-desc">
+          <span contenteditable="true" data-save-id="d7-t1-desc">4:30 AM departure to El Tatio Geysers for geothermal sunrise.</span>
+        </div>
+      </div>
+      <div class="time-block">
+        <div class="time-title" contenteditable="true" data-save-id="d7-t2-title">Afternoon</div>
+        <div class="time-desc">
+          <span contenteditable="true" data-save-id="d7-t2-desc">Transfer to Calama airport (CJC) and fly back to Santiago for overnight stay.</span>
+        </div>
+      </div>
+    </div>
+
+    <div id="day-oct8" class="day-card">
+      <div class="day-header">
+        <span class="day-date" contenteditable="true" data-save-id="d8-header-date">Oct 8 (Thursday)</span>
+        <span class="day-dest" contenteditable="true" data-save-id="d8-header-dest">Buenos Aires, Argentina</span>
+      </div>
+      <div class="time-block">
+        <div class="time-title" contenteditable="true" data-save-id="d8-t1-title">All Day</div>
+        <div class="time-desc">
+          <span contenteditable="true" data-save-id="d8-t1-desc">Fly from Santiago (SCL) to Buenos Aires (AEP/EZE). Hotel check-in and explore Palermo neighborhood.</span>
+          <a class="map-btn" href="https://maps.google.com" target="_blank">📍 Palermo Map</a>
+        </div>
+      </div>
+    </div>
+
+    <div id="day-oct9" class="day-card">
+      <div class="day-header">
+        <span class="day-date" contenteditable="true" data-save-id="d9-header-date">Oct 9 (Friday)</span>
+        <span class="day-dest" contenteditable="true" data-save-id="d9-header-dest">Ushuaia, Argentina</span>
+      </div>
+      <div class="time-block">
+        <div class="time-title" contenteditable="true" data-save-id="d9-t1-title">All Day</div>
+        <div class="time-desc">
+          <span contenteditable="true" data-save-id="d9-t1-desc">Fly south to "End of the World" Ushuaia (USH). Stroll Beagle Channel waterfront and sample king crab.</span>
+          <a class="map-btn" href="https://maps.google.com" target="_blank">📍 Ushuaia Map</a>
+        </div>
+      </div>
+    </div>
+
+    <div id="day-oct10" class="day-card">
+      <div class="day-header">
+        <span class="day-date" contenteditable="true" data-save-id="d10-header-date">Oct 10 (Saturday)</span>
+        <span class="day-dest" contenteditable="true" data-save-id="d10-header-dest">Ushuaia, Argentina</span>
+      </div>
+      <div class="time-block">
+        <div class="time-title" contenteditable="true" data-save-id="d10-t1-title">Full Day</div>
+        <div class="time-desc">
+          <span contenteditable="true" data-save-id="d10-t1-desc">Tierra del Fuego National Park excursion and Piratour Isla Martillo Penguin Walk.</span>
+          <a class="map-btn" href="https://maps.google.com" target="_blank">📍 Isla Martillo Map</a>
+        </div>
+      </div>
+    </div>
+
+    <div id="day-oct11" class="day-card">
+      <div class="day-header">
+        <span class="day-date" contenteditable="true" data-save-id="d11-header-date">Oct 11 (Sunday)</span>
+        <span class="day-dest" contenteditable="true" data-save-id="d11-header-dest">El Calafate, Argentina</span>
+      </div>
+      <div class="time-block">
+        <div class="time-title" contenteditable="true" data-save-id="d11-t1-title">All Day</div>
+        <div class="time-desc">
+          <span contenteditable="true" data-save-id="d11-t1-desc">Fly from Ushuaia (USH) to El Calafate (FTE). Visit Glaciarium Ice Museum and enjoy Patagonian lamb.</span>
+          <a class="map-btn" href="https://maps.google.com" target="_blank">📍 El Calafate Map</a>
+        </div>
+      </div>
+    </div>
+
+    <div id="day-oct12" class="day-card">
+      <div class="day-header">
+        <span class="day-date" contenteditable="true" data-save-id="d12-header-date">Oct 12 (Monday)</span>
+        <span class="day-dest" contenteditable="true" data-save-id="d12-header-dest">El Calafate, Argentina</span>
+      </div>
+      <div class="time-block">
+        <div class="time-title" contenteditable="true" data-save-id="d12-t1-title">Full Day</div>
+        <div class="time-desc">
+          <span contenteditable="true" data-save-id="d12-t1-desc">Perito Moreno Glacier full-day mini-trekking and boat navigation.</span>
+          <a class="map-btn" href="https://maps.google.com" target="_blank">📍 Glacier Map</a>
         </div>
       </div>
     </div>
@@ -598,10 +902,51 @@
         <span class="day-dest" contenteditable="true" data-save-id="d13-header-dest">Buenos Aires, Argentina</span>
       </div>
       <div class="time-block">
-        <div class="time-title" contenteditable="true" data-save-id="d13-t1-title">Morning & Afternoon</div>
+        <div class="time-title" contenteditable="true" data-save-id="d13-t1-title">All Day</div>
         <div class="time-desc">
-          <span contenteditable="true" data-save-id="d13-t1-desc">Fly to BA. Visit Recoleta Cemetery, Teatro Colón tour, and Palermo Soho.</span>
+          <span contenteditable="true" data-save-id="d13-t1-desc">Fly back to Buenos Aires. Guided walking tour of Recoleta Cemetery, Teatro Colón, and evening Tango Show.</span>
           <a class="map-btn" href="https://maps.google.com" target="_blank">📍 Recoleta Map</a>
+        </div>
+      </div>
+    </div>
+
+    <div id="day-oct14" class="day-card">
+      <div class="day-header">
+        <span class="day-date" contenteditable="true" data-save-id="d14-header-date">Oct 14 (Wednesday)</span>
+        <span class="day-dest" contenteditable="true" data-save-id="d14-header-dest">Uruguay Day Trip</span>
+      </div>
+      <div class="time-block">
+        <div class="time-title" contenteditable="true" data-save-id="d14-t1-title">Full Day</div>
+        <div class="time-desc">
+          <span contenteditable="true" data-save-id="d14-t1-desc">Buquebus ferry across Río de la Plata to Colonia del Sacramento, Uruguay. Historic Quarter tour.</span>
+          <a class="map-btn" href="https://maps.google.com" target="_blank">📍 Colonia Map</a>
+        </div>
+      </div>
+    </div>
+
+    <div id="day-oct15" class="day-card">
+      <div class="day-header">
+        <span class="day-date" contenteditable="true" data-save-id="d15-header-date">Oct 15 (Thursday)</span>
+        <span class="day-dest" contenteditable="true" data-save-id="d15-header-dest">Buenos Aires, Argentina</span>
+      </div>
+      <div class="time-block">
+        <div class="time-title" contenteditable="true" data-save-id="d15-t1-title">Full Day</div>
+        <div class="time-desc">
+          <span contenteditable="true" data-save-id="d15-t1-desc">La Boca Caminito street art, San Telmo antique markets, Plaza de Mayo, and coffee at Café Tortoni.</span>
+          <a class="map-btn" href="https://maps.google.com" target="_blank">📍 San Telmo Map</a>
+        </div>
+      </div>
+    </div>
+
+    <div id="day-oct16" class="day-card">
+      <div class="day-header">
+        <span class="day-date" contenteditable="true" data-save-id="d16-header-date">Oct 16 (Friday)</span>
+        <span class="day-dest" contenteditable="true" data-save-id="d16-header-dest">Buenos Aires / Departure</span>
+      </div>
+      <div class="time-block">
+        <div class="time-title" contenteditable="true" data-save-id="d16-t1-title">All Day</div>
+        <div class="time-desc">
+          <span contenteditable="true" data-save-id="d16-t1-desc">Final city shopping, Argentine leather goods, pack up, and head to EZE Airport for international flight.</span>
         </div>
       </div>
     </div>
@@ -616,6 +961,42 @@
         <div class="flight-option" contenteditable="true" data-save-id="fl-1-o1">• Option A: HKG-MAD-SCL (00:45–09:15 on Oct 2, 13:15–21:45)</div>
         <div class="flight-option" contenteditable="true" data-save-id="fl-1-o2">• Option B: HKG-CDG-SCL (00:05–07:55 on Oct 1, 23:20–08:50+1)</div>
       </div>
+
+      <div class="item-card">
+        <div class="item-card-header" contenteditable="true" data-save-id="fl-2-h">Oct 4: Santiago to Atacama (SCL → CJC)</div>
+        <div class="flight-option" contenteditable="true" data-save-id="fl-2-o1">• LATAM / SKY Airline direct flights (1h 45m duration)</div>
+        <div class="flight-option" contenteditable="true" data-save-id="fl-2-o2">• Morning departure recommended to arrive before noon</div>
+      </div>
+
+      <div class="item-card">
+        <div class="item-card-header" contenteditable="true" data-save-id="fl-3-h">Oct 7: Atacama to Santiago (CJC → SCL)</div>
+        <div class="flight-option" contenteditable="true" data-save-id="fl-3-o1">• Evening flight after El Tatio Geysers tour</div>
+      </div>
+
+      <div class="item-card">
+        <div class="item-card-header" contenteditable="true" data-save-id="fl-4-h">Oct 8: Santiago to Buenos Aires (SCL → AEP/EZE)</div>
+        <div class="flight-option" contenteditable="true" data-save-id="fl-4-o1">• LATAM / Aerolíneas Argentinas direct (2h 15m duration)</div>
+      </div>
+
+      <div class="item-card">
+        <div class="item-card-header" contenteditable="true" data-save-id="fl-5-h">Oct 9: Buenos Aires to Ushuaia (AEP → USH)</div>
+        <div class="flight-option" contenteditable="true" data-save-id="fl-5-o1">• Aerolíneas Argentinas non-stop (3h 35m duration)</div>
+      </div>
+
+      <div class="item-card">
+        <div class="item-card-header" contenteditable="true" data-save-id="fl-6-h">Oct 11: Ushuaia to El Calafate (USH → FTE)</div>
+        <div class="flight-option" contenteditable="true" data-save-id="fl-6-o1">• Aerolíneas Argentinas direct (1h 20m duration)</div>
+      </div>
+
+      <div class="item-card">
+        <div class="item-card-header" contenteditable="true" data-save-id="fl-7-h">Oct 13: El Calafate to Buenos Aires (FTE → AEP)</div>
+        <div class="flight-option" contenteditable="true" data-save-id="fl-7-o1">• Morning departure (3h duration) to arrive in BA for afternoon tours</div>
+      </div>
+
+      <div class="item-card">
+        <div class="item-card-header" contenteditable="true" data-save-id="fl-8-h">Oct 16: Buenos Aires Departure (EZE → HKG)</div>
+        <div class="flight-option" contenteditable="true" data-save-id="fl-8-o1">• Evening long-haul flight home via Europe or US</div>
+      </div>
     </div>
   </main>
 
@@ -629,6 +1010,22 @@
           <b>Dates:</b> Oct 3 – Oct 4, 2026<br>
           <b>Cost:</b> USD 108.62 (Charge Date: Oct 1)<br>
           <b>Cancellation Policy:</b> <span style="color:#B91C1C; font-weight:700;">Free cancellation until Oct 2, 11:59 PM</span>
+        </div>
+      </div>
+
+      <div class="item-card">
+        <div class="item-card-header" contenteditable="true" data-save-id="hotel-2-name">San Pedro de Atacama Hotel / Lodge</div>
+        <div contenteditable="true" data-save-id="hotel-2-body">
+          <b>Dates:</b> Oct 4 – Oct 7, 2026<br>
+          <b>Location:</b> Near Caracoles street town center
+        </div>
+      </div>
+
+      <div class="item-card">
+        <div class="item-card-header" contenteditable="true" data-save-id="hotel-3-name">Buenos Aires Hotel (Palermo / Recoleta)</div>
+        <div contenteditable="true" data-save-id="hotel-3-body">
+          <b>Dates:</b> Oct 8, Oct 13 – Oct 16, 2026<br>
+          <b>Location:</b> Recoleta district recommended for proximity to attractions
         </div>
       </div>
     </div>
@@ -733,7 +1130,6 @@
       }
     }
 
-    // LOCAL STORAGE FOR EDITABLE TEXT FIELDS
     function initEditableStorage() {
       document.querySelectorAll('[contenteditable="true"][data-save-id]').forEach(el => {
         const saveId = el.getAttribute('data-save-id');
