@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -32,6 +33,8 @@
       outline: none;
       transition: background-color 0.2s ease, box-shadow 0.2s ease;
       border-radius: 4px;
+      user-select: text;
+      -webkit-user-select: text;
     }
     [contenteditable="true"]:hover {
       background-color: rgba(200, 178, 155, 0.15);
@@ -39,6 +42,35 @@
     [contenteditable="true"]:focus {
       background-color: rgba(200, 178, 155, 0.25);
       box-shadow: 0 0 0 2px var(--terracotta-primary);
+    }
+
+    /* FIX: Make links clickable inside contenteditable */
+    [contenteditable="true"] a,
+    [contenteditable="true"] .map-btn {
+      pointer-events: auto !important;
+      touch-action: manipulation !important;
+      cursor: pointer !important;
+      position: relative;
+      z-index: 5;
+      -webkit-tap-highlight-color: rgba(140, 109, 88, 0.3);
+    }
+
+    [contenteditable="true"] a:hover,
+    [contenteditable="true"] .map-btn:hover {
+      text-decoration: underline !important;
+    }
+
+    /* Prevent text selection from blocking clicks */
+    [contenteditable="true"] {
+      -webkit-touch-callout: none;
+    }
+
+    /* Better touch handling for editable areas */
+    @media (hover: none) {
+      [contenteditable="true"] {
+        -webkit-user-select: text;
+        user-select: text;
+      }
     }
 
     /* HEADER */
@@ -92,6 +124,7 @@
       font-weight: 500;
       cursor: pointer;
       user-select: none;
+      touch-action: manipulation;
     }
     .date-chip.active {
       background: var(--terracotta-primary);
@@ -126,6 +159,7 @@
       gap: 2px;
       width: 20%;
       cursor: pointer;
+      touch-action: manipulation;
     }
     .tab-btn.active { color: var(--terracotta-primary); font-weight: 700; }
 
@@ -198,7 +232,12 @@
     }
     .time-title { font-size: 0.78rem; font-weight: 700; color: var(--terracotta-primary); text-transform: uppercase; margin-bottom: 2px; }
     .time-desc { font-size: 0.85rem; color: var(--warm-dark); line-height: 1.5; }
-    .time-desc a { color: var(--terracotta-primary); word-break: break-all; }
+    .time-desc a { 
+      color: var(--terracotta-primary); 
+      word-break: break-all;
+      pointer-events: auto !important;
+      touch-action: manipulation !important;
+    }
     .time-desc a:hover { text-decoration: underline; }
 
     .map-btn {
@@ -214,7 +253,13 @@
       margin-left: 4px;
       font-weight: 500;
       border: 1px solid var(--beige-border);
+      pointer-events: auto !important;
+      touch-action: manipulation !important;
+      cursor: pointer !important;
+      position: relative;
+      z-index: 5;
     }
+    .map-btn:hover { text-decoration: underline; }
 
     .day-map-iframe {
       width: 100%;
@@ -243,12 +288,12 @@
       transition: border-color 0.2s;
     }
     .weather-card:hover { border-color: var(--terracotta-primary); }
-    .weather-left { display: flex; align-items: center; gap: 12px; }
-    .weather-icon { font-size: 1.8rem; }
+    .weather-left { display: flex; align-items: center; gap: 12px; flex: 1; }
+    .weather-icon { font-size: 1.8rem; flex-shrink: 0; }
     .weather-date { font-size: 0.75rem; color: var(--warm-muted); font-weight: 500; }
     .weather-city { font-weight: 700; font-size: 0.88rem; color: var(--warm-dark); }
     .weather-desc { font-size: 0.75rem; color: var(--warm-muted); }
-    .weather-temp-box { text-align: right; }
+    .weather-temp-box { text-align: right; flex-shrink: 0; }
     .weather-max { font-size: 1.05rem; font-weight: 700; color: var(--terracotta-primary); }
     .weather-min { font-size: 0.75rem; color: var(--warm-muted); }
 
@@ -261,9 +306,25 @@
       padding: 8px 0;
       border-bottom: 1px dashed var(--beige-border);
       font-size: 0.83rem;
+      gap: 8px;
     }
     .check-left { display: flex; align-items: center; gap: 8px; flex: 1; }
-    .qty-controls { display: flex; align-items: center; gap: 5px; }
+    .check-left input[type="checkbox"] {
+      flex-shrink: 0;
+      width: 16px;
+      height: 16px;
+      cursor: pointer;
+    }
+    .check-item-text {
+      word-break: break-word;
+      flex: 1;
+    }
+    .qty-controls { 
+      display: flex; 
+      align-items: center; 
+      gap: 5px;
+      flex-shrink: 0;
+    }
     .qty-btn {
       border: 1px solid var(--beige-border);
       background: var(--beige-bg);
@@ -271,10 +332,17 @@
       height: 22px;
       border-radius: 4px;
       cursor: pointer;
+      touch-action: manipulation;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
-    .add-form { display: flex; gap: 8px; margin-top: 10px; }
+    .qty-btn:hover { background: var(--beige-accent); }
+    .add-form { display: flex; gap: 8px; margin-top: 10px; flex-wrap: wrap; }
     .add-input {
       flex: 1;
+      min-width: 150px;
       padding: 6px 10px;
       border: 1px solid var(--beige-border);
       border-radius: 8px;
@@ -290,7 +358,10 @@
       font-size: 0.8rem;
       cursor: pointer;
       font-weight: 500;
+      touch-action: manipulation;
+      white-space: nowrap;
     }
+    .btn-action:hover { opacity: 0.9; }
 
     .item-card {
       background: var(--beige-bg);
@@ -312,6 +383,13 @@
       border-bottom: 1px dashed rgba(230, 220, 211, 0.7);
     }
     .flight-option:last-child { border-bottom: none; }
+    .flight-option a {
+      color: var(--terracotta-primary);
+      text-decoration: none;
+      pointer-events: auto !important;
+      touch-action: manipulation !important;
+    }
+    .flight-option a:hover { text-decoration: underline; }
     .pref-tag {
       background: var(--terracotta-primary);
       color: var(--white);
@@ -337,6 +415,29 @@
       line-height: 1.45;
       color: var(--warm-dark);
       margin-bottom: 6px;
+    }
+    .tip-item a {
+      color: var(--terracotta-primary);
+      pointer-events: auto !important;
+      touch-action: manipulation !important;
+    }
+    .tip-item a:hover { text-decoration: underline; }
+
+    /* Responsive fixes */
+    @media (max-width: 480px) {
+      .weather-left { gap: 8px; }
+      .weather-icon { font-size: 1.4rem; }
+      .weather-city { font-size: 0.78rem; }
+      .weather-max { font-size: 0.95rem; }
+      .weather-date { font-size: 0.65rem; }
+      .weather-desc { font-size: 0.65rem; }
+      .day-card { padding: 12px; }
+      .time-desc { font-size: 0.78rem; }
+      .overview-table { font-size: 0.7rem; }
+      .overview-table th, .overview-table td { padding: 5px 6px; }
+      .check-item { font-size: 0.75rem; flex-wrap: wrap; }
+      .check-left { min-width: 60%; }
+      .qty-controls { margin-left: auto; }
     }
   </style>
 </head>
@@ -400,7 +501,6 @@
   </main>
 
   <main id="weather" class="tab-content">
-    <!-- Weather cards remain static -->
     <a href="https://www.meteoblue.com/en/weather/forecast/week/santiago-de-chile_chile_3871336" target="_blank" class="weather-card-link">
       <div class="weather-card">
         <div class="weather-left">
@@ -782,7 +882,7 @@
           <a class="map-btn" href="https://maps.google.com/?q=Santiago,+Chile" target="_blank">📍 Santiago Map</a>
         </div>
       </div>
-      <iframe class="day-map-iframe" src="https://maps.google.com/maps?q=Santiago,+Chile&output=embed"></iframe>
+      <iframe class="day-map-iframe" src="https://maps.google.com/maps?q=Santiago,+Chile&output=embed" loading="lazy"></iframe>
     </div>
 
     <div id="day-oct3" class="day-card">
@@ -811,7 +911,7 @@
           <a class="map-btn" href="https://maps.google.com/?q=Patio+Bellavista,+Santiago" target="_blank">📍 Bellavista Map</a>
         </div>
       </div>
-      <iframe class="day-map-iframe" src="https://maps.google.com/maps?q=Barrio+Lastarria,+Santiago&output=embed"></iframe>
+      <iframe class="day-map-iframe" src="https://maps.google.com/maps?q=Barrio+Lastarria,+Santiago&output=embed" loading="lazy"></iframe>
     </div>
 
     <div id="day-oct4" class="day-card">
@@ -840,7 +940,7 @@
           <a class="map-btn" href="https://maps.google.com/?q=Valle+de+la+Luna,+San+Pedro+de+Atacama" target="_blank">📍 Moon Valley Map</a>
         </div>
       </div>
-      <iframe class="day-map-iframe" src="https://maps.google.com/maps?q=Valle+de+la+Luna,+San+Pedro+de+Atacama&output=embed"></iframe>
+      <iframe class="day-map-iframe" src="https://maps.google.com/maps?q=Valle+de+la+Luna,+San+Pedro+de+Atacama&output=embed" loading="lazy"></iframe>
     </div>
 
     <div id="day-oct5" class="day-card">
@@ -851,7 +951,7 @@
       <div class="time-block">
         <div class="time-title" contenteditable="true">Morning</div>
         <div class="time-desc">
-          <span contenteditable="true">Drive to <strong>Lagunas Escondidas de Baltinache</strong> (turquoise salt pools).  Cost: 12,000CLP. <strong>Ticket:</strong> Buy your ticket directly at the control booth / visitor hut at the entrance gate before accessing the site.</span>
+          <span contenteditable="true">Drive to <strong>Lagunas Escondidas de Baltinache</strong> (turquoise salt pools). Cost: 12,000CLP. <strong>Ticket:</strong> Buy your ticket directly at the control booth / visitor hut at the entrance gate before accessing the site.</span>
           <a class="map-btn" href="https://maps.google.com/?q=Lagunas+Escondidas+de+Baltinache" target="_blank">📍 Baltinache Map</a>
         </div>
       </div>
@@ -859,7 +959,7 @@
         <div class="time-title" contenteditable="true">Afternoon</div>
         <div class="time-desc">
           <span contenteditable="true"><strong>Laguna Cejar y Piedra:</strong> Swim/float in warm afternoon light. Cost: 15,000CLP. <strong>Tickets:</strong> <a href="https://lagunacejar.com/en/buy-tickets/?event=laguna-cejar-y-piedra" target="_blank">Reserve online here</a>.<br>
-          <strong>Laguna Chaxa:</strong> Drive south through Toconao to see flamingos at dusk.  Cost: 13,714CLP. <strong>Tickets:</strong> <a href="https://www.ckapintickets.com/lagunayvalle.php" target="_blank">Reserve online here</a>.</span>
+          <strong>Laguna Chaxa:</strong> Drive south through Toconao to see flamingos at dusk. Cost: 13,714CLP. <strong>Tickets:</strong> <a href="https://www.ckapintickets.com/lagunayvalle.php" target="_blank">Reserve online here</a>.</span>
           <a class="map-btn" href="https://maps.google.com/?q=Laguna+Chaxa" target="_blank">📍 Chaxa Map</a>
         </div>
       </div>
@@ -877,7 +977,7 @@
           <span contenteditable="true"><strong>Log onto <a href="https://socairechile.cl/shop/" target="_blank">socairechile.cl/shop/</a> on October 5 at 6:30 PM local time to purchase your tickets for the next day to Piedras Rojas. Cost: 13,000CLP.</strong></span>
         </div>
       </div>
-      <iframe class="day-map-iframe" src="https://maps.google.com/maps?q=Lagunas+Escondidas+de+Baltinache&output=embed"></iframe>
+      <iframe class="day-map-iframe" src="https://maps.google.com/maps?q=Lagunas+Escondidas+de+Baltinache&output=embed" loading="lazy"></iframe>
     </div>
 
     <div id="day-oct6" class="day-card">
@@ -909,7 +1009,7 @@
         <div class="time-title" contenteditable="true">Evening</div>
         <div class="time-desc"><span contenteditable="true">Prep warm thermals, gloves, and hats for tomorrow's early geysers excursion.</span></div>
       </div>
-      <iframe class="day-map-iframe" src="https://maps.google.com/maps?q=Piedras+Rojas+Atacama&output=embed"></iframe>
+      <iframe class="day-map-iframe" src="https://maps.google.com/maps?q=Piedras+Rojas+Atacama&output=embed" loading="lazy"></iframe>
     </div>
 
     <div id="day-oct7" class="day-card">
@@ -942,7 +1042,7 @@
         <div class="time-title" contenteditable="true">Evening</div>
         <div class="time-desc"><span contenteditable="true">Rest in Santiago before tomorrow's Argentina flight.</span></div>
       </div>
-      <iframe class="day-map-iframe" src="https://maps.google.com/maps?q=El+Tatio+Geysers&output=embed"></iframe>
+      <iframe class="day-map-iframe" src="https://maps.google.com/maps?q=El+Tatio+Geysers&output=embed" loading="lazy"></iframe>
     </div>
 
     <div id="day-oct8" class="day-card">
@@ -965,7 +1065,7 @@
         <div class="time-title" contenteditable="true">Evening</div>
         <div class="time-desc"><span contenteditable="true">Dinner at an Argentine steakhouse (Parrilla).</span></div>
       </div>
-      <iframe class="day-map-iframe" src="https://maps.google.com/maps?q=Recoleta+Buenos+Aires&output=embed"></iframe>
+      <iframe class="day-map-iframe" src="https://maps.google.com/maps?q=Recoleta+Buenos+Aires&output=embed" loading="lazy"></iframe>
     </div>
 
     <div id="day-oct9" class="day-card">
@@ -988,7 +1088,7 @@
         <div class="time-title" contenteditable="true">Evening</div>
         <div class="time-desc"><span contenteditable="true">Try local King Crab (Centolla) for dinner.</span></div>
       </div>
-      <iframe class="day-map-iframe" src="https://maps.google.com/maps?q=Ushuaia+Argentina&output=embed"></iframe>
+      <iframe class="day-map-iframe" src="https://maps.google.com/maps?q=Ushuaia+Argentina&output=embed" loading="lazy"></iframe>
     </div>
 
     <div id="day-oct10" class="day-card">
@@ -1022,7 +1122,7 @@
         <div class="time-title" contenteditable="true">Evening</div>
         <div class="time-desc"><span contenteditable="true">Relax in Ushuaia town center.</span></div>
       </div>
-      <iframe class="day-map-iframe" src="https://maps.google.com/maps?q=Tierra+del+Fuego+National+Park&output=embed"></iframe>
+      <iframe class="day-map-iframe" src="https://maps.google.com/maps?q=Tierra+del+Fuego+National+Park&output=embed" loading="lazy"></iframe>
     </div>
 
     <div id="day-oct11" class="day-card">
@@ -1045,7 +1145,7 @@
         <div class="time-title" contenteditable="true">Evening</div>
         <div class="time-desc"><span contenteditable="true">Dinner in town along Av. del Libertador.</span></div>
       </div>
-      <iframe class="day-map-iframe" src="https://maps.google.com/maps?q=El+Calafate+Argentina&output=embed"></iframe>
+      <iframe class="day-map-iframe" src="https://maps.google.com/maps?q=El+Calafate+Argentina&output=embed" loading="lazy"></iframe>
     </div>
 
     <div id="day-oct12" class="day-card">
@@ -1066,7 +1166,7 @@
         <div class="time-title" contenteditable="true">Evening</div>
         <div class="time-desc"><span contenteditable="true">Farewell Patagonia dinner in El Calafate.</span></div>
       </div>
-      <iframe class="day-map-iframe" src="https://maps.google.com/maps?q=Perito+Moreno+Glacier&output=embed"></iframe>
+      <iframe class="day-map-iframe" src="https://maps.google.com/maps?q=Perito+Moreno+Glacier&output=embed" loading="lazy"></iframe>
     </div>
 
     <div id="day-oct13" class="day-card">
@@ -1096,7 +1196,7 @@
         <div class="time-title" contenteditable="true">Evening</div>
         <div class="time-desc"><span contenteditable="true">Attend a live Tango Show with dinner (Gala Tango / El Querandí).</span></div>
       </div>
-      <iframe class="day-map-iframe" src="https://maps.google.com/maps?q=Recoleta+Cemetery+Buenos+Aires&output=embed"></iframe>
+      <iframe class="day-map-iframe" src="https://maps.google.com/maps?q=Recoleta+Cemetery+Buenos+Aires&output=embed" loading="lazy"></iframe>
     </div>
 
     <div id="day-oct14" class="day-card">
@@ -1122,7 +1222,7 @@
         <div class="time-title" contenteditable="true">Evening</div>
         <div class="time-desc"><span contenteditable="true">Ferry back to Buenos Aires for dinner.</span></div>
       </div>
-      <iframe class="day-map-iframe" src="https://maps.google.com/maps?q=Colonia+del+Sacramento+Uruguay&output=embed"></iframe>
+      <iframe class="day-map-iframe" src="https://maps.google.com/maps?q=Colonia+del+Sacramento+Uruguay&output=embed" loading="lazy"></iframe>
     </div>
 
     <div id="day-oct15" class="day-card">
@@ -1148,7 +1248,7 @@
         <div class="time-title" contenteditable="true">Evening</div>
         <div class="time-desc"><span contenteditable="true">Final evening celebration dinner in Buenos Aires.</span></div>
       </div>
-      <iframe class="day-map-iframe" src="https://maps.google.com/maps?q=Mercado+de+San+Telmo&output=embed"></iframe>
+      <iframe class="day-map-iframe" src="https://maps.google.com/maps?q=Mercado+de+San+Telmo&output=embed" loading="lazy"></iframe>
     </div>
 
     <div id="day-oct16" class="day-card">
@@ -1164,7 +1264,7 @@
         <div class="time-title" contenteditable="true">Afternoon & Evening</div>
         <div class="time-desc"><span contenteditable="true">Transfer to EZE airport for departure long-haul flight home. In-flight.</span></div>
       </div>
-      <iframe class="day-map-iframe" src="https://maps.google.com/maps?q=EZE+Airport+Buenos+Aires&output=embed"></iframe>
+      <iframe class="day-map-iframe" src="https://maps.google.com/maps?q=EZE+Airport+Buenos+Aires&output=embed" loading="lazy"></iframe>
     </div>
   </main>
 
@@ -1323,8 +1423,33 @@
       document.querySelectorAll('.date-chip').forEach(el => el.classList.remove('active'));
 
       document.getElementById(dayId).classList.add('active');
-      event.currentTarget.classList.add('active');
+      // Find the clicked button
+      const buttons = document.querySelectorAll('.date-chip');
+      buttons.forEach(btn => {
+        if (btn.textContent.trim() === document.getElementById(dayId).querySelector('.day-date').textContent.trim().split('(')[0].trim()) {
+          btn.classList.add('active');
+        }
+      });
     }
+
+    // Fix showDay to properly handle the active state
+    const originalShowDay = showDay;
+    showDay = function(dayId) {
+      document.querySelectorAll('.day-card').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.date-chip').forEach(el => el.classList.remove('active'));
+
+      document.getElementById(dayId).classList.add('active');
+      // Find the corresponding date chip
+      const dayDate = document.getElementById(dayId).querySelector('.day-date');
+      if (dayDate) {
+        const dateText = dayDate.textContent.trim().split('(')[0].trim();
+        document.querySelectorAll('.date-chip').forEach(btn => {
+          if (btn.textContent.trim() === dateText) {
+            btn.classList.add('active');
+          }
+        });
+      }
+    };
 
     // ----- CHECKLIST DATA WITH PERSISTENCE -----
     const defaultItems = {
@@ -1365,7 +1490,7 @@
           li.innerHTML = `
             <div class="check-left">
               <input type="checkbox">
-              <span contenteditable="true" data-type="${type}" data-index="${index}" class="check-item-text">${item.name}</span>
+              <span contenteditable="true" data-type="${type}" data-index="${index}" class="check-item-text">${escapeHtml(item.name)}</span>
             </div>
             <div class="qty-controls">
               <button class="qty-btn" onclick="updateQty('${type}', ${index}, -1)">-</button>
@@ -1378,6 +1503,12 @@
         });
         saveData(type, items[type]);
       });
+    }
+
+    function escapeHtml(text) {
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
     }
 
     function updateQty(type, index, change) {
@@ -1553,6 +1684,29 @@
       });
     }
 
+    // ----- FIX: Handle link clicks inside contenteditable on mobile -----
+    document.addEventListener('click', function(e) {
+      const link = e.target.closest('a');
+      if (link && link.href && link.closest('[contenteditable="true"]')) {
+        const selection = window.getSelection();
+        // Only navigate if not actively selecting text
+        if (!selection || selection.isCollapsed || selection.toString().length === 0) {
+          e.preventDefault();
+          window.open(link.href, link.target || '_blank');
+          return false;
+        }
+      }
+    }, true);
+
+    // Fix for touch devices - prevent long press from interfering
+    document.addEventListener('touchstart', function(e) {
+      const link = e.target.closest('a');
+      if (link && link.href && link.closest('[contenteditable="true"]')) {
+        // Allow the click to proceed
+        link.style.touchAction = 'manipulation';
+      }
+    }, { passive: true });
+
     // ----- HOTEL DATA (sorted by check-in date) -----
     const hotelData = [
       {
@@ -1623,12 +1777,12 @@
         const card = document.createElement('div');
         card.className = 'item-card';
         card.innerHTML = `
-          <div class="item-card-header" contenteditable="true">${hotel.name}</div>
+          <div class="item-card-header" contenteditable="true">${escapeHtml(hotel.name)}</div>
           <div contenteditable="true">
-            <b>Dates:</b> ${hotel.dates}<br>
-            <b>Cost:</b> ${hotel.cost}<br>
-            <b>Cancellation Policy (Local Time):</b> <span style="color:#B91C1C; font-weight:700;">Free cancellation until ${hotel.cancelLocal}</span><br>
-            <b>HK Time Equivalent:</b> <span style="color:#8C6D58;">${hotel.cancelHK}</span>
+            <b>Dates:</b> ${escapeHtml(hotel.dates)}<br>
+            <b>Cost:</b> ${escapeHtml(hotel.cost)}<br>
+            <b>Cancellation Policy (Local Time):</b> <span style="color:#B91C1C; font-weight:700;">Free cancellation until ${escapeHtml(hotel.cancelLocal)}</span><br>
+            <b>HK Time Equivalent:</b> <span style="color:#8C6D58;">${escapeHtml(hotel.cancelHK)}</span>
           </div>
         `;
         container.appendChild(card);
@@ -1683,6 +1837,7 @@
     }, 30000);
 
     console.log('✈️ South America Expedition app loaded. All edits are saved in localStorage.');
+    console.log('📱 All links are now clickable on mobile devices.');
   </script>
 </body>
 </html>
