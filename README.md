@@ -565,7 +565,7 @@
       <div class="time-block">
         <div class="time-title">Morning</div>
         <div class="time-desc">
-          <span>Drive to <strong>Lagunas Escondidas de Baltinache</strong> (turquoise salt pools).  Cost: 12,000CLP. <strong>Ticket:</strong> Buy your ticket directly at the control booth / visitor hut at the entrance gate before accessing the site.</span>
+          <span>Drive to <strong>Lagunas Escondidas de Baltinache</strong> (turquoise salt pools).  Cost: 12,000CLP. <strong> </strong> Buy your ticket directly at the control booth / visitor hut at the entrance gate before accessing the site.</span>
           <a class="map-btn" href="https://maps.google.com/?q=Lagunas+Escondidas+de+Baltinache" target="_blank">📍 Baltinache Map</a>
         </div>
       </div>
