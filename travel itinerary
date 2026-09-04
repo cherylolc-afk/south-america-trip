@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -55,7 +54,7 @@
     .app-header h1 { font-size: 1.2rem; font-weight: 700; }
     .app-header p { font-size: 0.75rem; opacity: 0.9; margin-top: 2px; }
 
-    /* DATE SELECTOR BAR */
+    /* DATE SELECTOR BAR - SCROLLABLE */
     .date-bar-wrapper {
       background: #EBE3DB;
       border-bottom: 1px solid var(--beige-border);
@@ -72,9 +71,15 @@
       touch-action: pan-x;
       padding: 10px 14px;
       gap: 8px;
-      scrollbar-width: none;
+      scrollbar-width: thin;
     }
-    .date-bar::-webkit-scrollbar { display: none; }
+    .date-bar::-webkit-scrollbar {
+      height: 4px;
+    }
+    .date-bar::-webkit-scrollbar-thumb {
+      background: var(--beige-accent);
+      border-radius: 4px;
+    }
     .date-chip {
       flex: 0 0 auto;
       white-space: nowrap;
@@ -192,7 +197,9 @@
       border-left: 3px solid var(--terracotta-primary);
     }
     .time-title { font-size: 0.78rem; font-weight: 700; color: var(--terracotta-primary); text-transform: uppercase; margin-bottom: 2px; }
-    .time-desc { font-size: 0.85rem; color: var(--warm-dark); line-height: 1.4; }
+    .time-desc { font-size: 0.85rem; color: var(--warm-dark); line-height: 1.5; }
+    .time-desc a { color: var(--terracotta-primary); word-break: break-all; }
+    .time-desc a:hover { text-decoration: underline; }
 
     .map-btn {
       display: inline-flex;
@@ -336,8 +343,8 @@
 <body>
 
   <header class="app-header">
-    <h1 contenteditable="true">South America Expedition</h1>
-    <p contenteditable="true">Oct 2, 2026 – Oct 16, 2026 | Chile • Argentina • Uruguay</p>
+    <h1 contenteditable="true" id="header-title">South America Expedition</h1>
+    <p contenteditable="true" id="header-sub">Oct 2, 2026 – Oct 16, 2026 | Chile • Argentina • Uruguay</p>
   </header>
 
   <nav class="tab-nav">
@@ -365,7 +372,7 @@
 
   <main id="todo" class="tab-content active">
     <div class="guide-section">
-      <div class="guide-title" contenteditable="true">🎟️ Bookings Checklist</div>
+      <div class="guide-title" contenteditable="true" id="todo-title-1">🎟️ Bookings Checklist</div>
       <ul class="checklist" id="tours-list"></ul>
       <div class="add-form">
         <input type="text" id="tours-input" class="add-input" placeholder="Add booking item...">
@@ -374,7 +381,7 @@
     </div>
 
     <div class="guide-section">
-      <div class="guide-title" contenteditable="true">🎒 Carry-On Packing List</div>
+      <div class="guide-title" contenteditable="true" id="todo-title-2">🎒 Carry-On Packing List</div>
       <ul class="checklist" id="carryon-list"></ul>
       <div class="add-form">
         <input type="text" id="carryon-input" class="add-input" placeholder="Add carry-on item...">
@@ -383,7 +390,7 @@
     </div>
 
     <div class="guide-section">
-      <div class="guide-title" contenteditable="true">🧳 Checked Bag Packing List</div>
+      <div class="guide-title" contenteditable="true" id="todo-title-3">🧳 Checked Bag Packing List</div>
       <ul class="checklist" id="checkin-list"></ul>
       <div class="add-form">
         <input type="text" id="checkin-input" class="add-input" placeholder="Add checked item...">
@@ -393,6 +400,7 @@
   </main>
 
   <main id="weather" class="tab-content">
+    <!-- Weather cards remain static -->
     <a href="https://www.meteoblue.com/en/weather/forecast/week/santiago-de-chile_chile_3871336" target="_blank" class="weather-card-link">
       <div class="weather-card">
         <div class="weather-left">
@@ -651,7 +659,7 @@
 
   <main id="itinerary" class="tab-content">
     <div class="guide-section">
-      <div class="guide-title" contenteditable="true">📍 Master Overview & Quick Summary</div>
+      <div class="guide-title" contenteditable="true" id="itinerary-title">📍 Master Overview & Quick Summary</div>
       <table class="overview-table">
         <thead>
           <tr>
@@ -785,8 +793,8 @@
       <div class="time-block">
         <div class="time-title" contenteditable="true">Morning</div>
         <div class="time-desc">
-          <span contenteditable="true">Arrive in Santiago and check in to DoubleTree by Hilton Santiago Kennedy.</span>
-          <a class="map-btn" href="https://maps.google.com/?q=DoubleTree+by+Hilton+Santiago+Kennedy" target="_blank">📍 Hotel Map</a>
+          <span contenteditable="true">Arrive in Santiago and check in to Novotel Santiago Providencia.</span>
+          <a class="map-btn" href="https://maps.google.com/?q=Novotel+Santiago+Providencia" target="_blank">📍 Hotel Map</a>
         </div>
       </div>
       <div class="time-block">
@@ -821,14 +829,14 @@
       <div class="time-block">
         <div class="time-title" contenteditable="true">Afternoon</div>
         <div class="time-desc">
-          <span contenteditable="true">Drive 10 mins to Valley of Death (Valle de la Muerte / Marte) to see red dunes & rock formations. Optional visit to Magic bus or Pukará de Quitor.</span>
+          <span contenteditable="true">Drive 10 mins to Valley of Death (Valle de la Muerte / Marte) to see red dunes & rock formations. Tickets are bought directly in person at the entry kiosk/booth at the access gate. Cost: 6,000CLP. Optional visit to Magic bus or Pukará de Quitor.</span>
           <a class="map-btn" href="https://maps.google.com/?q=Valle+de+la+Muerte,+San+Pedro+de+Atacama" target="_blank">📍 Death Valley Map</a>
         </div>
       </div>
       <div class="time-block">
         <div class="time-title" contenteditable="true">Evening</div>
         <div class="time-desc">
-          <span contenteditable="true">Watch sunset at Valle de la Luna (Duna Mayor & Mirador de Kari). Stargazing tour at night.</span>
+          <span contenteditable="true">Watch sunset at Valle de la Luna (Duna Mayor & Mirador de Kari). Cost: 10,800CLP. <strong>Reserve online via <a href="https://valledelaluna.com" target="_blank">valledelaluna.com</a></strong></span>
           <a class="map-btn" href="https://maps.google.com/?q=Valle+de+la+Luna,+San+Pedro+de+Atacama" target="_blank">📍 Moon Valley Map</a>
         </div>
       </div>
@@ -843,20 +851,31 @@
       <div class="time-block">
         <div class="time-title" contenteditable="true">Morning</div>
         <div class="time-desc">
-          <span contenteditable="true">Drive to Lagunas Escondidas de Baltinache (turquoise salt pools).</span>
+          <span contenteditable="true">Drive to <strong>Lagunas Escondidas de Baltinache</strong> (turquoise salt pools).  Cost: 12,000CLP.<strong>Ticket:</strong> Buy your ticket directly at the control booth / visitor hut at the entrance gate before accessing the site.</span>
           <a class="map-btn" href="https://maps.google.com/?q=Lagunas+Escondidas+de+Baltinache" target="_blank">📍 Baltinache Map</a>
         </div>
       </div>
       <div class="time-block">
         <div class="time-title" contenteditable="true">Afternoon</div>
         <div class="time-desc">
-          <span contenteditable="true">Swim/float at Lagunas Cejar & Piedra in warm afternoon light. Drive south through Toconao to Laguna Chaxa to see flamingos at dusk.</span>
+          <span contenteditable="true"><strong>Laguna Cejar y Piedra:</strong> Swim/float in warm afternoon light. Cost: 15,000CLP. <strong>Tickets:</strong> <a href="https://lagunacejar.com/en/buy-tickets/?event=laguna-cejar-y-piedra" target="_blank">Reserve online here</a>.<br>
+          <strong>Laguna Chaxa:</strong> Drive south through Toconao to see flamingos at dusk.  Cost: 13,714CLP. <strong>Tickets:</strong> <a href="https://www.ckapintickets.com/lagunayvalle.php" target="_blank">Reserve online here</a>.</span>
           <a class="map-btn" href="https://maps.google.com/?q=Laguna+Chaxa" target="_blank">📍 Chaxa Map</a>
         </div>
       </div>
       <div class="time-block">
-        <div class="time-title" contenteditable="true">Evening</div>
-        <div class="time-desc"><span contenteditable="true">Relax in town; sample northern Chilean cuisine.</span></div>
+        <div class="time-title" contenteditable="true">Evening Stargazing Tour</div>
+        <div class="time-desc">
+          <span contenteditable="true"><strong>Stargazing tour booked via <a href="https://gyg.me/KxWQmjrh" target="_blank">GetYourGuide</a>!</strong><br>
+          Pick up: 7:00 PM at Licancabur 10. Duration: 2.5 hours. Cost: HKD 261 per person.<br>
+          Free cancellation until Oct 4, 19:00.</span>
+        </div>
+      </div>
+      <div class="time-block">
+        <div class="time-title" contenteditable="true">Reminder</div>
+        <div class="time-desc">
+          <span contenteditable="true"><strong>Log onto <a href="https://socairechile.cl/shop/" target="_blank">socairechile.cl/shop/</a> on October 5 at 6:30 PM local time to purchase your tickets for the next day to Piedras Rojas. Cost: 13,000CLP.</strong></span>
+        </div>
       </div>
       <iframe class="day-map-iframe" src="https://maps.google.com/maps?q=Lagunas+Escondidas+de+Baltinache&output=embed"></iframe>
     </div>
@@ -876,8 +895,14 @@
       <div class="time-block">
         <div class="time-title" contenteditable="true">Afternoon</div>
         <div class="time-desc">
-          <span contenteditable="true">Continue south to Piedras Rojas (Aguas Calientes Salt Flat) across Salar de Talar. Stop at Socaire village and Laguna Tebinquiche on return.</span>
-          <a class="map-btn" href="https://maps.google.com/?q=Piedras+Rojas+Atacama" target="_blank">📍 Piedras Rojas Map</a>
+          <span contenteditable="true">Continue south to <strong>Piedras Rojas</strong> (Aguas Calientes Salt Flat) across Salar de Talar. <strong>Ticket for Tebinquinche Lagoon:</strong> Paid directly at the entrance booth. Cost: 6,000CLP. Stop at Socaire village and Laguna Tebinquiche on return.</span>
+          <a class="map-btn" href="https://maps.google.com/maps?q=Socaire+Community+Office" target="_blank">📍 Socaire Community Office Map</a>
+        </div>
+      </div>
+      <div class="time-block">
+        <div class="time-title" contenteditable="true">Reminder</div>
+        <div class="time-desc">
+          <span contenteditable="true"><strong>Check in at the <a href="https://maps.google.com/maps?q=Socaire+Community+Office" target="_blank">Socaire Community Office</a> in the small town of Socaire (located along Highway 23, about 1 hour south of San Pedro de Atacama en route to the sites), before visiting Piedras Rojas.</strong></span>
         </div>
       </div>
       <div class="time-block">
@@ -904,6 +929,13 @@
         <div class="time-desc">
           <span contenteditable="true">Leave El Tatio ~08:30–09:00 AM back to San Pedro. Return rental car at CJC airport and fly CJC → SCL.</span>
           <a class="map-btn" href="https://maps.google.com/?q=El+Loa+Airport+Calama" target="_blank">📍 Airport Map</a>
+        </div>
+      </div>
+      <div class="time-block">
+        <div class="time-title" contenteditable="true">Consider This Tour</div>
+        <div class="time-desc">
+          <span contenteditable="true"><strong><a href="https://www.viator.com/en-HK/search/422580P3?mcid=70066" target="_blank">Half Day Tour to Geysers del Tatio</a></strong><br>
+          Start time: 04:30 AM. Duration: 6-7 hours. Cost: HKD 392 per person.</span>
         </div>
       </div>
       <div class="time-block">
@@ -974,8 +1006,16 @@
       <div class="time-block">
         <div class="time-title" contenteditable="true">Afternoon</div>
         <div class="time-desc">
-          <span contenteditable="true">Excursion/boat tour to Isla Martillo with Piratour to walk among penguins.</span>
+          <span contenteditable="true"><strong>Primary:</strong> Excursion/boat tour to Isla Martillo with Piratour to walk among penguins.</span>
           <a class="map-btn" href="https://maps.google.com/?q=Isla+Martillo+Ushuaia" target="_blank">📍 Isla Martillo Map</a>
+        </div>
+      </div>
+      <div class="time-block">
+        <div class="time-title" contenteditable="true">Backup Tour Booked (if Piratour full)</div>
+        <div class="time-desc">
+          <span contenteditable="true"><strong><a href="https://gyg.me/tiu1sWc6" target="_blank">Ushuaia: Beagle Channel and Penguin Island</a></strong><br>
+          Tour starts at 3:00 PM. Cost: HKD 1,215 per person (payable on Oct 8).<br>
+          Free cancellation until Oct 9, 15:00.</span>
         </div>
       </div>
       <div class="time-block">
@@ -997,7 +1037,7 @@
       <div class="time-block">
         <div class="time-title" contenteditable="true">Afternoon</div>
         <div class="time-desc">
-          <span contenteditable="true">Visit Glaciarium Ice Museum.</span>
+          <span contenteditable="true">Visit Glaciarium Ice Museum. Tickets can be purchased directly at the ticket window upon arrival.</span>
           <a class="map-btn" href="https://maps.google.com/?q=Glaciarium+El+Calafate" target="_blank">📍 Glaciarium Map</a>
         </div>
       </div>
@@ -1014,9 +1054,11 @@
         <span class="day-dest" contenteditable="true">El Calafate, Argentina</span>
       </div>
       <div class="time-block">
-        <div class="time-title" contenteditable="true">Morning & Afternoon</div>
+        <div class="time-title" contenteditable="true">Consider this Full Day Tour</div>
         <div class="time-desc">
-          <span contenteditable="true">Full-day excursion to Perito Moreno Glacier. Mini-trekking or boat navigation tour with Hielo & Aventura.</span>
+          <span contenteditable="true"><strong><a href="https://www.getyourguide.com/el-calafate-l544/el-calafate-perito-moreno-glacier-mini-hiking-experience-t233632/?utm_medium=sharing&utm_campaign=activity_details_ios" target="_blank">Perito Moreno Glacier Trekking Tour and Cruise</a></strong><br>
+          Pick up: 8:00 AM at hotel. Duration: 11 hours. Cost: HKD 3,128 per person.<br>
+          Cancel up to 24 hours in advance for a full refund.</span>
           <a class="map-btn" href="https://maps.google.com/?q=Perito+Moreno+Glacier" target="_blank">📍 Glacier Map</a>
         </div>
       </div>
@@ -1065,7 +1107,7 @@
       <div class="time-block">
         <div class="time-title" contenteditable="true">Morning</div>
         <div class="time-desc">
-          <span contenteditable="true">Take morning ferry across Rio de la Plata to Colonia del Sacramento, Uruguay (Buquebus / Colonia Express).</span>
+          <span contenteditable="true">Take morning ferry across Rio de la Plata to Colonia del Sacramento, Uruguay. <strong>Book via <a href="https://www.buquebus.com/int" target="_blank">Buquebus</a></strong> (return trip cost: USD 94.87 per person).</span>
           <a class="map-btn" href="https://maps.google.com/?q=Puerto+Madero+Ferry+Terminal" target="_blank">📍 Terminal Map</a>
         </div>
       </div>
@@ -1128,7 +1170,7 @@
 
   <main id="flights" class="tab-content">
     <div class="guide-section">
-      <div class="guide-title" contenteditable="true">✈️ Flight Options & Route Schedule</div>
+      <div class="guide-title" contenteditable="true" id="flights-title">✈️ Flight Options & Route Schedule</div>
       
       <div class="item-card">
         <div class="item-card-header" contenteditable="true">Oct 2: Long-Haul Arrival to Santiago (HKG → SCL)</div>
@@ -1195,77 +1237,32 @@
 
       <div class="item-card">
         <div class="item-card-header" contenteditable="true">Oct 14: Ferry Crossing (Buenos Aires ↔ Uruguay)</div>
-        <div class="flight-option" contenteditable="true">• Buquebus / Colonia Express (Puerto Madero Terminal)</div>
+        <div class="flight-option" contenteditable="true">• <a href="https://www.buquebus.com/int" target="_blank">Buquebus</a> / Colonia Express (Puerto Madero Terminal)</div>
       </div>
 
       <div class="item-card">
-        <div class="item-card-header" contenteditable="true">Oct 16: Long-Haul Departure Flight</div>
-        <div class="flight-option" contenteditable="true">• EZE Departure Flights (In-flight to HKG)</div>
+        <div class="item-card-header" contenteditable="true">Oct 16: Long-Haul Departure Flights (EZE → Europe)</div>
+        <div class="flight-option" contenteditable="true">• Air Europa UX042 | 789 | EZE 12:10 → MAD 05:10+1 (12h)</div>
+        <div class="flight-option" contenteditable="true">• Iberia IB102 | 350 | EZE 13:00 → MAD 05:40+1 (11h 40m)</div>
+        <div class="flight-option" contenteditable="true">• Iberia IB2602 | 332 | EZE 11:50 → BCN 05:25+1 (12h 35m)</div>
+        <div class="flight-option" contenteditable="true">• KLM KL702 | 772 | EZE 15:05 → AMS 09:10+1 (13h 5m)</div>
+        <div class="flight-option" contenteditable="true">• Aerolineas Argentinas AR1134 | 330 | EZE 15:05 → MAD 08:20+1 (12h 15m)</div>
+        <div class="flight-option" contenteditable="true">• Lufthansa LH511 | 74H | EZE 16:35 → FRA 10:55+1 (13h 20m)</div>
+        <div class="flight-option" contenteditable="true">• Iberia IB106 | 359 | EZE 17:50 → MAD 10:45+1 (11h 55m)</div>
+        <div class="flight-option" contenteditable="true">• Air France AF471 | 789 | EZE 23:55 → CDG 17:50+1 (12h 55m)</div>
+        <div class="flight-option" contenteditable="true">• Aerolineas Argentinas AR1132 | 330 | EZE 23:55 → MAD 17:10+1 (12h 15m)</div>
       </div>
     </div>
   </main>
 
   <main id="hotels" class="tab-content">
-    <div class="guide-section">
-      <div class="guide-title" contenteditable="true">🏨 Accommodations & Cancellation Rules</div>
-      
-      <div class="item-card">
-        <div class="item-card-header" contenteditable="true">DoubleTree by Hilton Santiago Kennedy</div>
-        <div contenteditable="true">
-          <b>Dates:</b> Oct 3 – Oct 4, 2026<br>
-          <b>Cost:</b> USD 108.62 (Charge Date: Oct 1)<br>
-          <b>Cancellation Policy:</b> <span style="color:#B91C1C; font-weight:700;">Free cancellation until Oct 2, 11:59 PM</span>
-        </div>
-      </div>
-
-      <div class="item-card">
-        <div class="item-card-header" contenteditable="true">Nueva Lodge La Estacion (San Pedro de Atacama)</div>
-        <div contenteditable="true">
-          <b>Dates:</b> Oct 4 – Oct 7, 2026<br>
-          <b>Cost:</b> USD 432.00 (Charge Date: Oct 4)<br>
-          <b>Cancellation Policy:</b> <span style="color:#B91C1C; font-weight:700;">Free cancellation until Oct 2, 11:59 PM</span>
-        </div>
-      </div>
-
-      <div class="item-card">
-        <div class="item-card-header" contenteditable="true">Up Recoleta Hotel (Buenos Aires)</div>
-        <div contenteditable="true">
-          <b>Dates:</b> Oct 8 – Oct 9, 2026<br>
-          <b>Cost:</b> USD 89.80 (Charge Date: Oct 4)<br>
-          <b>Cancellation Policy:</b> <span style="color:#B91C1C; font-weight:700;">Free cancellation until Oct 5, 11:59 PM</span>
-        </div>
-      </div>
-
-      <div class="item-card">
-        <div class="item-card-header" contenteditable="true">Alto Andino Hotel (Ushuaia)</div>
-        <div contenteditable="true">
-          <b>Dates:</b> Oct 9 – Oct 11, 2026<br>
-          <b>Cost:</b> USD 276.59 (Charge Date: Oct 9)<br>
-          <b>Cancellation Policy:</b> <span style="color:#B91C1C; font-weight:700;">Free cancellation until Oct 10, 11:59 PM</span>
-        </div>
-      </div>
-
-      <div class="item-card">
-        <div class="item-card-header" contenteditable="true">Destino Calafate (El Calafate)</div>
-        <div contenteditable="true">
-          <b>Dates:</b> Oct 11 – Oct 13, 2026<br>
-          <b>Cost:</b> USD 283.77 (Charge Date: Oct 8)<br>
-          <b>Cancellation Policy:</b> <span style="color:#B91C1C; font-weight:700;">Free cancellation until Oct 9, 11:59 PM</span>
-        </div>
-      </div>
-
-      <div class="item-card">
-        <div class="item-card-header" contenteditable="true">NH Collection Buenos Aires Crillon</div>
-        <div contenteditable="true">
-          <b>Dates:</b> Oct 13 – Oct 16, 2026<br>
-          <b>Cost:</b> USD 556.03 (Charge Date: Oct 7)<br>
-          <b>Cancellation Policy:</b> <span style="color:#B91C1C; font-weight:700;">Free cancellation until Oct 8, 11:59 PM</span>
-        </div>
-      </div>
+    <div class="guide-section" id="hotels-section">
+      <div class="guide-title" contenteditable="true" id="hotels-title">🏨 Accommodations & Cancellation Rules</div>
+      <div id="hotels-container"></div>
     </div>
 
     <div class="guide-section">
-      <div class="guide-title" contenteditable="true">💡 Essential Local Travel Notes & Tips</div>
+      <div class="guide-title" contenteditable="true" id="tips-title">💡 Essential Local Travel Notes & Tips</div>
       
       <div class="tip-category" contenteditable="true">🇨🇱 Chile</div>
       <div class="tip-item" contenteditable="true">• <b>Cards:</b> Credit cards (Visa/Mastercard) are universally accepted in Santiago and most established businesses in San Pedro de Atacama (restaurants, hotels, petrol stations).</div>
@@ -1292,12 +1289,32 @@
   </main>
 
   <script>
+    // ----- PERSISTENT STORAGE HELPERS -----
+    function saveData(key, data) {
+      try {
+        localStorage.setItem('sa_expedition_' + key, JSON.stringify(data));
+      } catch (e) { /* ignore */ }
+    }
+
+    function loadData(key, defaultVal) {
+      try {
+        const raw = localStorage.getItem('sa_expedition_' + key);
+        if (raw) return JSON.parse(raw);
+      } catch (e) { /* ignore */ }
+      return defaultVal;
+    }
+
+    // ----- TAB SWITCHING -----
     function switchTab(tabId) {
       document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
       document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
       
       document.getElementById(tabId).classList.add('active');
-      event.currentTarget.classList.add('active');
+      const btns = document.querySelectorAll('.tab-btn');
+      const tabMap = { 'todo': 0, 'weather': 1, 'itinerary': 2, 'flights': 3, 'hotels': 4 };
+      if (tabMap[tabId] !== undefined) {
+        btns[tabMap[tabId]].classList.add('active');
+      }
       window.scrollTo(0, 0);
     }
 
@@ -1309,7 +1326,8 @@
       event.currentTarget.classList.add('active');
     }
 
-    let items = {
+    // ----- CHECKLIST DATA WITH PERSISTENCE -----
+    const defaultItems = {
       tours: [
         { name: 'Piratour Isla Martillo Penguin Walk (Ushuaia)', qty: 1 },
         { name: 'Hielo & Aventura Perito Moreno Mini-Trekking', qty: 1 },
@@ -1330,6 +1348,12 @@
       ]
     };
 
+    let items = {
+      tours: loadData('tours', defaultItems.tours),
+      carryon: loadData('carryon', defaultItems.carryon),
+      checkin: loadData('checkin', defaultItems.checkin)
+    };
+
     function renderChecklists() {
       ['tours', 'carryon', 'checkin'].forEach(type => {
         const ul = document.getElementById(type + '-list');
@@ -1341,28 +1365,31 @@
           li.innerHTML = `
             <div class="check-left">
               <input type="checkbox">
-              <span contenteditable="true">${item.name}</span>
+              <span contenteditable="true" data-type="${type}" data-index="${index}" class="check-item-text">${item.name}</span>
             </div>
             <div class="qty-controls">
               <button class="qty-btn" onclick="updateQty('${type}', ${index}, -1)">-</button>
-              <span contenteditable="true">${item.qty}</span>
+              <span contenteditable="true" data-type="${type}" data-index="${index}" class="check-item-qty">${item.qty}</span>
               <button class="qty-btn" onclick="updateQty('${type}', ${index}, 1)">+</button>
               <button class="qty-btn" onclick="removeItem('${type}', ${index})" style="color:#B91C1C;">×</button>
             </div>
           `;
           ul.appendChild(li);
         });
+        saveData(type, items[type]);
       });
     }
 
     function updateQty(type, index, change) {
       items[type][index].qty += change;
       if (items[type][index].qty <= 0) items[type][index].qty = 1;
+      saveData(type, items[type]);
       renderChecklists();
     }
 
     function removeItem(type, index) {
       items[type].splice(index, 1);
+      saveData(type, items[type]);
       renderChecklists();
     }
 
@@ -1370,12 +1397,292 @@
       const input = document.getElementById(type + '-input');
       if (input && input.value.trim() !== '') {
         items[type].push({ name: input.value.trim(), qty: 1 });
+        saveData(type, items[type]);
         input.value = '';
         renderChecklists();
       }
     }
 
+    // ----- EDITTEXT PERSISTENCE -----
+    function saveEditableContent() {
+      // Header
+      const title = document.getElementById('header-title');
+      const sub = document.getElementById('header-sub');
+      if (title) saveData('header_title', title.innerText);
+      if (sub) saveData('header_sub', sub.innerText);
+
+      // Todo titles
+      ['todo-title-1', 'todo-title-2', 'todo-title-3'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) saveData(id, el.innerText);
+      });
+
+      // Itinerary title
+      const itinTitle = document.getElementById('itinerary-title');
+      if (itinTitle) saveData('itinerary-title', itinTitle.innerText);
+
+      // Flights title
+      const flightsTitle = document.getElementById('flights-title');
+      if (flightsTitle) saveData('flights-title', flightsTitle.innerText);
+
+      // Hotels title & tips title
+      const hotelsTitle = document.getElementById('hotels-title');
+      if (hotelsTitle) saveData('hotels-title', hotelsTitle.innerText);
+      const tipsTitle = document.getElementById('tips-title');
+      if (tipsTitle) saveData('tips-title', tipsTitle.innerText);
+
+      // Day card editable content
+      document.querySelectorAll('.day-card [contenteditable="true"]').forEach(el => {
+        const card = el.closest('.day-card');
+        if (card) {
+          const cardId = card.id;
+          const siblings = Array.from(card.querySelectorAll('[contenteditable="true"]'));
+          const index = siblings.indexOf(el);
+          const key = cardId + '_editable_' + index;
+          saveData(key, el.innerText);
+        }
+      });
+
+      // Weather card editable content
+      document.querySelectorAll('.weather-card [contenteditable="true"]').forEach(el => {
+        const card = el.closest('.weather-card');
+        if (card) {
+          const idx = Array.from(document.querySelectorAll('.weather-card')).indexOf(card);
+          const key = 'weather_editable_' + idx + '_' + (el.className || '');
+          saveData(key, el.innerText);
+        }
+      });
+
+      // Flight options
+      document.querySelectorAll('#flights .item-card [contenteditable="true"]').forEach(el => {
+        const card = el.closest('.item-card');
+        if (card) {
+          const idx = Array.from(document.querySelectorAll('#flights .item-card')).indexOf(card);
+          const key = 'flight_editable_' + idx + '_' + (el.className || '');
+          saveData(key, el.innerText);
+        }
+      });
+
+      // Tips
+      document.querySelectorAll('#hotels .tip-category, #hotels .tip-item').forEach(el => {
+        if (el.getAttribute('contenteditable') === 'true') {
+          const idx = Array.from(document.querySelectorAll('#hotels .tip-category, #hotels .tip-item')).indexOf(el);
+          const key = 'tip_editable_' + idx;
+          saveData(key, el.innerText);
+        }
+      });
+    }
+
+    function loadEditableContent() {
+      // Header
+      const title = document.getElementById('header-title');
+      const sub = document.getElementById('header-sub');
+      const savedTitle = loadData('header_title', null);
+      if (savedTitle && title) title.innerText = savedTitle;
+      const savedSub = loadData('header_sub', null);
+      if (savedSub && sub) sub.innerText = savedSub;
+
+      // Todo titles
+      ['todo-title-1', 'todo-title-2', 'todo-title-3'].forEach(id => {
+        const el = document.getElementById(id);
+        const saved = loadData(id, null);
+        if (saved && el) el.innerText = saved;
+      });
+
+      // Itinerary title
+      const itinTitle = document.getElementById('itinerary-title');
+      const savedItin = loadData('itinerary-title', null);
+      if (savedItin && itinTitle) itinTitle.innerText = savedItin;
+
+      // Flights title
+      const flightsTitle = document.getElementById('flights-title');
+      const savedFlights = loadData('flights-title', null);
+      if (savedFlights && flightsTitle) flightsTitle.innerText = savedFlights;
+
+      // Hotels title & tips title
+      const hotelsTitle = document.getElementById('hotels-title');
+      const savedHotelsTitle = loadData('hotels-title', null);
+      if (savedHotelsTitle && hotelsTitle) hotelsTitle.innerText = savedHotelsTitle;
+      const tipsTitle = document.getElementById('tips-title');
+      const savedTipsTitle = loadData('tips-title', null);
+      if (savedTipsTitle && tipsTitle) tipsTitle.innerText = savedTipsTitle;
+
+      // Day card editable content
+      document.querySelectorAll('.day-card [contenteditable="true"]').forEach(el => {
+        const card = el.closest('.day-card');
+        if (card) {
+          const cardId = card.id;
+          const siblings = Array.from(card.querySelectorAll('[contenteditable="true"]'));
+          const index = siblings.indexOf(el);
+          const key = cardId + '_editable_' + index;
+          const saved = loadData(key, null);
+          if (saved) el.innerText = saved;
+        }
+      });
+
+      // Weather card editable content
+      document.querySelectorAll('.weather-card [contenteditable="true"]').forEach(el => {
+        const card = el.closest('.weather-card');
+        if (card) {
+          const idx = Array.from(document.querySelectorAll('.weather-card')).indexOf(card);
+          const key = 'weather_editable_' + idx + '_' + (el.className || '');
+          const saved = loadData(key, null);
+          if (saved) el.innerText = saved;
+        }
+      });
+
+      // Flight options
+      document.querySelectorAll('#flights .item-card [contenteditable="true"]').forEach(el => {
+        const card = el.closest('.item-card');
+        if (card) {
+          const idx = Array.from(document.querySelectorAll('#flights .item-card')).indexOf(card);
+          const key = 'flight_editable_' + idx + '_' + (el.className || '');
+          const saved = loadData(key, null);
+          if (saved) el.innerText = saved;
+        }
+      });
+
+      // Tips
+      document.querySelectorAll('#hotels .tip-category, #hotels .tip-item').forEach(el => {
+        if (el.getAttribute('contenteditable') === 'true') {
+          const idx = Array.from(document.querySelectorAll('#hotels .tip-category, #hotels .tip-item')).indexOf(el);
+          const key = 'tip_editable_' + idx;
+          const saved = loadData(key, null);
+          if (saved) el.innerText = saved;
+        }
+      });
+    }
+
+    // ----- HOTEL DATA (sorted by check-in date) -----
+    const hotelData = [
+      {
+        name: 'Novotel Santiago Providencia',
+        dates: 'Oct 3 – Oct 4, 2026',
+        cost: 'CLP 99,065 (payable at hotel)',
+        cancelLocal: 'Oct 2, 11:59 PM (CLT)',
+        cancelHK: 'Oct 3, 11:59 AM HKT',
+        sortDate: '2026-10-03'
+      },
+      {
+        name: 'Nueva Lodge La Estacion (San Pedro de Atacama)',
+        dates: 'Oct 4 – Oct 7, 2026',
+        cost: 'USD 432.00 (Charge Date: Oct 4)',
+        cancelLocal: 'Oct 2, 11:59 PM (CLT)',
+        cancelHK: 'Oct 3, 11:59 AM HKT',
+        sortDate: '2026-10-04'
+      },
+      {
+        name: 'Holiday Inn Santiago at Airport Terminal',
+        dates: 'Oct 7 – Oct 8, 2026',
+        cost: 'USD 249.02 (Charge Date: Oct 4)',
+        cancelLocal: 'Oct 5, 11:59 PM (CLT)',
+        cancelHK: 'Oct 6, 11:59 AM HKT',
+        sortDate: '2026-10-07'
+      },
+      {
+        name: 'Up Recoleta Hotel (Buenos Aires)',
+        dates: 'Oct 8 – Oct 9, 2026',
+        cost: 'USD 89.80 (Charge Date: Oct 4)',
+        cancelLocal: 'Oct 5, 11:59 PM (ART)',
+        cancelHK: 'Oct 6, 10:59 AM HKT',
+        sortDate: '2026-10-08'
+      },
+      {
+        name: 'Alto Andino Hotel (Ushuaia)',
+        dates: 'Oct 9 – Oct 11, 2026',
+        cost: 'USD 276.59 (Charge Date: Oct 9)',
+        cancelLocal: 'Oct 10, 11:59 PM (ART)',
+        cancelHK: 'Oct 11, 10:59 AM HKT',
+        sortDate: '2026-10-09'
+      },
+      {
+        name: 'Destino Calafate (El Calafate)',
+        dates: 'Oct 11 – Oct 13, 2026',
+        cost: 'USD 283.77 (Charge Date: Oct 8)',
+        cancelLocal: 'Oct 9, 11:59 PM (ART)',
+        cancelHK: 'Oct 10, 10:59 AM HKT',
+        sortDate: '2026-10-11'
+      },
+      {
+        name: 'NH Collection Buenos Aires Crillon',
+        dates: 'Oct 13 – Oct 16, 2026',
+        cost: 'USD 556.03 (Charge Date: Oct 7)',
+        cancelLocal: 'Oct 8, 11:59 PM (ART)',
+        cancelHK: 'Oct 9, 10:59 AM HKT',
+        sortDate: '2026-10-13'
+      }
+    ];
+
+    const sortedHotels = [...hotelData].sort((a, b) => new Date(a.sortDate) - new Date(b.sortDate));
+
+    function renderHotels() {
+      const container = document.getElementById('hotels-container');
+      if (!container) return;
+      container.innerHTML = '';
+      sortedHotels.forEach(hotel => {
+        const card = document.createElement('div');
+        card.className = 'item-card';
+        card.innerHTML = `
+          <div class="item-card-header" contenteditable="true">${hotel.name}</div>
+          <div contenteditable="true">
+            <b>Dates:</b> ${hotel.dates}<br>
+            <b>Cost:</b> ${hotel.cost}<br>
+            <b>Cancellation Policy (Local Time):</b> <span style="color:#B91C1C; font-weight:700;">Free cancellation until ${hotel.cancelLocal}</span><br>
+            <b>HK Time Equivalent:</b> <span style="color:#8C6D58;">${hotel.cancelHK}</span>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    // ----- SAVE ON EDIT -----
+    document.addEventListener('input', function(e) {
+      if (e.target.getAttribute('contenteditable') === 'true') {
+        saveEditableContent();
+        if (e.target.classList.contains('check-item-text')) {
+          const type = e.target.dataset.type;
+          const index = parseInt(e.target.dataset.index);
+          if (type && !isNaN(index) && items[type] && items[type][index]) {
+            items[type][index].name = e.target.innerText;
+            saveData(type, items[type]);
+          }
+        }
+        if (e.target.classList.contains('check-item-qty')) {
+          const type = e.target.dataset.type;
+          const index = parseInt(e.target.dataset.index);
+          if (type && !isNaN(index) && items[type] && items[type][index]) {
+            const newQty = parseInt(e.target.innerText);
+            if (!isNaN(newQty) && newQty > 0) {
+              items[type][index].qty = newQty;
+              saveData(type, items[type]);
+            }
+          }
+        }
+      }
+    });
+
+    document.addEventListener('blur', function(e) {
+      if (e.target.getAttribute('contenteditable') === 'true') {
+        saveEditableContent();
+      }
+    }, true);
+
+    // ----- INIT -----
     renderChecklists();
+    loadEditableContent();
+    renderHotels();
+
+    window.addEventListener('beforeunload', function() {
+      saveEditableContent();
+      ['tours', 'carryon', 'checkin'].forEach(type => saveData(type, items[type]));
+    });
+
+    setInterval(function() {
+      saveEditableContent();
+      ['tours', 'carryon', 'checkin'].forEach(type => saveData(type, items[type]));
+    }, 30000);
+
+    console.log('✈️ South America Expedition app loaded. All edits are saved in localStorage.');
   </script>
 </body>
 </html>
