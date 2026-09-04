@@ -358,7 +358,7 @@
     </button>
   </nav>
 
-  <!-- ITINERARY TAB (now first) -->
+  <!-- ITINERARY TAB -->
   <main id="itinerary" class="tab-content active">
     <div class="guide-section">
       <div class="guide-title" id="itinerary-title">📍 Master Overview & Quick Summary</div>
@@ -412,7 +412,7 @@
 
     <div style="height: 14px;"></div>
 
-    <!-- DAY CARDS (editable removed) -->
+    <!-- DAY CARDS (with selected opening hours) -->
     <div id="day-oct2" class="day-card active">
       <div class="day-header"><span class="day-date">Oct 2 (Friday)</span><span class="day-dest">Santiago, Chile</span></div>
       <div class="time-block"><div class="time-title">All Day / Flight Options</div><div class="time-desc">Arrival in Santiago (Long-haul transit). Stay in Santiago if early arrival. <a class="map-btn" href="https://maps.google.com/?q=Santiago,+Chile" target="_blank">📍 Santiago Map</a></div></div>
@@ -423,7 +423,7 @@
       <div class="day-header"><span class="day-date">Oct 3 (Saturday)</span><span class="day-dest">Santiago, Chile</span></div>
       <div class="time-block"><div class="time-title">Morning</div><div class="time-desc">Arrive in Santiago and check in to Novotel Santiago Providencia. <a class="map-btn" href="https://maps.google.com/?q=Novotel+Santiago+Providencia" target="_blank">📍 Hotel Map</a></div></div>
       <div class="time-block"><div class="time-title">Afternoon</div><div class="time-desc">Stroll through the cobblestone streets of Barrio Lastarria for lunch, street markets, and outdoor cafés. Optional visit to Santa Lucía Hill, La Moneda Palace, or Plaza de Armas. <a class="map-btn" href="https://maps.google.com/?q=Barrio+Lastarria,+Santiago" target="_blank">📍 Lastarria Map</a></div></div>
-      <div class="time-block"><div class="time-title">Evening</div><div class="time-desc">Walk across the river to Bellavista (Calle Constitución & Patio Bellavista). Optional San Cristóbal Hill funicular. <a class="map-btn" href="https://maps.google.com/?q=Patio+Bellavista,+Santiago" target="_blank">📍 Bellavista Map</a></div></div>
+      <div class="time-block"><div class="time-title">Evening</div><div class="time-desc">Walk across the river to Bellavista (Calle Constitución & Patio Bellavista). <strong>Cerro San Cristóbal funicular: 10:00 – 19:00</strong>. <a class="map-btn" href="https://maps.google.com/?q=Patio+Bellavista,+Santiago" target="_blank">📍 Bellavista Map</a></div></div>
       <iframe class="day-map-iframe" src="https://maps.google.com/maps?q=Barrio+Lastarria,+Santiago&output=embed"></iframe>
     </div>
 
@@ -431,14 +431,14 @@
       <div class="day-header"><span class="day-date">Oct 4 (Sunday)</span><span class="day-dest">San Pedro de Atacama</span></div>
       <div class="time-block"><div class="time-title">Morning</div><div class="time-desc">Fly SCL → CJC on LA146 (08:23–10:35) [Preferred]. Pick up rental car at Calama Airport and drive 1.5h to San Pedro. Check in at Nueva Lodge La Estacion. <a class="map-btn" href="https://maps.google.com/?q=El+Loa+Airport+Calama" target="_blank">📍 Airport Map</a></div></div>
       <div class="time-block"><div class="time-title">Afternoon</div><div class="time-desc">Drive 10 mins to Valley of Death (Valle de la Muerte / Marte) to see red dunes & rock formations. Tickets are bought directly in person at the entry kiosk/booth at the access gate. Cost: 6,000CLP. Optional visit to Magic bus or Pukará de Quitor. <a class="map-btn" href="https://maps.google.com/?q=Valle+de+la+Muerte,+San+Pedro+de+Atacama" target="_blank">📍 Death Valley Map</a></div></div>
-      <div class="time-block"><div class="time-title">Evening</div><div class="time-desc">Watch sunset at Valle de la Luna (Duna Mayor & Mirador de Kari). Cost: 10,800CLP. <strong>Reserve online via <a href="https://valledelaluna.com" target="_blank">valledelaluna.com</a></strong> <a class="map-btn" href="https://maps.google.com/?q=Valle+de+la+Luna,+San+Pedro+de+Atacama" target="_blank">📍 Moon Valley Map</a></div></div>
+      <div class="time-block"><div class="time-title">Evening</div><div class="time-desc">Watch sunset at Valle de la Luna (Duna Mayor & Mirador de Kari). <strong>Valle de la Luna: 08:30 – 16:00 (vehicle entry)</strong>. Cost: 10,800CLP. <strong>Reserve online via <a href="https://valledelaluna.com" target="_blank">valledelaluna.com</a></strong> <a class="map-btn" href="https://maps.google.com/?q=Valle+de+la+Luna,+San+Pedro+de+Atacama" target="_blank">📍 Moon Valley Map</a></div></div>
       <iframe class="day-map-iframe" src="https://maps.google.com/maps?q=Valle+de+la+Luna,+San+Pedro+de+Atacama&output=embed"></iframe>
     </div>
 
     <div id="day-oct5" class="day-card">
       <div class="day-header"><span class="day-date">Oct 5 (Monday)</span><span class="day-dest">San Pedro de Atacama</span></div>
-      <div class="time-block"><div class="time-title">Morning</div><div class="time-desc">Drive to <strong>Lagunas Escondidas de Baltinache</strong> (turquoise salt pools). Cost: 12,000CLP. <strong>Ticket:</strong> Buy your ticket directly at the control booth / visitor hut at the entrance gate before accessing the site. <a class="map-btn" href="https://maps.google.com/?q=Lagunas+Escondidas+de+Baltinache" target="_blank">📍 Baltinache Map</a></div></div>
-      <div class="time-block"><div class="time-title">Afternoon</div><div class="time-desc"><strong>Laguna Cejar y Piedra:</strong> Swim/float in warm afternoon light. Cost: 15,000CLP. <strong>Tickets:</strong> <a href="https://lagunacejar.com/en/buy-tickets/?event=laguna-cejar-y-piedra" target="_blank">Reserve online here</a>.<br><strong>Laguna Chaxa:</strong> Drive south through Toconao to see flamingos at dusk. Cost: 13,714CLP. <strong>Tickets:</strong> <a href="https://www.ckapintickets.com/lagunayvalle.php" target="_blank">Reserve online here</a>. <a class="map-btn" href="https://maps.google.com/?q=Laguna+Chaxa" target="_blank">📍 Chaxa Map</a></div></div>
+      <div class="time-block"><div class="time-title">Morning</div><div class="time-desc">Drive to <strong>Lagunas Escondidas de Baltinache</strong> (turquoise salt pools). <strong>Opening hours: 09:00 – 16:00</strong>. Cost: 12,000CLP. <strong>Ticket:</strong> Buy your ticket directly at the control booth / visitor hut at the entrance gate before accessing the site. <a class="map-btn" href="https://maps.google.com/?q=Lagunas+Escondidas+de+Baltinache" target="_blank">📍 Baltinache Map</a></div></div>
+      <div class="time-block"><div class="time-title">Afternoon</div><div class="time-desc"><strong>Laguna Cejar y Piedra:</strong> Swim/float in warm afternoon light. <strong>Opening hours: 09:00 – 24:00</strong>. Cost: 15,000CLP. <strong>Tickets:</strong> <a href="https://lagunacejar.com/en/buy-tickets/?event=laguna-cejar-y-piedra" target="_blank">Reserve online here</a>.<br><strong>Laguna Chaxa:</strong> Drive south through Toconao to see flamingos at dusk. <strong>Opening hours: 08:00 – 19:00</strong>. Cost: 13,714CLP. <strong>Tickets:</strong> <a href="https://www.ckapintickets.com/lagunayvalle.php" target="_blank">Reserve online here</a>. <a class="map-btn" href="https://maps.google.com/?q=Laguna+Chaxa" target="_blank">📍 Chaxa Map</a></div></div>
       <div class="time-block"><div class="time-title">Evening Stargazing Tour</div><div class="time-desc"><strong>Stargazing tour booked via <a href="https://gyg.me/KxWQmjrh" target="_blank">GetYourGuide</a>!</strong><br>Pick up: 7:00 PM at Licancabur 10. Duration: 2.5 hours. Cost: HKD 261 per person.<br>Free cancellation until Oct 4, 19:00.</div></div>
       <div class="time-block"><div class="time-title">Reminder</div><div class="time-desc"><strong>Log onto <a href="https://socairechile.cl/shop/" target="_blank">socairechile.cl/shop/</a> on October 5 at 6:30 PM local time to purchase your tickets for the next day to Piedras Rojas. Cost: 13,000CLP.</strong></div></div>
       <iframe class="day-map-iframe" src="https://maps.google.com/maps?q=Lagunas+Escondidas+de+Baltinache&output=embed"></iframe>
@@ -446,8 +446,8 @@
 
     <div id="day-oct6" class="day-card">
       <div class="day-header"><span class="day-date">Oct 6 (Tuesday)</span><span class="day-dest">San Pedro de Atacama</span></div>
-      <div class="time-block"><div class="time-title">Morning</div><div class="time-desc">High-altitude day (~4,200m) visiting Miscanti & Miñiques Lagoons. Hydrate well. <a class="map-btn" href="https://maps.google.com/?q=Laguna+Miscanti" target="_blank">📍 Lagoons Map</a></div></div>
-      <div class="time-block"><div class="time-title">Afternoon</div><div class="time-desc">Continue south to <strong>Piedras Rojas</strong> (Aguas Calientes Salt Flat) across Salar de Talar. <strong>Ticket for Tebinquinche Lagoon:</strong> Paid directly at the entrance booth. Cost: 6,000CLP. Stop at Socaire village and Laguna Tebinquiche on return. <a class="map-btn" href="https://maps.google.com/maps?q=Socaire+Community+Office" target="_blank">📍 Socaire Community Office Map</a></div></div>
+      <div class="time-block"><div class="time-title">Morning</div><div class="time-desc">High-altitude day (~4,200m) visiting Miscanti & Miñiques Lagoons. <strong>Opening hours: 09:00 – 18:00</strong>. Hydrate well. <a class="map-btn" href="https://maps.google.com/?q=Laguna+Miscanti" target="_blank">📍 Lagoons Map</a></div></div>
+      <div class="time-block"><div class="time-title">Afternoon</div><div class="time-desc">Continue south to <strong>Piedras Rojas</strong> (Aguas Calientes Salt Flat) across Salar de Talar. <strong>Opening hours: 10:00 – 22:00</strong>. <strong>Ticket for Tebinquinche Lagoon:</strong> Paid directly at the entrance booth. Cost: 6,000CLP. Stop at Socaire village and Laguna Tebinquiche on return. <a class="map-btn" href="https://maps.google.com/maps?q=Socaire+Community+Office" target="_blank">📍 Socaire Community Office Map</a></div></div>
       <div class="time-block"><div class="time-title">Reminder</div><div class="time-desc"><strong>Check in at the <a href="https://maps.google.com/maps?q=Socaire+Community+Office" target="_blank">Socaire Community Office</a> in the small town of Socaire (located along Highway 23, about 1 hour south of San Pedro de Atacama en route to the sites), before visiting Piedras Rojas.</strong></div></div>
       <div class="time-block"><div class="time-title">Evening</div><div class="time-desc">Prep warm thermals, gloves, and hats for tomorrow's early geysers excursion.</div></div>
       <iframe class="day-map-iframe" src="https://maps.google.com/maps?q=Piedras+Rojas+Atacama&output=embed"></iframe>
@@ -482,7 +482,7 @@
       <div class="day-header"><span class="day-date">Oct 10 (Saturday)</span><span class="day-dest">Ushuaia, Argentina</span></div>
       <div class="time-block"><div class="time-title">Morning</div><div class="time-desc">Tierra del Fuego National Park excursion via transfer shuttle (remis) or bus. <a class="map-btn" href="https://maps.google.com/?q=Tierra+del+Fuego+National+Park" target="_blank">📍 Park Map</a></div></div>
       <div class="time-block"><div class="time-title">Afternoon</div><div class="time-desc"><strong>Primary:</strong> Excursion/boat tour to Isla Martillo with Piratour to walk among penguins. <a class="map-btn" href="https://maps.google.com/?q=Isla+Martillo+Ushuaia" target="_blank">📍 Isla Martillo Map</a></div></div>
-      <div class="time-block"><div class="time-title">Backup Tour Booked (if Piratour full)</div><div class="time-desc"><strong><a href="https://gyg.me/tiu1sWc6" target="_blank">Ushuaia: Beagle Channel and Penguin Island</a></strong><br>Tour starts at 3:00 PM. Cost: HKD 1,215 per person (payable on Oct 8).<br>Free cancellation until Oct 9, 15:00.</div></div>
+      <div class="time-block"><div class="time-title">Backup Tour Booked (if Piratour full)</div><div class="time-desc"><strong><a href="https://gyg.me/tiu1sWc6" target="_blank">Ushuaia: Beagle Channel and Penguin Island</a></strong><br>Tour starts at 3:00 PM. Duration: 5 hours. Cost: HKD 1,215 per person (payable on Oct 8).<br>Free cancellation until Oct 9, 15:00.</div></div>
       <div class="time-block"><div class="time-title">Evening</div><div class="time-desc">Relax in Ushuaia town center.</div></div>
       <iframe class="day-map-iframe" src="https://maps.google.com/maps?q=Tierra+del+Fuego+National+Park&output=embed"></iframe>
     </div>
@@ -490,7 +490,7 @@
     <div id="day-oct11" class="day-card">
       <div class="day-header"><span class="day-date">Oct 11 (Sunday)</span><span class="day-dest">El Calafate, Argentina</span></div>
       <div class="time-block"><div class="time-title">Morning</div><div class="time-desc">Fly from Ushuaia to El Calafate. Check in at Destino Calafate.</div></div>
-      <div class="time-block"><div class="time-title">Afternoon</div><div class="time-desc">Visit Glaciarium Ice Museum. Tickets can be purchased directly at the ticket window upon arrival. <a class="map-btn" href="https://maps.google.com/?q=Glaciarium+El+Calafate" target="_blank">📍 Glaciarium Map</a></div></div>
+      <div class="time-block"><div class="time-title">Afternoon</div><div class="time-desc">Visit Glaciarium Ice Museum. <strong>Opening hours: 12:00 – 19:00</strong>. Tickets can be purchased directly at the ticket window upon arrival. <a class="map-btn" href="https://maps.google.com/?q=Glaciarium+El+Calafate" target="_blank">📍 Glaciarium Map</a></div></div>
       <div class="time-block"><div class="time-title">Evening</div><div class="time-desc">Dinner in town along Av. del Libertador.</div></div>
       <iframe class="day-map-iframe" src="https://maps.google.com/maps?q=El+Calafate+Argentina&output=embed"></iframe>
     </div>
@@ -615,7 +615,7 @@
     </div>
   </main>
 
-  <!-- FLIGHTS TAB (bug fixed: grouped by day) -->
+  <!-- FLIGHTS TAB -->
   <main id="flights" class="tab-content">
     <div class="guide-section">
       <div class="guide-title" id="flights-title">✈️ Flight Options & Route Schedule</div>
@@ -703,7 +703,7 @@
     </div>
   </main>
 
-  <!-- TO-DO LIST TAB (now last) -->
+  <!-- TO-DO LIST TAB -->
   <main id="todo" class="tab-content">
     <div class="guide-section">
       <div class="guide-title" id="todo-title-1">🎟️ Bookings Checklist</div>
@@ -867,15 +867,15 @@
       });
     }
 
-    // ----- HOTEL DATA -----
+    // ----- HOTEL DATA (with check-in/out) -----
     const hotelData = [
-      { name: 'Novotel Santiago Providencia', dates: 'Oct 3 – Oct 4, 2026', cost: 'CLP 99,065 (payable at hotel)', cancelLocal: 'Oct 2, 11:59 PM (CLT)', cancelHK: 'Oct 3, 11:59 AM HKT', sortDate: '2026-10-03' },
-      { name: 'Nueva Lodge La Estacion (San Pedro de Atacama)', dates: 'Oct 4 – Oct 7, 2026', cost: 'USD 432.00 (Charge Date: Oct 4)', cancelLocal: 'Oct 2, 11:59 PM (CLT)', cancelHK: 'Oct 3, 11:59 AM HKT', sortDate: '2026-10-04' },
-      { name: 'Holiday Inn Santiago at Airport Terminal', dates: 'Oct 7 – Oct 8, 2026', cost: 'USD 249.02 (Charge Date: Oct 4)', cancelLocal: 'Oct 5, 11:59 PM (CLT)', cancelHK: 'Oct 6, 11:59 AM HKT', sortDate: '2026-10-07' },
-      { name: 'Up Recoleta Hotel (Buenos Aires)', dates: 'Oct 8 – Oct 9, 2026', cost: 'USD 89.80 (Charge Date: Oct 4)', cancelLocal: 'Oct 5, 11:59 PM (ART)', cancelHK: 'Oct 6, 10:59 AM HKT', sortDate: '2026-10-08' },
-      { name: 'Alto Andino Hotel (Ushuaia)', dates: 'Oct 9 – Oct 11, 2026', cost: 'USD 276.59 (Charge Date: Oct 9)', cancelLocal: 'Oct 10, 11:59 PM (ART)', cancelHK: 'Oct 11, 10:59 AM HKT', sortDate: '2026-10-09' },
-      { name: 'Destino Calafate (El Calafate)', dates: 'Oct 11 – Oct 13, 2026', cost: 'USD 283.77 (Charge Date: Oct 8)', cancelLocal: 'Oct 9, 11:59 PM (ART)', cancelHK: 'Oct 10, 10:59 AM HKT', sortDate: '2026-10-11' },
-      { name: 'NH Collection Buenos Aires Crillon', dates: 'Oct 13 – Oct 16, 2026', cost: 'USD 556.03 (Charge Date: Oct 7)', cancelLocal: 'Oct 8, 11:59 PM (ART)', cancelHK: 'Oct 9, 10:59 AM HKT', sortDate: '2026-10-13' }
+      { name: 'Novotel Santiago Providencia', dates: 'Oct 3 – Oct 4, 2026', cost: 'CLP 99,065 (payable at hotel)', cancelLocal: 'Oct 2, 11:59 PM (CLT)', cancelHK: 'Oct 3, 11:59 AM HKT', sortDate: '2026-10-03', checkIn: '15:00', checkOut: '12:00' },
+      { name: 'Nueva Lodge La Estacion (San Pedro de Atacama)', dates: 'Oct 4 – Oct 7, 2026', cost: 'USD 432.00 (Charge Date: Oct 4)', cancelLocal: 'Oct 2, 11:59 PM (CLT)', cancelHK: 'Oct 3, 11:59 AM HKT', sortDate: '2026-10-04', checkIn: '15:00', checkOut: '11:00' },
+      { name: 'Holiday Inn Santiago at Airport Terminal', dates: 'Oct 7 – Oct 8, 2026', cost: 'USD 249.02 (Charge Date: Oct 4)', cancelLocal: 'Oct 5, 11:59 PM (CLT)', cancelHK: 'Oct 6, 11:59 AM HKT', sortDate: '2026-10-07', checkIn: '15:00', checkOut: '12:00' },
+      { name: 'Up Recoleta Hotel (Buenos Aires)', dates: 'Oct 8 – Oct 9, 2026', cost: 'USD 89.80 (Charge Date: Oct 4)', cancelLocal: 'Oct 5, 11:59 PM (ART)', cancelHK: 'Oct 6, 10:59 AM HKT', sortDate: '2026-10-08', checkIn: '15:00', checkOut: '11:00' },
+      { name: 'Alto Andino Hotel (Ushuaia)', dates: 'Oct 9 – Oct 11, 2026', cost: 'USD 276.59 (Charge Date: Oct 9)', cancelLocal: 'Oct 10, 11:59 PM (ART)', cancelHK: 'Oct 11, 10:59 AM HKT', sortDate: '2026-10-09', checkIn: '15:00', checkOut: '10:00' },
+      { name: 'Destino Calafate (El Calafate)', dates: 'Oct 11 – Oct 13, 2026', cost: 'USD 283.77 (Charge Date: Oct 8)', cancelLocal: 'Oct 9, 11:59 PM (ART)', cancelHK: 'Oct 10, 10:59 AM HKT', sortDate: '2026-10-11', checkIn: '15:00', checkOut: '10:00' },
+      { name: 'NH Collection Buenos Aires Crillon', dates: 'Oct 13 – Oct 16, 2026', cost: 'USD 556.03 (Charge Date: Oct 7)', cancelLocal: 'Oct 8, 11:59 PM (ART)', cancelHK: 'Oct 9, 10:59 AM HKT', sortDate: '2026-10-13', checkIn: '15:00', checkOut: '12:00' }
     ];
     const sortedHotels = [...hotelData].sort((a, b) => new Date(a.sortDate) - new Date(b.sortDate));
 
@@ -888,7 +888,13 @@
         card.className = 'item-card';
         card.innerHTML = `
           <div class="item-card-header">${hotel.name}</div>
-          <div><b>Dates:</b> ${hotel.dates}<br><b>Cost:</b> ${hotel.cost}<br><b>Cancellation Policy (Local Time):</b> <span style="color:#B91C1C; font-weight:700;">Free cancellation until ${hotel.cancelLocal}</span><br><b>HK Time Equivalent:</b> <span style="color:#8C6D58;">${hotel.cancelHK}</span></div>
+          <div>
+            <b>Dates:</b> ${hotel.dates}<br>
+            <b>Check-in:</b> ${hotel.checkIn} | <b>Check-out:</b> ${hotel.checkOut}<br>
+            <b>Cost:</b> ${hotel.cost}<br>
+            <b>Cancellation Policy (Local Time):</b> <span style="color:#B91C1C; font-weight:700;">Free cancellation until ${hotel.cancelLocal}</span><br>
+            <b>HK Time Equivalent:</b> <span style="color:#8C6D58;">${hotel.cancelHK}</span>
+          </div>
         `;
         container.appendChild(card);
       });
@@ -939,7 +945,7 @@
       ['tours', 'carryon', 'checkin'].forEach(type => saveData(type, items[type]));
     }, 30000);
 
-    console.log('✈️ South America Expedition app loaded. Tabs reordered, itinerary editable removed, flights fixed.');
+    console.log('✈️ South America Expedition app loaded. Check-in/out added to hotels, requested opening hours added to itinerary.');
   </script>
 </body>
 </html>
