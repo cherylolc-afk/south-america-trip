@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -33,8 +32,6 @@
       outline: none;
       transition: background-color 0.2s ease, box-shadow 0.2s ease;
       border-radius: 4px;
-      user-select: text;
-      -webkit-user-select: text;
     }
     [contenteditable="true"]:hover {
       background-color: rgba(200, 178, 155, 0.15);
@@ -42,35 +39,6 @@
     [contenteditable="true"]:focus {
       background-color: rgba(200, 178, 155, 0.25);
       box-shadow: 0 0 0 2px var(--terracotta-primary);
-    }
-
-    /* FIX: Make links clickable inside contenteditable */
-    [contenteditable="true"] a,
-    [contenteditable="true"] .map-btn {
-      pointer-events: auto !important;
-      touch-action: manipulation !important;
-      cursor: pointer !important;
-      position: relative;
-      z-index: 5;
-      -webkit-tap-highlight-color: rgba(140, 109, 88, 0.3);
-    }
-
-    [contenteditable="true"] a:hover,
-    [contenteditable="true"] .map-btn:hover {
-      text-decoration: underline !important;
-    }
-
-    /* Prevent text selection from blocking clicks */
-    [contenteditable="true"] {
-      -webkit-touch-callout: none;
-    }
-
-    /* Better touch handling for editable areas */
-    @media (hover: none) {
-      [contenteditable="true"] {
-        -webkit-user-select: text;
-        user-select: text;
-      }
     }
 
     /* HEADER */
@@ -124,7 +92,6 @@
       font-weight: 500;
       cursor: pointer;
       user-select: none;
-      touch-action: manipulation;
     }
     .date-chip.active {
       background: var(--terracotta-primary);
@@ -159,7 +126,6 @@
       gap: 2px;
       width: 20%;
       cursor: pointer;
-      touch-action: manipulation;
     }
     .tab-btn.active { color: var(--terracotta-primary); font-weight: 700; }
 
@@ -232,12 +198,7 @@
     }
     .time-title { font-size: 0.78rem; font-weight: 700; color: var(--terracotta-primary); text-transform: uppercase; margin-bottom: 2px; }
     .time-desc { font-size: 0.85rem; color: var(--warm-dark); line-height: 1.5; }
-    .time-desc a { 
-      color: var(--terracotta-primary); 
-      word-break: break-all;
-      pointer-events: auto !important;
-      touch-action: manipulation !important;
-    }
+    .time-desc a { color: var(--terracotta-primary); word-break: break-all; }
     .time-desc a:hover { text-decoration: underline; }
 
     .map-btn {
@@ -253,13 +214,7 @@
       margin-left: 4px;
       font-weight: 500;
       border: 1px solid var(--beige-border);
-      pointer-events: auto !important;
-      touch-action: manipulation !important;
-      cursor: pointer !important;
-      position: relative;
-      z-index: 5;
     }
-    .map-btn:hover { text-decoration: underline; }
 
     .day-map-iframe {
       width: 100%;
@@ -288,12 +243,12 @@
       transition: border-color 0.2s;
     }
     .weather-card:hover { border-color: var(--terracotta-primary); }
-    .weather-left { display: flex; align-items: center; gap: 12px; flex: 1; }
-    .weather-icon { font-size: 1.8rem; flex-shrink: 0; }
+    .weather-left { display: flex; align-items: center; gap: 12px; }
+    .weather-icon { font-size: 1.8rem; }
     .weather-date { font-size: 0.75rem; color: var(--warm-muted); font-weight: 500; }
     .weather-city { font-weight: 700; font-size: 0.88rem; color: var(--warm-dark); }
     .weather-desc { font-size: 0.75rem; color: var(--warm-muted); }
-    .weather-temp-box { text-align: right; flex-shrink: 0; }
+    .weather-temp-box { text-align: right; }
     .weather-max { font-size: 1.05rem; font-weight: 700; color: var(--terracotta-primary); }
     .weather-min { font-size: 0.75rem; color: var(--warm-muted); }
 
@@ -306,25 +261,9 @@
       padding: 8px 0;
       border-bottom: 1px dashed var(--beige-border);
       font-size: 0.83rem;
-      gap: 8px;
     }
     .check-left { display: flex; align-items: center; gap: 8px; flex: 1; }
-    .check-left input[type="checkbox"] {
-      flex-shrink: 0;
-      width: 16px;
-      height: 16px;
-      cursor: pointer;
-    }
-    .check-item-text {
-      word-break: break-word;
-      flex: 1;
-    }
-    .qty-controls { 
-      display: flex; 
-      align-items: center; 
-      gap: 5px;
-      flex-shrink: 0;
-    }
+    .qty-controls { display: flex; align-items: center; gap: 5px; }
     .qty-btn {
       border: 1px solid var(--beige-border);
       background: var(--beige-bg);
@@ -332,17 +271,10 @@
       height: 22px;
       border-radius: 4px;
       cursor: pointer;
-      touch-action: manipulation;
-      font-weight: 700;
-      display: flex;
-      align-items: center;
-      justify-content: center;
     }
-    .qty-btn:hover { background: var(--beige-accent); }
-    .add-form { display: flex; gap: 8px; margin-top: 10px; flex-wrap: wrap; }
+    .add-form { display: flex; gap: 8px; margin-top: 10px; }
     .add-input {
       flex: 1;
-      min-width: 150px;
       padding: 6px 10px;
       border: 1px solid var(--beige-border);
       border-radius: 8px;
@@ -358,10 +290,7 @@
       font-size: 0.8rem;
       cursor: pointer;
       font-weight: 500;
-      touch-action: manipulation;
-      white-space: nowrap;
     }
-    .btn-action:hover { opacity: 0.9; }
 
     .item-card {
       background: var(--beige-bg);
@@ -383,13 +312,6 @@
       border-bottom: 1px dashed rgba(230, 220, 211, 0.7);
     }
     .flight-option:last-child { border-bottom: none; }
-    .flight-option a {
-      color: var(--terracotta-primary);
-      text-decoration: none;
-      pointer-events: auto !important;
-      touch-action: manipulation !important;
-    }
-    .flight-option a:hover { text-decoration: underline; }
     .pref-tag {
       background: var(--terracotta-primary);
       color: var(--white);
@@ -416,29 +338,6 @@
       color: var(--warm-dark);
       margin-bottom: 6px;
     }
-    .tip-item a {
-      color: var(--terracotta-primary);
-      pointer-events: auto !important;
-      touch-action: manipulation !important;
-    }
-    .tip-item a:hover { text-decoration: underline; }
-
-    /* Responsive fixes */
-    @media (max-width: 480px) {
-      .weather-left { gap: 8px; }
-      .weather-icon { font-size: 1.4rem; }
-      .weather-city { font-size: 0.78rem; }
-      .weather-max { font-size: 0.95rem; }
-      .weather-date { font-size: 0.65rem; }
-      .weather-desc { font-size: 0.65rem; }
-      .day-card { padding: 12px; }
-      .time-desc { font-size: 0.78rem; }
-      .overview-table { font-size: 0.7rem; }
-      .overview-table th, .overview-table td { padding: 5px 6px; }
-      .check-item { font-size: 0.75rem; flex-wrap: wrap; }
-      .check-left { min-width: 60%; }
-      .qty-controls { margin-left: auto; }
-    }
   </style>
 </head>
 <body>
@@ -449,54 +348,536 @@
   </header>
 
   <nav class="tab-nav">
-    <button class="tab-btn active" onclick="switchTab('todo')">
-      <span>☑️</span>
-      <span>To-Do List</span>
+    <button class="tab-btn active" onclick="switchTab('itinerary')">
+      <span>📅</span>
+      <span>Itinerary</span>
     </button>
     <button class="tab-btn" onclick="switchTab('weather')">
       <span>🌤️</span>
       <span>Weather</span>
     </button>
-    <button class="tab-btn" onclick="switchTab('itinerary')">
-      <span>📅</span>
-      <span>Itinerary</span>
+    <button class="tab-btn" onclick="switchTab('hotels')">
+      <span>🏨</span>
+      <span>Hotels & Tips</span>
     </button>
     <button class="tab-btn" onclick="switchTab('flights')">
       <span>✈️</span>
       <span>Flights</span>
     </button>
-    <button class="tab-btn" onclick="switchTab('hotels')">
-      <span>🏨</span>
-      <span>Hotels & Tips</span>
+    <button class="tab-btn" onclick="switchTab('todo')">
+      <span>☑️</span>
+      <span>To-Do List</span>
     </button>
   </nav>
 
-  <main id="todo" class="tab-content active">
+  <main id="itinerary" class="tab-content active">
     <div class="guide-section">
-      <div class="guide-title" contenteditable="true" id="todo-title-1">🎟️ Bookings Checklist</div>
-      <ul class="checklist" id="tours-list"></ul>
-      <div class="add-form">
-        <input type="text" id="tours-input" class="add-input" placeholder="Add booking item...">
-        <button class="btn-action" onclick="addItem('tours')">Add</button>
+      <div class="guide-title" contenteditable="true" id="itinerary-title">📍 Master Overview & Quick Summary</div>
+      <table class="overview-table">
+        <thead>
+          <tr>
+            <th>Date / DoW</th>
+            <th>Location</th>
+            <th>Key Highlights & Activities</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><b>Oct 2</b> (Fri)</td>
+            <td>Santiago</td>
+            <td>Long-haul arrival, hotel check-in / rest</td>
+          </tr>
+          <tr>
+            <td><b>Oct 3</b> (Sat)</td>
+            <td>Santiago</td>
+            <td>Barrio Lastarria, Santa Lucía, Bellavista night</td>
+          </tr>
+          <tr>
+            <td><b>Oct 4</b> (Sun)</td>
+            <td>Atacama</td>
+            <td>Flight to Calama, Death Valley, Moon Valley sunset</td>
+          </tr>
+          <tr>
+            <td><b>Oct 5</b> (Mon)</td>
+            <td>Atacama</td>
+            <td>Baltinache salt pools, Cejar floating, Laguna Chaxa</td>
+          </tr>
+          <tr>
+            <td><b>Oct 6</b> (Tue)</td>
+            <td>Atacama</td>
+            <td>Miscanti & Miñiques Lagoons, Piedras Rojas</td>
+          </tr>
+          <tr>
+            <td><b>Oct 7</b> (Wed)</td>
+            <td>Transit / Santiago</td>
+            <td>El Tatio Geysers sunrise, fly back to Santiago</td>
+          </tr>
+          <tr>
+            <td><b>Oct 8</b> (Thu)</td>
+            <td>Buenos Aires</td>
+            <td>Fly to BA, Recoleta neighborhood stroll</td>
+          </tr>
+          <tr>
+            <td><b>Oct 9</b> (Fri)</td>
+            <td>Ushuaia</td>
+            <td>Fly to Ushuaia, Beagle Channel waterfront</td>
+          </tr>
+          <tr>
+            <td><b>Oct 10</b> (Sat)</td>
+            <td>Ushuaia</td>
+            <td>Tierra del Fuego National Park, Isla Martillo Penguins</td>
+          </tr>
+          <tr>
+            <td><b>Oct 11</b> (Sun)</td>
+            <td>El Calafate</td>
+            <td>Fly to El Calafate, Glaciarium Ice Museum</td>
+          </tr>
+          <tr>
+            <td><b>Oct 12</b> (Mon)</td>
+            <td>El Calafate</td>
+            <td>Full-day Perito Moreno Glacier mini-trekking</td>
+          </tr>
+          <tr>
+            <td><b>Oct 13</b> (Tue)</td>
+            <td>Buenos Aires</td>
+            <td>Fly to BA, Recoleta Cemetery, Teatro Colón, Tango Show</td>
+          </tr>
+          <tr>
+            <td><b>Oct 14</b> (Wed)</td>
+            <td>Uruguay Day Trip</td>
+            <td>Day ferry to Colonia del Sacramento, historic tour</td>
+          </tr>
+          <tr>
+            <td><b>Oct 15</b> (Thu)</td>
+            <td>Buenos Aires</td>
+            <td>La Boca Caminito, San Telmo, Plaza de Mayo, Café Tortoni</td>
+          </tr>
+          <tr>
+            <td><b>Oct 16</b> (Fri)</td>
+            <td>Departure</td>
+            <td>Final city sights, souvenir shopping, departure flight</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="date-bar-wrapper">
+      <div class="date-bar" id="date-bar">
+        <button class="date-chip active" onclick="showDay('day-oct2')">Oct 2</button>
+        <button class="date-chip" onclick="showDay('day-oct3')">Oct 3</button>
+        <button class="date-chip" onclick="showDay('day-oct4')">Oct 4</button>
+        <button class="date-chip" onclick="showDay('day-oct5')">Oct 5</button>
+        <button class="date-chip" onclick="showDay('day-oct6')">Oct 6</button>
+        <button class="date-chip" onclick="showDay('day-oct7')">Oct 7</button>
+        <button class="date-chip" onclick="showDay('day-oct8')">Oct 8</button>
+        <button class="date-chip" onclick="showDay('day-oct9')">Oct 9</button>
+        <button class="date-chip" onclick="showDay('day-oct10')">Oct 10</button>
+        <button class="date-chip" onclick="showDay('day-oct11')">Oct 11</button>
+        <button class="date-chip" onclick="showDay('day-oct12')">Oct 12</button>
+        <button class="date-chip" onclick="showDay('day-oct13')">Oct 13</button>
+        <button class="date-chip" onclick="showDay('day-oct14')">Oct 14</button>
+        <button class="date-chip" onclick="showDay('day-oct15')">Oct 15</button>
+        <button class="date-chip" onclick="showDay('day-oct16')">Oct 16</button>
       </div>
     </div>
 
-    <div class="guide-section">
-      <div class="guide-title" contenteditable="true" id="todo-title-2">🎒 Carry-On Packing List</div>
-      <ul class="checklist" id="carryon-list"></ul>
-      <div class="add-form">
-        <input type="text" id="carryon-input" class="add-input" placeholder="Add carry-on item...">
-        <button class="btn-action" onclick="addItem('carryon')">Add</button>
+    <div style="height: 14px;"></div>
+
+    <div id="day-oct2" class="day-card active">
+      <div class="day-header">
+        <span class="day-date">Oct 2 (Friday)</span>
+        <span class="day-dest">Santiago, Chile</span>
       </div>
+      <div class="time-block">
+        <div class="time-title">All Day / Flight Options</div>
+        <div class="time-desc">
+          <span>Arrival in Santiago (Long-haul transit). Stay in Santiago if early arrival.</span>
+          <a class="map-btn" href="https://maps.google.com/?q=Santiago,+Chile" target="_blank">📍 Santiago Map</a>
+        </div>
+      </div>
+      <iframe class="day-map-iframe" src="https://maps.google.com/maps?q=Santiago,+Chile&output=embed"></iframe>
     </div>
 
-    <div class="guide-section">
-      <div class="guide-title" contenteditable="true" id="todo-title-3">🧳 Checked Bag Packing List</div>
-      <ul class="checklist" id="checkin-list"></ul>
-      <div class="add-form">
-        <input type="text" id="checkin-input" class="add-input" placeholder="Add checked item...">
-        <button class="btn-action" onclick="addItem('checkin')">Add</button>
+    <div id="day-oct3" class="day-card">
+      <div class="day-header">
+        <span class="day-date">Oct 3 (Saturday)</span>
+        <span class="day-dest">Santiago, Chile</span>
       </div>
+      <div class="time-block">
+        <div class="time-title">Morning</div>
+        <div class="time-desc">
+          <span>Arrive in Santiago and check in to Novotel Santiago Providencia.</span>
+          <a class="map-btn" href="https://maps.google.com/?q=Novotel+Santiago+Providencia" target="_blank">📍 Hotel Map</a>
+        </div>
+      </div>
+      <div class="time-block">
+        <div class="time-title">Afternoon</div>
+        <div class="time-desc">
+          <span>Stroll through the cobblestone streets of Barrio Lastarria for lunch, street markets, and outdoor cafés. Optional visit to Santa Lucía Hill, La Moneda Palace, or Plaza de Armas.</span>
+          <a class="map-btn" href="https://maps.google.com/?q=Barrio+Lastarria,+Santiago" target="_blank">📍 Lastarria Map</a>
+        </div>
+      </div>
+      <div class="time-block">
+        <div class="time-title">Evening</div>
+        <div class="time-desc">
+          <span>Walk across the river to Bellavista (Calle Constitución & Patio Bellavista). Optional San Cristóbal Hill funicular.</span>
+          <a class="map-btn" href="https://maps.google.com/?q=Patio+Bellavista,+Santiago" target="_blank">📍 Bellavista Map</a>
+        </div>
+      </div>
+      <iframe class="day-map-iframe" src="https://maps.google.com/maps?q=Barrio+Lastarria,+Santiago&output=embed"></iframe>
+    </div>
+
+    <div id="day-oct4" class="day-card">
+      <div class="day-header">
+        <span class="day-date">Oct 4 (Sunday)</span>
+        <span class="day-dest">San Pedro de Atacama</span>
+      </div>
+      <div class="time-block">
+        <div class="time-title">Morning</div>
+        <div class="time-desc">
+          <span>Fly SCL → CJC on LA146 (08:23–10:35) [Preferred]. Pick up rental car at Calama Airport and drive 1.5h to San Pedro. Check in at Nueva Lodge La Estacion.</span>
+          <a class="map-btn" href="https://maps.google.com/?q=El+Loa+Airport+Calama" target="_blank">📍 Airport Map</a>
+        </div>
+      </div>
+      <div class="time-block">
+        <div class="time-title">Afternoon</div>
+        <div class="time-desc">
+          <span>Drive 10 mins to Valley of Death (Valle de la Muerte / Marte) to see red dunes & rock formations. Tickets are bought directly in person at the entry kiosk/booth at the access gate. Cost: 6,000CLP. Optional visit to Magic bus or Pukará de Quitor.</span>
+          <a class="map-btn" href="https://maps.google.com/?q=Valle+de+la+Muerte,+San+Pedro+de+Atacama" target="_blank">📍 Death Valley Map</a>
+        </div>
+      </div>
+      <div class="time-block">
+        <div class="time-title">Evening</div>
+        <div class="time-desc">
+          <span>Watch sunset at Valle de la Luna (Duna Mayor & Mirador de Kari). Cost: 10,800CLP. <strong>Reserve online via <a href="https://valledelaluna.com" target="_blank">valledelaluna.com</a></strong></span>
+          <a class="map-btn" href="https://maps.google.com/?q=Valle+de+la+Luna,+San+Pedro+de+Atacama" target="_blank">📍 Moon Valley Map</a>
+        </div>
+      </div>
+      <iframe class="day-map-iframe" src="https://maps.google.com/maps?q=Valle+de+la+Luna,+San+Pedro+de+Atacama&output=embed"></iframe>
+    </div>
+
+    <div id="day-oct5" class="day-card">
+      <div class="day-header">
+        <span class="day-date">Oct 5 (Monday)</span>
+        <span class="day-dest">San Pedro de Atacama</span>
+      </div>
+      <div class="time-block">
+        <div class="time-title">Morning</div>
+        <div class="time-desc">
+          <span>Drive to <strong>Lagunas Escondidas de Baltinache</strong> (turquoise salt pools).  Cost: 12,000CLP. <strong>Ticket:</strong> Buy your ticket directly at the control booth / visitor hut at the entrance gate before accessing the site.</span>
+          <a class="map-btn" href="https://maps.google.com/?q=Lagunas+Escondidas+de+Baltinache" target="_blank">📍 Baltinache Map</a>
+        </div>
+      </div>
+      <div class="time-block">
+        <div class="time-title">Afternoon</div>
+        <div class="time-desc">
+          <span><strong>Laguna Cejar y Piedra:</strong> Swim/float in warm afternoon light. Cost: 15,000CLP. <strong>Tickets:</strong> <a href="https://lagunacejar.com/en/buy-tickets/?event=laguna-cejar-y-piedra" target="_blank">Reserve online here</a>.<br>
+          <strong>Laguna Chaxa:</strong> Drive south through Toconao to see flamingos at dusk.  Cost: 13,714CLP. <strong>Tickets:</strong> <a href="https://www.ckapintickets.com/lagunayvalle.php" target="_blank">Reserve online here</a>.</span>
+          <a class="map-btn" href="https://maps.google.com/?q=Laguna+Chaxa" target="_blank">📍 Chaxa Map</a>
+        </div>
+      </div>
+      <div class="time-block">
+        <div class="time-title">Evening Stargazing Tour</div>
+        <div class="time-desc">
+          <span><strong>Stargazing tour booked via <a href="https://gyg.me/KxWQmjrh" target="_blank">GetYourGuide</a>!</strong><br>
+          Pick up: 7:00 PM at Licancabur 10. Duration: 2.5 hours. Cost: HKD 261 per person.<br>
+          Free cancellation until Oct 4, 19:00.</span>
+        </div>
+      </div>
+      <div class="time-block">
+        <div class="time-title">Reminder</div>
+        <div class="time-desc">
+          <span><strong>Log onto <a href="https://socairechile.cl/shop/" target="_blank">socairechile.cl/shop/</a> on October 5 at 6:30 PM local time to purchase your tickets for the next day to Piedras Rojas. Cost: 13,000CLP.</strong></span>
+        </div>
+      </div>
+      <iframe class="day-map-iframe" src="https://maps.google.com/maps?q=Lagunas+Escondidas+de+Baltinache&output=embed"></iframe>
+    </div>
+
+    <div id="day-oct6" class="day-card">
+      <div class="day-header">
+        <span class="day-date">Oct 6 (Tuesday)</span>
+        <span class="day-dest">San Pedro de Atacama</span>
+      </div>
+      <div class="time-block">
+        <div class="time-title">Morning</div>
+        <div class="time-desc">
+          <span>High-altitude day (~4,200m) visiting Miscanti & Miñiques Lagoons. Hydrate well.</span>
+          <a class="map-btn" href="https://maps.google.com/?q=Laguna+Miscanti" target="_blank">📍 Lagoons Map</a>
+        </div>
+      </div>
+      <div class="time-block">
+        <div class="time-title">Afternoon</div>
+        <div class="time-desc">
+          <span>Continue south to <strong>Piedras Rojas</strong> (Aguas Calientes Salt Flat) across Salar de Talar. <strong>Ticket for Tebinquinche Lagoon:</strong> Paid directly at the entrance booth. Cost: 6,000CLP. Stop at Socaire village and Laguna Tebinquiche on return.</span>
+          <a class="map-btn" href="https://maps.google.com/maps?q=Socaire+Community+Office" target="_blank">📍 Socaire Community Office Map</a>
+        </div>
+      </div>
+      <div class="time-block">
+        <div class="time-title">Reminder</div>
+        <div class="time-desc">
+          <span><strong>Check in at the <a href="https://maps.google.com/maps?q=Socaire+Community+Office" target="_blank">Socaire Community Office</a> in the small town of Socaire (located along Highway 23, about 1 hour south of San Pedro de Atacama en route to the sites), before visiting Piedras Rojas.</strong></span>
+        </div>
+      </div>
+      <div class="time-block">
+        <div class="time-title">Evening</div>
+        <div class="time-desc"><span>Prep warm thermals, gloves, and hats for tomorrow's early geysers excursion.</span></div>
+      </div>
+      <iframe class="day-map-iframe" src="https://maps.google.com/maps?q=Piedras+Rojas+Atacama&output=embed"></iframe>
+    </div>
+
+    <div id="day-oct7" class="day-card">
+      <div class="day-header">
+        <span class="day-date">Oct 7 (Wednesday)</span>
+        <span class="day-dest">Transit / Santiago</span>
+      </div>
+      <div class="time-block">
+        <div class="time-title">Morning</div>
+        <div class="time-desc">
+          <span>04:30 AM drive to El Tatio Geysers for sunrise. Stop at Machuca Village on return drive.</span>
+          <a class="map-btn" href="https://maps.google.com/?q=El+Tatio+Geysers" target="_blank">📍 Geysers Map</a>
+        </div>
+      </div>
+      <div class="time-block">
+        <div class="time-title">Afternoon</div>
+        <div class="time-desc">
+          <span>Leave El Tatio ~08:30–09:00 AM back to San Pedro. Return rental car at CJC airport and fly CJC → SCL.</span>
+          <a class="map-btn" href="https://maps.google.com/?q=El+Loa+Airport+Calama" target="_blank">📍 Airport Map</a>
+        </div>
+      </div>
+      <div class="time-block">
+        <div class="time-title">Consider This Tour</div>
+        <div class="time-desc">
+          <span><strong><a href="https://www.viator.com/en-HK/search/422580P3?mcid=70066" target="_blank">Half Day Tour to Geysers del Tatio</a></strong><br>
+          Start time: 04:30 AM. Duration: 6-7 hours. Cost: HKD 392 per person.</span>
+        </div>
+      </div>
+      <div class="time-block">
+        <div class="time-title">Evening</div>
+        <div class="time-desc"><span>Rest in Santiago before tomorrow's Argentina flight.</span></div>
+      </div>
+      <iframe class="day-map-iframe" src="https://maps.google.com/maps?q=El+Tatio+Geysers&output=embed"></iframe>
+    </div>
+
+    <div id="day-oct8" class="day-card">
+      <div class="day-header">
+        <span class="day-date">Oct 8 (Thursday)</span>
+        <span class="day-dest">Buenos Aires, Argentina</span>
+      </div>
+      <div class="time-block">
+        <div class="time-title">Morning</div>
+        <div class="time-desc"><span>Fly from Santiago to Buenos Aires (EZE or AEP).</span></div>
+      </div>
+      <div class="time-block">
+        <div class="time-title">Afternoon</div>
+        <div class="time-desc">
+          <span>Check in at Up Recoleta Hotel; stroll around Recoleta neighborhood and parks.</span>
+          <a class="map-btn" href="https://maps.google.com/?q=Up+Recoleta+Hotel+Buenos+Aires" target="_blank">📍 Recoleta Map</a>
+        </div>
+      </div>
+      <div class="time-block">
+        <div class="time-title">Evening</div>
+        <div class="time-desc"><span>Dinner at an Argentine steakhouse (Parrilla).</span></div>
+      </div>
+      <iframe class="day-map-iframe" src="https://maps.google.com/maps?q=Recoleta+Buenos+Aires&output=embed"></iframe>
+    </div>
+
+    <div id="day-oct9" class="day-card">
+      <div class="day-header">
+        <span class="day-date">Oct 9 (Friday)</span>
+        <span class="day-dest">Ushuaia, Argentina</span>
+      </div>
+      <div class="time-block">
+        <div class="time-title">Morning</div>
+        <div class="time-desc"><span>Fly from Buenos Aires (AEP/EZE) down to Ushuaia. Check in at Alto Andino Hotel.</span></div>
+      </div>
+      <div class="time-block">
+        <div class="time-title">Afternoon</div>
+        <div class="time-desc">
+          <span>Walk along the Beagle Channel waterfront and explore town.</span>
+          <a class="map-btn" href="https://maps.google.com/?q=Beagle+Channel+Ushuaia" target="_blank">📍 Waterfront Map</a>
+        </div>
+      </div>
+      <div class="time-block">
+        <div class="time-title">Evening</div>
+        <div class="time-desc"><span>Try local King Crab (Centolla) for dinner.</span></div>
+      </div>
+      <iframe class="day-map-iframe" src="https://maps.google.com/maps?q=Ushuaia+Argentina&output=embed"></iframe>
+    </div>
+
+    <div id="day-oct10" class="day-card">
+      <div class="day-header">
+        <span class="day-date">Oct 10 (Saturday)</span>
+        <span class="day-dest">Ushuaia, Argentina</span>
+      </div>
+      <div class="time-block">
+        <div class="time-title">Morning</div>
+        <div class="time-desc">
+          <span>Tierra del Fuego National Park excursion via transfer shuttle (remis) or bus.</span>
+          <a class="map-btn" href="https://maps.google.com/?q=Tierra+del+Fuego+National+Park" target="_blank">📍 Park Map</a>
+        </div>
+      </div>
+      <div class="time-block">
+        <div class="time-title">Afternoon</div>
+        <div class="time-desc">
+          <span><strong>Primary:</strong> Excursion/boat tour to Isla Martillo with Piratour to walk among penguins.</span>
+          <a class="map-btn" href="https://maps.google.com/?q=Isla+Martillo+Ushuaia" target="_blank">📍 Isla Martillo Map</a>
+        </div>
+      </div>
+      <div class="time-block">
+        <div class="time-title">Backup Tour Booked (if Piratour full)</div>
+        <div class="time-desc">
+          <span><strong><a href="https://gyg.me/tiu1sWc6" target="_blank">Ushuaia: Beagle Channel and Penguin Island</a></strong><br>
+          Tour starts at 3:00 PM. Cost: HKD 1,215 per person (payable on Oct 8).<br>
+          Free cancellation until Oct 9, 15:00.</span>
+        </div>
+      </div>
+      <div class="time-block">
+        <div class="time-title">Evening</div>
+        <div class="time-desc"><span>Relax in Ushuaia town center.</span></div>
+      </div>
+      <iframe class="day-map-iframe" src="https://maps.google.com/maps?q=Tierra+del+Fuego+National+Park&output=embed"></iframe>
+    </div>
+
+    <div id="day-oct11" class="day-card">
+      <div class="day-header">
+        <span class="day-date">Oct 11 (Sunday)</span>
+        <span class="day-dest">El Calafate, Argentina</span>
+      </div>
+      <div class="time-block">
+        <div class="time-title">Morning</div>
+        <div class="time-desc"><span>Fly from Ushuaia to El Calafate. Check in at Destino Calafate.</span></div>
+      </div>
+      <div class="time-block">
+        <div class="time-title">Afternoon</div>
+        <div class="time-desc">
+          <span>Visit Glaciarium Ice Museum. Tickets can be purchased directly at the ticket window upon arrival.</span>
+          <a class="map-btn" href="https://maps.google.com/?q=Glaciarium+El+Calafate" target="_blank">📍 Glaciarium Map</a>
+        </div>
+      </div>
+      <div class="time-block">
+        <div class="time-title">Evening</div>
+        <div class="time-desc"><span>Dinner in town along Av. del Libertador.</span></div>
+      </div>
+      <iframe class="day-map-iframe" src="https://maps.google.com/maps?q=El+Calafate+Argentina&output=embed"></iframe>
+    </div>
+
+    <div id="day-oct12" class="day-card">
+      <div class="day-header">
+        <span class="day-date">Oct 12 (Monday)</span>
+        <span class="day-dest">El Calafate, Argentina</span>
+      </div>
+      <div class="time-block">
+        <div class="time-title">Consider this Full Day Tour</div>
+        <div class="time-desc">
+          <span><strong><a href="https://www.getyourguide.com/el-calafate-l544/el-calafate-perito-moreno-glacier-mini-hiking-experience-t233632/?utm_medium=sharing&utm_campaign=activity_details_ios" target="_blank">Perito Moreno Glacier Trekking Tour and Cruise</a></strong><br>
+          Pick up: 8:00 AM at hotel. Duration: 11 hours. Cost: HKD 3,128 per person.<br>
+          Cancel up to 24 hours in advance for a full refund.</span>
+          <a class="map-btn" href="https://maps.google.com/?q=Perito+Moreno+Glacier" target="_blank">📍 Glacier Map</a>
+        </div>
+      </div>
+      <div class="time-block">
+        <div class="time-title">Evening</div>
+        <div class="time-desc"><span>Farewell Patagonia dinner in El Calafate.</span></div>
+      </div>
+      <iframe class="day-map-iframe" src="https://maps.google.com/maps?q=Perito+Moreno+Glacier&output=embed"></iframe>
+    </div>
+
+    <div id="day-oct13" class="day-card">
+      <div class="day-header">
+        <span class="day-date">Oct 13 (Tuesday)</span>
+        <span class="day-dest">Buenos Aires, Argentina</span>
+      </div>
+      <div class="time-block">
+        <div class="time-title">Morning</div>
+        <div class="time-desc"><span>Fly from El Calafate to Buenos Aires. Check in at NH Collection Buenos Aires Crillon.</span></div>
+      </div>
+      <div class="time-block">
+        <div class="time-title">Late Morning</div>
+        <div class="time-desc">
+          <span>Visit Recoleta Cemetery and stroll down Avenida Santa Fe to browse El Ateneo Grand Splendid.</span>
+          <a class="map-btn" href="https://maps.google.com/?q=Recoleta+Cemetery" target="_blank">📍 Recoleta Cemetery Map</a>
+        </div>
+      </div>
+      <div class="time-block">
+        <div class="time-title">Afternoon</div>
+        <div class="time-desc">
+          <span>Take a guided tour at Teatro Colón, then head north to explore Palermo Soho for boutique shopping and cafés.</span>
+          <a class="map-btn" href="https://maps.google.com/?q=Teatro+Colon+Buenos+Aires" target="_blank">📍 Teatro Colón Map</a>
+        </div>
+      </div>
+      <div class="time-block">
+        <div class="time-title">Evening</div>
+        <div class="time-desc"><span>Attend a live Tango Show with dinner (Gala Tango / El Querandí).</span></div>
+      </div>
+      <iframe class="day-map-iframe" src="https://maps.google.com/maps?q=Recoleta+Cemetery+Buenos+Aires&output=embed"></iframe>
+    </div>
+
+    <div id="day-oct14" class="day-card">
+      <div class="day-header">
+        <span class="day-date">Oct 14 (Wednesday)</span>
+        <span class="day-dest">Buenos Aires / Uruguay</span>
+      </div>
+      <div class="time-block">
+        <div class="time-title">Morning</div>
+        <div class="time-desc">
+          <span>Take morning ferry across Rio de la Plata to Colonia del Sacramento, Uruguay. <strong>Book via <a href="https://www.buquebus.com/int" target="_blank">Buquebus</a></strong> (return trip cost: USD 94.87 per person).</span>
+          <a class="map-btn" href="https://maps.google.com/?q=Puerto+Madero+Ferry+Terminal" target="_blank">📍 Terminal Map</a>
+        </div>
+      </div>
+      <div class="time-block">
+        <div class="time-title">Afternoon</div>
+        <div class="time-desc">
+          <span>Explore historic cobble streets and lighthouse in Colonia del Sacramento.</span>
+          <a class="map-btn" href="https://maps.google.com/?q=Colonia+del+Sacramento+Uruguay" target="_blank">📍 Colonia Map</a>
+        </div>
+      </div>
+      <div class="time-block">
+        <div class="time-title">Evening</div>
+        <div class="time-desc"><span>Ferry back to Buenos Aires for dinner.</span></div>
+      </div>
+      <iframe class="day-map-iframe" src="https://maps.google.com/maps?q=Colonia+del+Sacramento+Uruguay&output=embed"></iframe>
+    </div>
+
+    <div id="day-oct15" class="day-card">
+      <div class="day-header">
+        <span class="day-date">Oct 15 (Thursday)</span>
+        <span class="day-dest">Buenos Aires, Argentina</span>
+      </div>
+      <div class="time-block">
+        <div class="time-title">Morning</div>
+        <div class="time-desc">
+          <span>Head south via Uber to Caminito in La Boca for colorful tin houses and street tango performers.</span>
+          <a class="map-btn" href="https://maps.google.com/?q=Caminito+La+Boca" target="_blank">📍 Caminito Map</a>
+        </div>
+      </div>
+      <div class="time-block">
+        <div class="time-title">Midday & Afternoon</div>
+        <div class="time-desc">
+          <span>Explore antique stalls inside Mercado de San Telmo. Visit Plaza de Mayo to view Casa Rosada, then enjoy coffee and churros at Café Tortoni.</span>
+          <a class="map-btn" href="https://maps.google.com/?q=Cafe+Tortoni+Buenos+Aires" target="_blank">📍 Café Tortoni Map</a>
+        </div>
+      </div>
+      <div class="time-block">
+        <div class="time-title">Evening</div>
+        <div class="time-desc"><span>Final evening celebration dinner in Buenos Aires.</span></div>
+      </div>
+      <iframe class="day-map-iframe" src="https://maps.google.com/maps?q=Mercado+de+San+Telmo&output=embed"></iframe>
+    </div>
+
+    <div id="day-oct16" class="day-card">
+      <div class="day-header">
+        <span class="day-date">Oct 16 (Friday)</span>
+        <span class="day-dest">Departure</span>
+      </div>
+      <div class="time-block">
+        <div class="time-title">Morning</div>
+        <div class="time-desc"><span>Check out and final souvenirs/coffee.</span></div>
+      </div>
+      <div class="time-block">
+        <div class="time-title">Afternoon & Evening</div>
+        <div class="time-desc"><span>Transfer to EZE airport for departure long-haul flight home. In-flight.</span></div>
+      </div>
+      <iframe class="day-map-iframe" src="https://maps.google.com/maps?q=EZE+Airport+Buenos+Aires&output=embed"></iframe>
     </div>
   </main>
 
@@ -757,514 +1138,36 @@
     </a>
   </main>
 
-  <main id="itinerary" class="tab-content">
+  <main id="hotels" class="tab-content">
+    <div class="guide-section" id="hotels-section">
+      <div class="guide-title" contenteditable="true" id="hotels-title">🏨 Accommodations & Cancellation Rules</div>
+      <div id="hotels-container"></div>
+    </div>
+
     <div class="guide-section">
-      <div class="guide-title" contenteditable="true" id="itinerary-title">📍 Master Overview & Quick Summary</div>
-      <table class="overview-table">
-        <thead>
-          <tr>
-            <th contenteditable="true">Date / DoW</th>
-            <th contenteditable="true">Location</th>
-            <th contenteditable="true">Key Highlights & Activities</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td contenteditable="true"><b>Oct 2</b> (Fri)</td>
-            <td contenteditable="true">Santiago</td>
-            <td contenteditable="true">Long-haul arrival, hotel check-in / rest</td>
-          </tr>
-          <tr>
-            <td contenteditable="true"><b>Oct 3</b> (Sat)</td>
-            <td contenteditable="true">Santiago</td>
-            <td contenteditable="true">Barrio Lastarria, Santa Lucía, Bellavista night</td>
-          </tr>
-          <tr>
-            <td contenteditable="true"><b>Oct 4</b> (Sun)</td>
-            <td contenteditable="true">Atacama</td>
-            <td contenteditable="true">Flight to Calama, Death Valley, Moon Valley sunset</td>
-          </tr>
-          <tr>
-            <td contenteditable="true"><b>Oct 5</b> (Mon)</td>
-            <td contenteditable="true">Atacama</td>
-            <td contenteditable="true">Baltinache salt pools, Cejar floating, Laguna Chaxa</td>
-          </tr>
-          <tr>
-            <td contenteditable="true"><b>Oct 6</b> (Tue)</td>
-            <td contenteditable="true">Atacama</td>
-            <td contenteditable="true">Miscanti & Miñiques Lagoons, Piedras Rojas</td>
-          </tr>
-          <tr>
-            <td contenteditable="true"><b>Oct 7</b> (Wed)</td>
-            <td contenteditable="true">Transit / Santiago</td>
-            <td contenteditable="true">El Tatio Geysers sunrise, fly back to Santiago</td>
-          </tr>
-          <tr>
-            <td contenteditable="true"><b>Oct 8</b> (Thu)</td>
-            <td contenteditable="true">Buenos Aires</td>
-            <td contenteditable="true">Fly to BA, Recoleta neighborhood stroll</td>
-          </tr>
-          <tr>
-            <td contenteditable="true"><b>Oct 9</b> (Fri)</td>
-            <td contenteditable="true">Ushuaia</td>
-            <td contenteditable="true">Fly to Ushuaia, Beagle Channel waterfront</td>
-          </tr>
-          <tr>
-            <td contenteditable="true"><b>Oct 10</b> (Sat)</td>
-            <td contenteditable="true">Ushuaia</td>
-            <td contenteditable="true">Tierra del Fuego National Park, Isla Martillo Penguins</td>
-          </tr>
-          <tr>
-            <td contenteditable="true"><b>Oct 11</b> (Sun)</td>
-            <td contenteditable="true">El Calafate</td>
-            <td contenteditable="true">Fly to El Calafate, Glaciarium Ice Museum</td>
-          </tr>
-          <tr>
-            <td contenteditable="true"><b>Oct 12</b> (Mon)</td>
-            <td contenteditable="true">El Calafate</td>
-            <td contenteditable="true">Full-day Perito Moreno Glacier mini-trekking</td>
-          </tr>
-          <tr>
-            <td contenteditable="true"><b>Oct 13</b> (Tue)</td>
-            <td contenteditable="true">Buenos Aires</td>
-            <td contenteditable="true">Fly to BA, Recoleta Cemetery, Teatro Colón, Tango Show</td>
-          </tr>
-          <tr>
-            <td contenteditable="true"><b>Oct 14</b> (Wed)</td>
-            <td contenteditable="true">Uruguay Day Trip</td>
-            <td contenteditable="true">Day ferry to Colonia del Sacramento, historic tour</td>
-          </tr>
-          <tr>
-            <td contenteditable="true"><b>Oct 15</b> (Thu)</td>
-            <td contenteditable="true">Buenos Aires</td>
-            <td contenteditable="true">La Boca Caminito, San Telmo, Plaza de Mayo, Café Tortoni</td>
-          </tr>
-          <tr>
-            <td contenteditable="true"><b>Oct 16</b> (Fri)</td>
-            <td contenteditable="true">Departure</td>
-            <td contenteditable="true">Final city sights, souvenir shopping, departure flight</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+      <div class="guide-title" contenteditable="true" id="tips-title">💡 Essential Local Travel Notes & Tips</div>
+      
+      <div class="tip-category" contenteditable="true">🇨🇱 Chile</div>
+      <div class="tip-item" contenteditable="true">• <b>Cards:</b> Credit cards (Visa/Mastercard) are universally accepted in Santiago and most established businesses in San Pedro de Atacama (restaurants, hotels, petrol stations).</div>
+      <div class="tip-item" contenteditable="true">• <b>Cash Needs:</b> Keep around 20,000 to 40,000 CLP (~$20–$40 USD) in cash for small purchases, national park entry fees in Atacama (some remote checkpoints only accept cash CLP), and small tips.</div>
+      <div class="tip-item" contenteditable="true">• <b>Airport Transfers:</b> Use official counter taxis inside the terminal (e.g., <i>TransVIP</i> or <i>Taxi Oficial</i>) rather than accepting rides from unofficial touts in the arrival hall.</div>
+      <div class="tip-item" contenteditable="true">• <b>Rideshare:</b> Uber operates reliably across Santiago and is the safest, most convenient option for city transit.</div>
+      <div class="tip-item" contenteditable="true">• <b>Metro:</b> Santiago's Metro is modern, clean, and efficient. You will need a reloadable <b>Bip! card</b> to ride.</div>
+      <div class="tip-item" contenteditable="true">• <b>Chile Customs (SAG Form):</b> Chile has extremely strict agricultural biosecurity laws. Upon landing at SCL, you must declare <b>all</b> organic matter, fresh food, fruit, wooden items, or snacks via the online SAG (<i>Servicio Agrícola y Ganadero</i>) digital declaration form before reaching customs. Undeclared food leads to steep fines.</div>
 
-    <div class="date-bar-wrapper">
-      <div class="date-bar" id="date-bar">
-        <button class="date-chip active" onclick="showDay('day-oct2')">Oct 2</button>
-        <button class="date-chip" onclick="showDay('day-oct3')">Oct 3</button>
-        <button class="date-chip" onclick="showDay('day-oct4')">Oct 4</button>
-        <button class="date-chip" onclick="showDay('day-oct5')">Oct 5</button>
-        <button class="date-chip" onclick="showDay('day-oct6')">Oct 6</button>
-        <button class="date-chip" onclick="showDay('day-oct7')">Oct 7</button>
-        <button class="date-chip" onclick="showDay('day-oct8')">Oct 8</button>
-        <button class="date-chip" onclick="showDay('day-oct9')">Oct 9</button>
-        <button class="date-chip" onclick="showDay('day-oct10')">Oct 10</button>
-        <button class="date-chip" onclick="showDay('day-oct11')">Oct 11</button>
-        <button class="date-chip" onclick="showDay('day-oct12')">Oct 12</button>
-        <button class="date-chip" onclick="showDay('day-oct13')">Oct 13</button>
-        <button class="date-chip" onclick="showDay('day-oct14')">Oct 14</button>
-        <button class="date-chip" onclick="showDay('day-oct15')">Oct 15</button>
-        <button class="date-chip" onclick="showDay('day-oct16')">Oct 16</button>
-      </div>
-    </div>
+      <div class="tip-category" contenteditable="true">🇦🇷 Argentina</div>
+      <div class="tip-item" contenteditable="true">• <b>Cards & MEP Rates:</b> International credit cards receive the official <b>MEP exchange rate</b> (<i>Mercado Electrónico de Pagos</i>), which automatically gives you an exchange rate very close to the informal "Blue Dollar" rate without needing to carry stacks of physical currency.</div>
+      <div class="tip-item" contenteditable="true">• <b>Cash Needs:</b> While you can pay for hotels, restaurants, and tours with cards, cash is still useful for small tips, small café purchases, and street markets.</div>
+      <div class="tip-item" contenteditable="true">• <b>Getting Cash:</b> Avoid using international ATMs in Argentina, as foreign card withdrawal fees are high. If you need cash, send yourself funds via <b>Western Union</b> to pick up pesos locally at market rates, or bring crisp, unmarked $100 USD bills to exchange at official <i>cambios</i>.</div>
+      <div class="tip-item" contenteditable="true">• <b>Rideshare:</b> <b>Uber</b> and <b>Cabify</b> are widely used, extremely cheap, and much safer than hailing street taxis at night.</div>
+      <div class="tip-item" contenteditable="true">• <b>Public Transit:</b> The subway (<i>Subte</i>) and buses require a <b>SUBE card</b>, which can be purchased at subway stations or <i>kioscos</i> (corner shops) and topped up with pesos.</div>
+      <div class="tip-item" contenteditable="true">• <b>Airport Transfers:</b> From EZE or AEP, use pre-paid taxi booths inside the arrival terminal (e.g., <i>Taxi Ezeiza</i>) or book an Uber/Cabify directly from the designated pickup zone.</div>
 
-    <div style="height: 14px;"></div>
-
-    <div id="day-oct2" class="day-card active">
-      <div class="day-header">
-        <span class="day-date" contenteditable="true">Oct 2 (Friday)</span>
-        <span class="day-dest" contenteditable="true">Santiago, Chile</span>
-      </div>
-      <div class="time-block">
-        <div class="time-title" contenteditable="true">All Day / Flight Options</div>
-        <div class="time-desc">
-          <span contenteditable="true">Arrival in Santiago (Long-haul transit). Stay in Santiago if early arrival.</span>
-          <a class="map-btn" href="https://maps.google.com/?q=Santiago,+Chile" target="_blank">📍 Santiago Map</a>
-        </div>
-      </div>
-      <iframe class="day-map-iframe" src="https://maps.google.com/maps?q=Santiago,+Chile&output=embed" loading="lazy"></iframe>
-    </div>
-
-    <div id="day-oct3" class="day-card">
-      <div class="day-header">
-        <span class="day-date" contenteditable="true">Oct 3 (Saturday)</span>
-        <span class="day-dest" contenteditable="true">Santiago, Chile</span>
-      </div>
-      <div class="time-block">
-        <div class="time-title" contenteditable="true">Morning</div>
-        <div class="time-desc">
-          <span contenteditable="true">Arrive in Santiago and check in to Novotel Santiago Providencia.</span>
-          <a class="map-btn" href="https://maps.google.com/?q=Novotel+Santiago+Providencia" target="_blank">📍 Hotel Map</a>
-        </div>
-      </div>
-      <div class="time-block">
-        <div class="time-title" contenteditable="true">Afternoon</div>
-        <div class="time-desc">
-          <span contenteditable="true">Stroll through the cobblestone streets of Barrio Lastarria for lunch, street markets, and outdoor cafés. Optional visit to Santa Lucía Hill, La Moneda Palace, or Plaza de Armas.</span>
-          <a class="map-btn" href="https://maps.google.com/?q=Barrio+Lastarria,+Santiago" target="_blank">📍 Lastarria Map</a>
-        </div>
-      </div>
-      <div class="time-block">
-        <div class="time-title" contenteditable="true">Evening</div>
-        <div class="time-desc">
-          <span contenteditable="true">Walk across the river to Bellavista (Calle Constitución & Patio Bellavista). Optional San Cristóbal Hill funicular.</span>
-          <a class="map-btn" href="https://maps.google.com/?q=Patio+Bellavista,+Santiago" target="_blank">📍 Bellavista Map</a>
-        </div>
-      </div>
-      <iframe class="day-map-iframe" src="https://maps.google.com/maps?q=Barrio+Lastarria,+Santiago&output=embed" loading="lazy"></iframe>
-    </div>
-
-    <div id="day-oct4" class="day-card">
-      <div class="day-header">
-        <span class="day-date" contenteditable="true">Oct 4 (Sunday)</span>
-        <span class="day-dest" contenteditable="true">San Pedro de Atacama</span>
-      </div>
-      <div class="time-block">
-        <div class="time-title" contenteditable="true">Morning</div>
-        <div class="time-desc">
-          <span contenteditable="true">Fly SCL → CJC on LA146 (08:23–10:35) [Preferred]. Pick up rental car at Calama Airport and drive 1.5h to San Pedro. Check in at Nueva Lodge La Estacion.</span>
-          <a class="map-btn" href="https://maps.google.com/?q=El+Loa+Airport+Calama" target="_blank">📍 Airport Map</a>
-        </div>
-      </div>
-      <div class="time-block">
-        <div class="time-title" contenteditable="true">Afternoon</div>
-        <div class="time-desc">
-          <span contenteditable="true">Drive 10 mins to Valley of Death (Valle de la Muerte / Marte) to see red dunes & rock formations. Tickets are bought directly in person at the entry kiosk/booth at the access gate. Cost: 6,000CLP. Optional visit to Magic bus or Pukará de Quitor.</span>
-          <a class="map-btn" href="https://maps.google.com/?q=Valle+de+la+Muerte,+San+Pedro+de+Atacama" target="_blank">📍 Death Valley Map</a>
-        </div>
-      </div>
-      <div class="time-block">
-        <div class="time-title" contenteditable="true">Evening</div>
-        <div class="time-desc">
-          <span contenteditable="true">Watch sunset at Valle de la Luna (Duna Mayor & Mirador de Kari). Cost: 10,800CLP. <strong>Reserve online via <a href="https://valledelaluna.com" target="_blank">valledelaluna.com</a></strong></span>
-          <a class="map-btn" href="https://maps.google.com/?q=Valle+de+la+Luna,+San+Pedro+de+Atacama" target="_blank">📍 Moon Valley Map</a>
-        </div>
-      </div>
-      <iframe class="day-map-iframe" src="https://maps.google.com/maps?q=Valle+de+la+Luna,+San+Pedro+de+Atacama&output=embed" loading="lazy"></iframe>
-    </div>
-
-    <div id="day-oct5" class="day-card">
-      <div class="day-header">
-        <span class="day-date" contenteditable="true">Oct 5 (Monday)</span>
-        <span class="day-dest" contenteditable="true">San Pedro de Atacama</span>
-      </div>
-      <div class="time-block">
-        <div class="time-title" contenteditable="true">Morning</div>
-        <div class="time-desc">
-          <span contenteditable="true">Drive to <strong>Lagunas Escondidas de Baltinache</strong> (turquoise salt pools). Cost: 12,000CLP. <strong>Ticket:</strong> Buy your ticket directly at the control booth / visitor hut at the entrance gate before accessing the site.</span>
-          <a class="map-btn" href="https://maps.google.com/?q=Lagunas+Escondidas+de+Baltinache" target="_blank">📍 Baltinache Map</a>
-        </div>
-      </div>
-      <div class="time-block">
-        <div class="time-title" contenteditable="true">Afternoon</div>
-        <div class="time-desc">
-          <span contenteditable="true"><strong>Laguna Cejar y Piedra:</strong> Swim/float in warm afternoon light. Cost: 15,000CLP. <strong>Tickets:</strong> <a href="https://lagunacejar.com/en/buy-tickets/?event=laguna-cejar-y-piedra" target="_blank">Reserve online here</a>.<br>
-          <strong>Laguna Chaxa:</strong> Drive south through Toconao to see flamingos at dusk. Cost: 13,714CLP. <strong>Tickets:</strong> <a href="https://www.ckapintickets.com/lagunayvalle.php" target="_blank">Reserve online here</a>.</span>
-          <a class="map-btn" href="https://maps.google.com/?q=Laguna+Chaxa" target="_blank">📍 Chaxa Map</a>
-        </div>
-      </div>
-      <div class="time-block">
-        <div class="time-title" contenteditable="true">Evening Stargazing Tour</div>
-        <div class="time-desc">
-          <span contenteditable="true"><strong>Stargazing tour booked via <a href="https://gyg.me/KxWQmjrh" target="_blank">GetYourGuide</a>!</strong><br>
-          Pick up: 7:00 PM at Licancabur 10. Duration: 2.5 hours. Cost: HKD 261 per person.<br>
-          Free cancellation until Oct 4, 19:00.</span>
-        </div>
-      </div>
-      <div class="time-block">
-        <div class="time-title" contenteditable="true">Reminder</div>
-        <div class="time-desc">
-          <span contenteditable="true"><strong>Log onto <a href="https://socairechile.cl/shop/" target="_blank">socairechile.cl/shop/</a> on October 5 at 6:30 PM local time to purchase your tickets for the next day to Piedras Rojas. Cost: 13,000CLP.</strong></span>
-        </div>
-      </div>
-      <iframe class="day-map-iframe" src="https://maps.google.com/maps?q=Lagunas+Escondidas+de+Baltinache&output=embed" loading="lazy"></iframe>
-    </div>
-
-    <div id="day-oct6" class="day-card">
-      <div class="day-header">
-        <span class="day-date" contenteditable="true">Oct 6 (Tuesday)</span>
-        <span class="day-dest" contenteditable="true">San Pedro de Atacama</span>
-      </div>
-      <div class="time-block">
-        <div class="time-title" contenteditable="true">Morning</div>
-        <div class="time-desc">
-          <span contenteditable="true">High-altitude day (~4,200m) visiting Miscanti & Miñiques Lagoons. Hydrate well.</span>
-          <a class="map-btn" href="https://maps.google.com/?q=Laguna+Miscanti" target="_blank">📍 Lagoons Map</a>
-        </div>
-      </div>
-      <div class="time-block">
-        <div class="time-title" contenteditable="true">Afternoon</div>
-        <div class="time-desc">
-          <span contenteditable="true">Continue south to <strong>Piedras Rojas</strong> (Aguas Calientes Salt Flat) across Salar de Talar. <strong>Ticket for Tebinquinche Lagoon:</strong> Paid directly at the entrance booth. Cost: 6,000CLP. Stop at Socaire village and Laguna Tebinquiche on return.</span>
-          <a class="map-btn" href="https://maps.google.com/maps?q=Socaire+Community+Office" target="_blank">📍 Socaire Community Office Map</a>
-        </div>
-      </div>
-      <div class="time-block">
-        <div class="time-title" contenteditable="true">Reminder</div>
-        <div class="time-desc">
-          <span contenteditable="true"><strong>Check in at the <a href="https://maps.google.com/maps?q=Socaire+Community+Office" target="_blank">Socaire Community Office</a> in the small town of Socaire (located along Highway 23, about 1 hour south of San Pedro de Atacama en route to the sites), before visiting Piedras Rojas.</strong></span>
-        </div>
-      </div>
-      <div class="time-block">
-        <div class="time-title" contenteditable="true">Evening</div>
-        <div class="time-desc"><span contenteditable="true">Prep warm thermals, gloves, and hats for tomorrow's early geysers excursion.</span></div>
-      </div>
-      <iframe class="day-map-iframe" src="https://maps.google.com/maps?q=Piedras+Rojas+Atacama&output=embed" loading="lazy"></iframe>
-    </div>
-
-    <div id="day-oct7" class="day-card">
-      <div class="day-header">
-        <span class="day-date" contenteditable="true">Oct 7 (Wednesday)</span>
-        <span class="day-dest" contenteditable="true">Transit / Santiago</span>
-      </div>
-      <div class="time-block">
-        <div class="time-title" contenteditable="true">Morning</div>
-        <div class="time-desc">
-          <span contenteditable="true">04:30 AM drive to El Tatio Geysers for sunrise. Stop at Machuca Village on return drive.</span>
-          <a class="map-btn" href="https://maps.google.com/?q=El+Tatio+Geysers" target="_blank">📍 Geysers Map</a>
-        </div>
-      </div>
-      <div class="time-block">
-        <div class="time-title" contenteditable="true">Afternoon</div>
-        <div class="time-desc">
-          <span contenteditable="true">Leave El Tatio ~08:30–09:00 AM back to San Pedro. Return rental car at CJC airport and fly CJC → SCL.</span>
-          <a class="map-btn" href="https://maps.google.com/?q=El+Loa+Airport+Calama" target="_blank">📍 Airport Map</a>
-        </div>
-      </div>
-      <div class="time-block">
-        <div class="time-title" contenteditable="true">Consider This Tour</div>
-        <div class="time-desc">
-          <span contenteditable="true"><strong><a href="https://www.viator.com/en-HK/search/422580P3?mcid=70066" target="_blank">Half Day Tour to Geysers del Tatio</a></strong><br>
-          Start time: 04:30 AM. Duration: 6-7 hours. Cost: HKD 392 per person.</span>
-        </div>
-      </div>
-      <div class="time-block">
-        <div class="time-title" contenteditable="true">Evening</div>
-        <div class="time-desc"><span contenteditable="true">Rest in Santiago before tomorrow's Argentina flight.</span></div>
-      </div>
-      <iframe class="day-map-iframe" src="https://maps.google.com/maps?q=El+Tatio+Geysers&output=embed" loading="lazy"></iframe>
-    </div>
-
-    <div id="day-oct8" class="day-card">
-      <div class="day-header">
-        <span class="day-date" contenteditable="true">Oct 8 (Thursday)</span>
-        <span class="day-dest" contenteditable="true">Buenos Aires, Argentina</span>
-      </div>
-      <div class="time-block">
-        <div class="time-title" contenteditable="true">Morning</div>
-        <div class="time-desc"><span contenteditable="true">Fly from Santiago to Buenos Aires (EZE or AEP).</span></div>
-      </div>
-      <div class="time-block">
-        <div class="time-title" contenteditable="true">Afternoon</div>
-        <div class="time-desc">
-          <span contenteditable="true">Check in at Up Recoleta Hotel; stroll around Recoleta neighborhood and parks.</span>
-          <a class="map-btn" href="https://maps.google.com/?q=Up+Recoleta+Hotel+Buenos+Aires" target="_blank">📍 Recoleta Map</a>
-        </div>
-      </div>
-      <div class="time-block">
-        <div class="time-title" contenteditable="true">Evening</div>
-        <div class="time-desc"><span contenteditable="true">Dinner at an Argentine steakhouse (Parrilla).</span></div>
-      </div>
-      <iframe class="day-map-iframe" src="https://maps.google.com/maps?q=Recoleta+Buenos+Aires&output=embed" loading="lazy"></iframe>
-    </div>
-
-    <div id="day-oct9" class="day-card">
-      <div class="day-header">
-        <span class="day-date" contenteditable="true">Oct 9 (Friday)</span>
-        <span class="day-dest" contenteditable="true">Ushuaia, Argentina</span>
-      </div>
-      <div class="time-block">
-        <div class="time-title" contenteditable="true">Morning</div>
-        <div class="time-desc"><span contenteditable="true">Fly from Buenos Aires (AEP/EZE) down to Ushuaia. Check in at Alto Andino Hotel.</span></div>
-      </div>
-      <div class="time-block">
-        <div class="time-title" contenteditable="true">Afternoon</div>
-        <div class="time-desc">
-          <span contenteditable="true">Walk along the Beagle Channel waterfront and explore town.</span>
-          <a class="map-btn" href="https://maps.google.com/?q=Beagle+Channel+Ushuaia" target="_blank">📍 Waterfront Map</a>
-        </div>
-      </div>
-      <div class="time-block">
-        <div class="time-title" contenteditable="true">Evening</div>
-        <div class="time-desc"><span contenteditable="true">Try local King Crab (Centolla) for dinner.</span></div>
-      </div>
-      <iframe class="day-map-iframe" src="https://maps.google.com/maps?q=Ushuaia+Argentina&output=embed" loading="lazy"></iframe>
-    </div>
-
-    <div id="day-oct10" class="day-card">
-      <div class="day-header">
-        <span class="day-date" contenteditable="true">Oct 10 (Saturday)</span>
-        <span class="day-dest" contenteditable="true">Ushuaia, Argentina</span>
-      </div>
-      <div class="time-block">
-        <div class="time-title" contenteditable="true">Morning</div>
-        <div class="time-desc">
-          <span contenteditable="true">Tierra del Fuego National Park excursion via transfer shuttle (remis) or bus.</span>
-          <a class="map-btn" href="https://maps.google.com/?q=Tierra+del+Fuego+National+Park" target="_blank">📍 Park Map</a>
-        </div>
-      </div>
-      <div class="time-block">
-        <div class="time-title" contenteditable="true">Afternoon</div>
-        <div class="time-desc">
-          <span contenteditable="true"><strong>Primary:</strong> Excursion/boat tour to Isla Martillo with Piratour to walk among penguins.</span>
-          <a class="map-btn" href="https://maps.google.com/?q=Isla+Martillo+Ushuaia" target="_blank">📍 Isla Martillo Map</a>
-        </div>
-      </div>
-      <div class="time-block">
-        <div class="time-title" contenteditable="true">Backup Tour Booked (if Piratour full)</div>
-        <div class="time-desc">
-          <span contenteditable="true"><strong><a href="https://gyg.me/tiu1sWc6" target="_blank">Ushuaia: Beagle Channel and Penguin Island</a></strong><br>
-          Tour starts at 3:00 PM. Cost: HKD 1,215 per person (payable on Oct 8).<br>
-          Free cancellation until Oct 9, 15:00.</span>
-        </div>
-      </div>
-      <div class="time-block">
-        <div class="time-title" contenteditable="true">Evening</div>
-        <div class="time-desc"><span contenteditable="true">Relax in Ushuaia town center.</span></div>
-      </div>
-      <iframe class="day-map-iframe" src="https://maps.google.com/maps?q=Tierra+del+Fuego+National+Park&output=embed" loading="lazy"></iframe>
-    </div>
-
-    <div id="day-oct11" class="day-card">
-      <div class="day-header">
-        <span class="day-date" contenteditable="true">Oct 11 (Sunday)</span>
-        <span class="day-dest" contenteditable="true">El Calafate, Argentina</span>
-      </div>
-      <div class="time-block">
-        <div class="time-title" contenteditable="true">Morning</div>
-        <div class="time-desc"><span contenteditable="true">Fly from Ushuaia to El Calafate. Check in at Destino Calafate.</span></div>
-      </div>
-      <div class="time-block">
-        <div class="time-title" contenteditable="true">Afternoon</div>
-        <div class="time-desc">
-          <span contenteditable="true">Visit Glaciarium Ice Museum. Tickets can be purchased directly at the ticket window upon arrival.</span>
-          <a class="map-btn" href="https://maps.google.com/?q=Glaciarium+El+Calafate" target="_blank">📍 Glaciarium Map</a>
-        </div>
-      </div>
-      <div class="time-block">
-        <div class="time-title" contenteditable="true">Evening</div>
-        <div class="time-desc"><span contenteditable="true">Dinner in town along Av. del Libertador.</span></div>
-      </div>
-      <iframe class="day-map-iframe" src="https://maps.google.com/maps?q=El+Calafate+Argentina&output=embed" loading="lazy"></iframe>
-    </div>
-
-    <div id="day-oct12" class="day-card">
-      <div class="day-header">
-        <span class="day-date" contenteditable="true">Oct 12 (Monday)</span>
-        <span class="day-dest" contenteditable="true">El Calafate, Argentina</span>
-      </div>
-      <div class="time-block">
-        <div class="time-title" contenteditable="true">Consider this Full Day Tour</div>
-        <div class="time-desc">
-          <span contenteditable="true"><strong><a href="https://www.getyourguide.com/el-calafate-l544/el-calafate-perito-moreno-glacier-mini-hiking-experience-t233632/?utm_medium=sharing&utm_campaign=activity_details_ios" target="_blank">Perito Moreno Glacier Trekking Tour and Cruise</a></strong><br>
-          Pick up: 8:00 AM at hotel. Duration: 11 hours. Cost: HKD 3,128 per person.<br>
-          Cancel up to 24 hours in advance for a full refund.</span>
-          <a class="map-btn" href="https://maps.google.com/?q=Perito+Moreno+Glacier" target="_blank">📍 Glacier Map</a>
-        </div>
-      </div>
-      <div class="time-block">
-        <div class="time-title" contenteditable="true">Evening</div>
-        <div class="time-desc"><span contenteditable="true">Farewell Patagonia dinner in El Calafate.</span></div>
-      </div>
-      <iframe class="day-map-iframe" src="https://maps.google.com/maps?q=Perito+Moreno+Glacier&output=embed" loading="lazy"></iframe>
-    </div>
-
-    <div id="day-oct13" class="day-card">
-      <div class="day-header">
-        <span class="day-date" contenteditable="true">Oct 13 (Tuesday)</span>
-        <span class="day-dest" contenteditable="true">Buenos Aires, Argentina</span>
-      </div>
-      <div class="time-block">
-        <div class="time-title" contenteditable="true">Morning</div>
-        <div class="time-desc"><span contenteditable="true">Fly from El Calafate to Buenos Aires. Check in at NH Collection Buenos Aires Crillon.</span></div>
-      </div>
-      <div class="time-block">
-        <div class="time-title" contenteditable="true">Late Morning</div>
-        <div class="time-desc">
-          <span contenteditable="true">Visit Recoleta Cemetery and stroll down Avenida Santa Fe to browse El Ateneo Grand Splendid.</span>
-          <a class="map-btn" href="https://maps.google.com/?q=Recoleta+Cemetery" target="_blank">📍 Recoleta Cemetery Map</a>
-        </div>
-      </div>
-      <div class="time-block">
-        <div class="time-title" contenteditable="true">Afternoon</div>
-        <div class="time-desc">
-          <span contenteditable="true">Take a guided tour at Teatro Colón, then head north to explore Palermo Soho for boutique shopping and cafés.</span>
-          <a class="map-btn" href="https://maps.google.com/?q=Teatro+Colon+Buenos+Aires" target="_blank">📍 Teatro Colón Map</a>
-        </div>
-      </div>
-      <div class="time-block">
-        <div class="time-title" contenteditable="true">Evening</div>
-        <div class="time-desc"><span contenteditable="true">Attend a live Tango Show with dinner (Gala Tango / El Querandí).</span></div>
-      </div>
-      <iframe class="day-map-iframe" src="https://maps.google.com/maps?q=Recoleta+Cemetery+Buenos+Aires&output=embed" loading="lazy"></iframe>
-    </div>
-
-    <div id="day-oct14" class="day-card">
-      <div class="day-header">
-        <span class="day-date" contenteditable="true">Oct 14 (Wednesday)</span>
-        <span class="day-dest" contenteditable="true">Buenos Aires / Uruguay</span>
-      </div>
-      <div class="time-block">
-        <div class="time-title" contenteditable="true">Morning</div>
-        <div class="time-desc">
-          <span contenteditable="true">Take morning ferry across Rio de la Plata to Colonia del Sacramento, Uruguay. <strong>Book via <a href="https://www.buquebus.com/int" target="_blank">Buquebus</a></strong> (return trip cost: USD 94.87 per person).</span>
-          <a class="map-btn" href="https://maps.google.com/?q=Puerto+Madero+Ferry+Terminal" target="_blank">📍 Terminal Map</a>
-        </div>
-      </div>
-      <div class="time-block">
-        <div class="time-title" contenteditable="true">Afternoon</div>
-        <div class="time-desc">
-          <span contenteditable="true">Explore historic cobble streets and lighthouse in Colonia del Sacramento.</span>
-          <a class="map-btn" href="https://maps.google.com/?q=Colonia+del+Sacramento+Uruguay" target="_blank">📍 Colonia Map</a>
-        </div>
-      </div>
-      <div class="time-block">
-        <div class="time-title" contenteditable="true">Evening</div>
-        <div class="time-desc"><span contenteditable="true">Ferry back to Buenos Aires for dinner.</span></div>
-      </div>
-      <iframe class="day-map-iframe" src="https://maps.google.com/maps?q=Colonia+del+Sacramento+Uruguay&output=embed" loading="lazy"></iframe>
-    </div>
-
-    <div id="day-oct15" class="day-card">
-      <div class="day-header">
-        <span class="day-date" contenteditable="true">Oct 15 (Thursday)</span>
-        <span class="day-dest" contenteditable="true">Buenos Aires, Argentina</span>
-      </div>
-      <div class="time-block">
-        <div class="time-title" contenteditable="true">Morning</div>
-        <div class="time-desc">
-          <span contenteditable="true">Head south via Uber to Caminito in La Boca for colorful tin houses and street tango performers.</span>
-          <a class="map-btn" href="https://maps.google.com/?q=Caminito+La+Boca" target="_blank">📍 Caminito Map</a>
-        </div>
-      </div>
-      <div class="time-block">
-        <div class="time-title" contenteditable="true">Midday & Afternoon</div>
-        <div class="time-desc">
-          <span contenteditable="true">Explore antique stalls inside Mercado de San Telmo. Visit Plaza de Mayo to view Casa Rosada, then enjoy coffee and churros at Café Tortoni.</span>
-          <a class="map-btn" href="https://maps.google.com/?q=Cafe+Tortoni+Buenos+Aires" target="_blank">📍 Café Tortoni Map</a>
-        </div>
-      </div>
-      <div class="time-block">
-        <div class="time-title" contenteditable="true">Evening</div>
-        <div class="time-desc"><span contenteditable="true">Final evening celebration dinner in Buenos Aires.</span></div>
-      </div>
-      <iframe class="day-map-iframe" src="https://maps.google.com/maps?q=Mercado+de+San+Telmo&output=embed" loading="lazy"></iframe>
-    </div>
-
-    <div id="day-oct16" class="day-card">
-      <div class="day-header">
-        <span class="day-date" contenteditable="true">Oct 16 (Friday)</span>
-        <span class="day-dest" contenteditable="true">Departure</span>
-      </div>
-      <div class="time-block">
-        <div class="time-title" contenteditable="true">Morning</div>
-        <div class="time-desc"><span contenteditable="true">Check out and final souvenirs/coffee.</span></div>
-      </div>
-      <div class="time-block">
-        <div class="time-title" contenteditable="true">Afternoon & Evening</div>
-        <div class="time-desc"><span contenteditable="true">Transfer to EZE airport for departure long-haul flight home. In-flight.</span></div>
-      </div>
-      <iframe class="day-map-iframe" src="https://maps.google.com/maps?q=EZE+Airport+Buenos+Aires&output=embed" loading="lazy"></iframe>
+      <div class="tip-category" contenteditable="true">🏜️ Atacama</div>
+      <div class="tip-item" contenteditable="true">• Make sure your rental car in Atacama is a high-clearance SUV (ideally 4WD / AWD). Dirt tracks to Lagunas Escondidas de Baltinache and Piedras Rojas have loose gravel and sharp rocks.</div>
+      <div class="tip-item" contenteditable="true">• Always keep a full tank of fuel. Petrol stations are located in Calama and San Pedro de Atacama; there are <b>no gas stations</b> out near the salt flats or geysers.</div>
+      <div class="tip-item" contenteditable="true">• High-SPF sunscreen (50+) and UV-blocking sunglasses (the UV index in Atacama and on glacier ice is extremely high).</div>
+      <div class="tip-item" contenteditable="true">• Moisturizer, eye drops, and lip balm (the Atacama Desert is one of the driest places on Earth).</div>
     </div>
   </main>
 
@@ -1355,36 +1258,32 @@
     </div>
   </main>
 
-  <main id="hotels" class="tab-content">
-    <div class="guide-section" id="hotels-section">
-      <div class="guide-title" contenteditable="true" id="hotels-title">🏨 Accommodations & Cancellation Rules</div>
-      <div id="hotels-container"></div>
+  <main id="todo" class="tab-content">
+    <div class="guide-section">
+      <div class="guide-title" contenteditable="true" id="todo-title-1">🎟️ Bookings Checklist</div>
+      <ul class="checklist" id="tours-list"></ul>
+      <div class="add-form">
+        <input type="text" id="tours-input" class="add-input" placeholder="Add booking item...">
+        <button class="btn-action" onclick="addItem('tours')">Add</button>
+      </div>
     </div>
 
     <div class="guide-section">
-      <div class="guide-title" contenteditable="true" id="tips-title">💡 Essential Local Travel Notes & Tips</div>
-      
-      <div class="tip-category" contenteditable="true">🇨🇱 Chile</div>
-      <div class="tip-item" contenteditable="true">• <b>Cards:</b> Credit cards (Visa/Mastercard) are universally accepted in Santiago and most established businesses in San Pedro de Atacama (restaurants, hotels, petrol stations).</div>
-      <div class="tip-item" contenteditable="true">• <b>Cash Needs:</b> Keep around 20,000 to 40,000 CLP (~$20–$40 USD) in cash for small purchases, national park entry fees in Atacama (some remote checkpoints only accept cash CLP), and small tips.</div>
-      <div class="tip-item" contenteditable="true">• <b>Airport Transfers:</b> Use official counter taxis inside the terminal (e.g., <i>TransVIP</i> or <i>Taxi Oficial</i>) rather than accepting rides from unofficial touts in the arrival hall.</div>
-      <div class="tip-item" contenteditable="true">• <b>Rideshare:</b> Uber operates reliably across Santiago and is the safest, most convenient option for city transit.</div>
-      <div class="tip-item" contenteditable="true">• <b>Metro:</b> Santiago's Metro is modern, clean, and efficient. You will need a reloadable <b>Bip! card</b> to ride.</div>
-      <div class="tip-item" contenteditable="true">• <b>Chile Customs (SAG Form):</b> Chile has extremely strict agricultural biosecurity laws. Upon landing at SCL, you must declare <b>all</b> organic matter, fresh food, fruit, wooden items, or snacks via the online SAG (<i>Servicio Agrícola y Ganadero</i>) digital declaration form before reaching customs. Undeclared food leads to steep fines.</div>
+      <div class="guide-title" contenteditable="true" id="todo-title-2">🎒 Carry-On Packing List</div>
+      <ul class="checklist" id="carryon-list"></ul>
+      <div class="add-form">
+        <input type="text" id="carryon-input" class="add-input" placeholder="Add carry-on item...">
+        <button class="btn-action" onclick="addItem('carryon')">Add</button>
+      </div>
+    </div>
 
-      <div class="tip-category" contenteditable="true">🇦🇷 Argentina</div>
-      <div class="tip-item" contenteditable="true">• <b>Cards & MEP Rates:</b> International credit cards receive the official <b>MEP exchange rate</b> (<i>Mercado Electrónico de Pagos</i>), which automatically gives you an exchange rate very close to the informal "Blue Dollar" rate without needing to carry stacks of physical currency.</div>
-      <div class="tip-item" contenteditable="true">• <b>Cash Needs:</b> While you can pay for hotels, restaurants, and tours with cards, cash is still useful for small tips, small café purchases, and street markets.</div>
-      <div class="tip-item" contenteditable="true">• <b>Getting Cash:</b> Avoid using international ATMs in Argentina, as foreign card withdrawal fees are high. If you need cash, send yourself funds via <b>Western Union</b> to pick up pesos locally at market rates, or bring crisp, unmarked $100 USD bills to exchange at official <i>cambios</i>.</div>
-      <div class="tip-item" contenteditable="true">• <b>Rideshare:</b> <b>Uber</b> and <b>Cabify</b> are widely used, extremely cheap, and much safer than hailing street taxis at night.</div>
-      <div class="tip-item" contenteditable="true">• <b>Public Transit:</b> The subway (<i>Subte</i>) and buses require a <b>SUBE card</b>, which can be purchased at subway stations or <i>kioscos</i> (corner shops) and topped up with pesos.</div>
-      <div class="tip-item" contenteditable="true">• <b>Airport Transfers:</b> From EZE or AEP, use pre-paid taxi booths inside the arrival terminal (e.g., <i>Taxi Ezeiza</i>) or book an Uber/Cabify directly from the designated pickup zone.</div>
-
-      <div class="tip-category" contenteditable="true">🏜️ Atacama</div>
-      <div class="tip-item" contenteditable="true">• Make sure your rental car in Atacama is a high-clearance SUV (ideally 4WD / AWD). Dirt tracks to Lagunas Escondidas de Baltinache and Piedras Rojas have loose gravel and sharp rocks.</div>
-      <div class="tip-item" contenteditable="true">• Always keep a full tank of fuel. Petrol stations are located in Calama and San Pedro de Atacama; there are <b>no gas stations</b> out near the salt flats or geysers.</div>
-      <div class="tip-item" contenteditable="true">• High-SPF sunscreen (50+) and UV-blocking sunglasses (the UV index in Atacama and on glacier ice is extremely high).</div>
-      <div class="tip-item" contenteditable="true">• Moisturizer, eye drops, and lip balm (the Atacama Desert is one of the driest places on Earth).</div>
+    <div class="guide-section">
+      <div class="guide-title" contenteditable="true" id="todo-title-3">🧳 Checked Bag Packing List</div>
+      <ul class="checklist" id="checkin-list"></ul>
+      <div class="add-form">
+        <input type="text" id="checkin-input" class="add-input" placeholder="Add checked item...">
+        <button class="btn-action" onclick="addItem('checkin')">Add</button>
+      </div>
     </div>
   </main>
 
@@ -1411,7 +1310,7 @@
       
       document.getElementById(tabId).classList.add('active');
       const btns = document.querySelectorAll('.tab-btn');
-      const tabMap = { 'todo': 0, 'weather': 1, 'itinerary': 2, 'flights': 3, 'hotels': 4 };
+      const tabMap = { 'itinerary': 0, 'weather': 1, 'hotels': 2, 'flights': 3, 'todo': 4 };
       if (tabMap[tabId] !== undefined) {
         btns[tabMap[tabId]].classList.add('active');
       }
@@ -1423,33 +1322,8 @@
       document.querySelectorAll('.date-chip').forEach(el => el.classList.remove('active'));
 
       document.getElementById(dayId).classList.add('active');
-      // Find the clicked button
-      const buttons = document.querySelectorAll('.date-chip');
-      buttons.forEach(btn => {
-        if (btn.textContent.trim() === document.getElementById(dayId).querySelector('.day-date').textContent.trim().split('(')[0].trim()) {
-          btn.classList.add('active');
-        }
-      });
+      event.currentTarget.classList.add('active');
     }
-
-    // Fix showDay to properly handle the active state
-    const originalShowDay = showDay;
-    showDay = function(dayId) {
-      document.querySelectorAll('.day-card').forEach(el => el.classList.remove('active'));
-      document.querySelectorAll('.date-chip').forEach(el => el.classList.remove('active'));
-
-      document.getElementById(dayId).classList.add('active');
-      // Find the corresponding date chip
-      const dayDate = document.getElementById(dayId).querySelector('.day-date');
-      if (dayDate) {
-        const dateText = dayDate.textContent.trim().split('(')[0].trim();
-        document.querySelectorAll('.date-chip').forEach(btn => {
-          if (btn.textContent.trim() === dateText) {
-            btn.classList.add('active');
-          }
-        });
-      }
-    };
 
     // ----- CHECKLIST DATA WITH PERSISTENCE -----
     const defaultItems = {
@@ -1490,7 +1364,7 @@
           li.innerHTML = `
             <div class="check-left">
               <input type="checkbox">
-              <span contenteditable="true" data-type="${type}" data-index="${index}" class="check-item-text">${escapeHtml(item.name)}</span>
+              <span contenteditable="true" data-type="${type}" data-index="${index}" class="check-item-text">${item.name}</span>
             </div>
             <div class="qty-controls">
               <button class="qty-btn" onclick="updateQty('${type}', ${index}, -1)">-</button>
@@ -1503,12 +1377,6 @@
         });
         saveData(type, items[type]);
       });
-    }
-
-    function escapeHtml(text) {
-      const div = document.createElement('div');
-      div.textContent = text;
-      return div.innerHTML;
     }
 
     function updateQty(type, index, change) {
@@ -1561,18 +1429,6 @@
       if (hotelsTitle) saveData('hotels-title', hotelsTitle.innerText);
       const tipsTitle = document.getElementById('tips-title');
       if (tipsTitle) saveData('tips-title', tipsTitle.innerText);
-
-      // Day card editable content
-      document.querySelectorAll('.day-card [contenteditable="true"]').forEach(el => {
-        const card = el.closest('.day-card');
-        if (card) {
-          const cardId = card.id;
-          const siblings = Array.from(card.querySelectorAll('[contenteditable="true"]'));
-          const index = siblings.indexOf(el);
-          const key = cardId + '_editable_' + index;
-          saveData(key, el.innerText);
-        }
-      });
 
       // Weather card editable content
       document.querySelectorAll('.weather-card [contenteditable="true"]').forEach(el => {
@@ -1638,19 +1494,6 @@
       const savedTipsTitle = loadData('tips-title', null);
       if (savedTipsTitle && tipsTitle) tipsTitle.innerText = savedTipsTitle;
 
-      // Day card editable content
-      document.querySelectorAll('.day-card [contenteditable="true"]').forEach(el => {
-        const card = el.closest('.day-card');
-        if (card) {
-          const cardId = card.id;
-          const siblings = Array.from(card.querySelectorAll('[contenteditable="true"]'));
-          const index = siblings.indexOf(el);
-          const key = cardId + '_editable_' + index;
-          const saved = loadData(key, null);
-          if (saved) el.innerText = saved;
-        }
-      });
-
       // Weather card editable content
       document.querySelectorAll('.weather-card [contenteditable="true"]').forEach(el => {
         const card = el.closest('.weather-card');
@@ -1683,29 +1526,6 @@
         }
       });
     }
-
-    // ----- FIX: Handle link clicks inside contenteditable on mobile -----
-    document.addEventListener('click', function(e) {
-      const link = e.target.closest('a');
-      if (link && link.href && link.closest('[contenteditable="true"]')) {
-        const selection = window.getSelection();
-        // Only navigate if not actively selecting text
-        if (!selection || selection.isCollapsed || selection.toString().length === 0) {
-          e.preventDefault();
-          window.open(link.href, link.target || '_blank');
-          return false;
-        }
-      }
-    }, true);
-
-    // Fix for touch devices - prevent long press from interfering
-    document.addEventListener('touchstart', function(e) {
-      const link = e.target.closest('a');
-      if (link && link.href && link.closest('[contenteditable="true"]')) {
-        // Allow the click to proceed
-        link.style.touchAction = 'manipulation';
-      }
-    }, { passive: true });
 
     // ----- HOTEL DATA (sorted by check-in date) -----
     const hotelData = [
@@ -1777,12 +1597,12 @@
         const card = document.createElement('div');
         card.className = 'item-card';
         card.innerHTML = `
-          <div class="item-card-header" contenteditable="true">${escapeHtml(hotel.name)}</div>
+          <div class="item-card-header" contenteditable="true">${hotel.name}</div>
           <div contenteditable="true">
-            <b>Dates:</b> ${escapeHtml(hotel.dates)}<br>
-            <b>Cost:</b> ${escapeHtml(hotel.cost)}<br>
-            <b>Cancellation Policy (Local Time):</b> <span style="color:#B91C1C; font-weight:700;">Free cancellation until ${escapeHtml(hotel.cancelLocal)}</span><br>
-            <b>HK Time Equivalent:</b> <span style="color:#8C6D58;">${escapeHtml(hotel.cancelHK)}</span>
+            <b>Dates:</b> ${hotel.dates}<br>
+            <b>Cost:</b> ${hotel.cost}<br>
+            <b>Cancellation Policy (Local Time):</b> <span style="color:#B91C1C; font-weight:700;">Free cancellation until ${hotel.cancelLocal}</span><br>
+            <b>HK Time Equivalent:</b> <span style="color:#8C6D58;">${hotel.cancelHK}</span>
           </div>
         `;
         container.appendChild(card);
@@ -1837,7 +1657,6 @@
     }, 30000);
 
     console.log('✈️ South America Expedition app loaded. All edits are saved in localStorage.');
-    console.log('📱 All links are now clickable on mobile devices.');
   </script>
 </body>
 </html>
