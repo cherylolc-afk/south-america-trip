@@ -874,7 +874,7 @@
       { name: 'Holiday Inn Santiago at Airport Terminal', dates: 'Oct 7 – Oct 8, 2026', cost: 'USD 248.96 (Charge Date: Oct 4)', cancelLocal: 'Oct 5, 11:59 PM (CLT)', cancelHK: 'Oct 6, 11:59 AM HKT', sortDate: '2026-10-07', checkIn: '14:00', checkOut: '12:00' },
       { name: 'Up Recoleta Hotel (Buenos Aires)', dates: 'Oct 8 – Oct 9, 2026', cost: 'USD 92.77 (Charge Date: Oct 4)', cancelLocal: 'Oct 6, 11:59 PM (ART)', cancelHK: 'Oct 7, 10:59 AM HKT', sortDate: '2026-10-08', checkIn: '14:00', checkOut: '11:00' },
       { name: 'Alto Andino Hotel (Ushuaia)', dates: 'Oct 9 – Oct 11, 2026', cost: 'USD 424 (payable at hotel)', cancelLocal: 'Oct 5, 11:59 PM (ART)', cancelHK: 'Oct 6, 10:59 AM HKT', sortDate: '2026-10-09', checkIn: '14:00', checkOut: '11:00' },
-      { name: 'Destino Calafate (El Calafate)', dates: 'Oct 11 – Oct 13, 2026', cost: 'USD 283.77 (Charge Date: Oct 8)', cancelLocal: 'Oct 9, 11:59 PM (ART)', cancelHK: 'Oct 10, 10:59 AM HKT', sortDate: '2026-10-11', checkIn: '15:00', checkOut: '10:30' },
+      { name: 'Hotel Kosten Aike (El Calafate)', dates: 'Oct 11 – Oct 13, 2026', cost: 'USD 303 (payable at hotel)', cancelLocal: 'Oct 10, 06:00 PM (ART)', cancelHK: 'Oct 11, 05:00 AM HKT', sortDate: '2026-10-11', checkIn: '14:00', checkOut: '10:00' },
       { name: 'Hotel Pulitzer Buenos Aires', dates: 'Oct 13 – Oct 15, 2026', cost: 'USD 202.12 (Charge Date: Oct 10)', cancelLocal: 'Oct 11, 11:59 PM (ART)', cancelHK: 'Oct 12, 10:59 AM HKT', sortDate: '2026-10-13', checkIn: '15:00', checkOut: '12:00' }
     ];
     const sortedHotels = [...hotelData].sort((a, b) => new Date(a.sortDate) - new Date(b.sortDate));
