@@ -504,7 +504,7 @@
 
     <div id="day-oct13" class="day-card">
       <div class="day-header"><span class="day-date">Oct 13 (Tuesday)</span><span class="day-dest">Buenos Aires, Argentina</span></div>
-      <div class="time-block"><div class="time-title">Morning</div><div class="time-desc">Fly from El Calafate to Buenos Aires. Check in at NH Collection Buenos Aires Crillon.</div></div>
+      <div class="time-block"><div class="time-title">Morning</div><div class="time-desc">Fly from El Calafate to Buenos Aires. Check in at Hotel Pulitzer Buenos Aires.</div></div>
       <div class="time-block"><div class="time-title">Late Morning</div><div class="time-desc">Visit Recoleta Cemetery and stroll down Avenida Santa Fe to browse El Ateneo Grand Splendid. <a class="map-btn" href="https://maps.google.com/?q=Recoleta+Cemetery" target="_blank">📍 Recoleta Cemetery Map</a></div></div>
       <div class="time-block"><div class="time-title">Afternoon</div><div class="time-desc">Take a guided tour at Teatro Colón, then head north to explore Palermo Soho for boutique shopping and cafés. <a class="map-btn" href="https://maps.google.com/?q=Teatro+Colon+Buenos+Aires" target="_blank">📍 Teatro Colón Map</a></div></div>
       <div class="time-block"><div class="time-title">Evening</div><div class="time-desc">Attend a live Tango Show with dinner (Gala Tango / El Querandí).</div></div>
