@@ -489,7 +489,7 @@
 
     <div id="day-oct11" class="day-card">
       <div class="day-header"><span class="day-date">Oct 11 (Sunday)</span><span class="day-dest">El Calafate, Argentina</span></div>
-      <div class="time-block"><div class="time-title">Morning</div><div class="time-desc">Fly from Ushuaia to El Calafate. Check in at Destino Calafate.</div></div>
+      <div class="time-block"><div class="time-title">Morning</div><div class="time-desc">Fly from Ushuaia to El Calafate. Check in at Hotel Kosten Aike. Possible to arrange airport transfer via the hotel in advance.</div></div>
       <div class="time-block"><div class="time-title">Afternoon</div><div class="time-desc">Visit Glaciarium Ice Museum. <strong>Opening hours: 12:00 – 19:00</strong>. Tickets can be purchased directly at the ticket window upon arrival. <a class="map-btn" href="https://maps.google.com/?q=Glaciarium+El+Calafate" target="_blank">📍 Glaciarium Map</a></div></div>
       <div class="time-block"><div class="time-title">Evening</div><div class="time-desc">Dinner in town along Av. del Libertador.</div></div>
       <iframe class="day-map-iframe" src="https://maps.google.com/maps?q=El+Calafate+Argentina&output=embed"></iframe>
