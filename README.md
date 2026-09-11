@@ -768,10 +768,9 @@
     const defaultItems = {
       tours: [
         { name: 'Piratour Isla Martillo Penguin Walk (Ushuaia)', qty: 1 },
-        { name: 'Hielo & Aventura Perito Moreno Mini-Trekking', qty: 1 },
-        { name: 'Atacama Stargazing Tour', qty: 1 },
         { name: 'Miscanti & Miñiques Lagoons Park Entry Ticket', qty: 1 },
-        { name: 'Buenos Aires Tango Show & Dinner Reservation', qty: 1 },
+        { name: 'Buenos Aires Tango Show', qty: 1 },
+        { name: 'Exchange USD', qty: 1 }
         { name: 'Buquebus Ferry Buenos Aires ↔ Colonia', qty: 1 }
       ],
       carryon: [
