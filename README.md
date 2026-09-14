@@ -392,21 +392,21 @@
 
     <div class="date-bar-wrapper">
       <div class="date-bar" id="date-bar">
-        <button class="date-chip active" onclick="showDay('day-oct2')">Oct 2</button>
-        <button class="date-chip" onclick="showDay('day-oct3')">Oct 3</button>
-        <button class="date-chip" onclick="showDay('day-oct4')">Oct 4</button>
-        <button class="date-chip" onclick="showDay('day-oct5')">Oct 5</button>
-        <button class="date-chip" onclick="showDay('day-oct6')">Oct 6</button>
-        <button class="date-chip" onclick="showDay('day-oct7')">Oct 7</button>
-        <button class="date-chip" onclick="showDay('day-oct8')">Oct 8</button>
-        <button class="date-chip" onclick="showDay('day-oct9')">Oct 9</button>
-        <button class="date-chip" onclick="showDay('day-oct10')">Oct 10</button>
-        <button class="date-chip" onclick="showDay('day-oct11')">Oct 11</button>
-        <button class="date-chip" onclick="showDay('day-oct12')">Oct 12</button>
-        <button class="date-chip" onclick="showDay('day-oct13')">Oct 13</button>
-        <button class="date-chip" onclick="showDay('day-oct14')">Oct 14</button>
-        <button class="date-chip" onclick="showDay('day-oct15')">Oct 15</button>
-        <button class="date-chip" onclick="showDay('day-oct16')">Oct 16</button>
+        <button class="date-chip active" onclick="showDay('day-oct2', this)">Oct 2</button>
+        <button class="date-chip" onclick="showDay('day-oct3', this)">Oct 3</button>
+        <button class="date-chip" onclick="showDay('day-oct4', this)">Oct 4</button>
+        <button class="date-chip" onclick="showDay('day-oct5', this)">Oct 5</button>
+        <button class="date-chip" onclick="showDay('day-oct6', this)">Oct 6</button>
+        <button class="date-chip" onclick="showDay('day-oct7', this)">Oct 7</button>
+        <button class="date-chip" onclick="showDay('day-oct8', this)">Oct 8</button>
+        <button class="date-chip" onclick="showDay('day-oct9', this)">Oct 9</button>
+        <button class="date-chip" onclick="showDay('day-oct10', this)">Oct 10</button>
+        <button class="date-chip" onclick="showDay('day-oct11', this)">Oct 11</button>
+        <button class="date-chip" onclick="showDay('day-oct12', this)">Oct 12</button>
+        <button class="date-chip" onclick="showDay('day-oct13', this)">Oct 13</button>
+        <button class="date-chip" onclick="showDay('day-oct14', this)">Oct 14</button>
+        <button class="date-chip" onclick="showDay('day-oct15', this)">Oct 15</button>
+        <button class="date-chip" onclick="showDay('day-oct16', this)">Oct 16</button>
       </div>
     </div>
 
@@ -738,7 +738,7 @@
     function switchTab(tabId) {
       document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
       document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
-      
+
       document.getElementById(tabId).classList.add('active');
       const btns = document.querySelectorAll('.tab-btn');
       const tabMap = { 'itinerary': 0, 'weather': 1, 'hotels': 2, 'flights': 3, 'todo': 4 };
@@ -748,12 +748,13 @@
       window.scrollTo(0, 0);
     }
 
-    function showDay(dayId) {
+    // FIXED: no longer relies on the non-standard global `event` object
+    function showDay(dayId, btn) {
       document.querySelectorAll('.day-card').forEach(el => el.classList.remove('active'));
       document.querySelectorAll('.date-chip').forEach(el => el.classList.remove('active'));
 
       document.getElementById(dayId).classList.add('active');
-      event.currentTarget.classList.add('active');
+      if (btn) btn.classList.add('active');
     }
 
     // ----- CHECKLIST DATA WITH PERSISTENCE -----
@@ -770,7 +771,7 @@
         { name: 'Piratour Isla Martillo Penguin Walk (Ushuaia)', qty: 1 },
         { name: 'Miscanti & Miñiques Lagoons Park Entry Ticket', qty: 1 },
         { name: 'Buenos Aires Tango Show', qty: 1 },
-        { name: 'Exchange USD', qty: 1 }
+        { name: 'Exchange USD', qty: 1 },   // FIXED: missing comma added
         { name: 'Buquebus Ferry Buenos Aires ↔ Colonia', qty: 1 }
       ],
       carryon: [
@@ -907,8 +908,12 @@
           const type = e.target.dataset.type;
           const index = parseInt(e.target.dataset.index);
           if (type && !isNaN(index) && items[type] && items[type][index]) {
-            items[type][index].name = e.target.innerText;
-            saveData(type, items[type]);
+            const text = e.target.innerText.trim();
+            // Guard: never overwrite the saved name with an empty string
+            if (text !== '') {
+              items[type][index].name = e.target.innerText;
+              saveData(type, items[type]);
+            }
           }
         }
         if (e.target.classList.contains('check-item-qty')) {
@@ -925,8 +930,28 @@
       }
     });
 
+    // On blur, if a name was left empty, restore the last saved value
     document.addEventListener('blur', function(e) {
-      if (e.target.getAttribute('contenteditable') === 'true') saveEditableContent();
+      if (e.target.getAttribute('contenteditable') === 'true') {
+        if (e.target.classList.contains('check-item-text')) {
+          const type = e.target.dataset.type;
+          const index = parseInt(e.target.dataset.index);
+          if (type && !isNaN(index) && items[type] && items[type][index]) {
+            if (e.target.innerText.trim() === '') {
+              e.target.innerText = items[type][index].name;
+            }
+          }
+        }
+        if (e.target.classList.contains('check-item-qty')) {
+          const type = e.target.dataset.type;
+          const index = parseInt(e.target.dataset.index);
+          if (type && !isNaN(index) && items[type] && items[type][index]) {
+            const q = parseInt(e.target.innerText);
+            if (isNaN(q) || q <= 0) e.target.innerText = items[type][index].qty;
+          }
+        }
+        saveEditableContent();
+      }
     }, true);
 
     // ----- INIT -----
